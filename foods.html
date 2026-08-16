@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食物图鉴 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">🍅</div>
+      <div class="ch-no">第 2 章 · 基础数据</div>
+      <h1>食物图鉴</h1>
+      <p>50 余种常见食物：<b>真实照片 + 每100g近似成分 + 性味归经 + 健康作用（标注证据等级）</b>。
+      点击卡片翻面查看完整数据。成分数值取自《中国食物成分表·标准版·第6版》<sup class="cite" data-src="S2"></sup>口径的近似值（四舍五入），
+      性味归经取自《中华人民共和国药典》2020 年版一部<sup class="cite" data-src="S3"></sup>与《本草纲目》<sup class="cite" data-src="S5"></sup>。</p>
+    </div>
+
+    <section class="topic" id="s1">
+      <h2><span class="secno">2.1</span> 图鉴检索</h2>
+      <div class="card">
+        <div class="ctl-row" style="grid-template-columns:70px 1fr auto;align-items:center">
+          <span class="ctl-label">🔍 搜索</span>
+          <input type="text" id="fq" placeholder="输入食物名称或别名，如：燕麦、昆布、生蚝…" style="width:100%">
+          <span class="muted small" id="fcount"></span>
+        </div>
+        <div style="margin-top:10px"><b class="small">分类：</b><span id="catChips"></span></div>
+        <div><b class="small">目标营养素：</b><span id="tagChips"></span></div>
+        <p class="hint">点击任意卡片翻面：正面照片，背面成分 / 性味归经 / 健康作用 / 食用注意 / 经典搭配。</p>
+      </div>
+      <div class="food-grid" id="foodGrid"></div>
+    </section>
+
+    <section class="topic" id="s2">
+      <h2><span class="secno">2.2</span> ⛔ 危险食物与常见中毒（不可不知）</h2>
+      <div class="card">
+        <p>「食疗」的第一原则是<b>安全</b>。以下为家庭常见高风险食物/状态，依据国家食品安全风险评估中心与疾控中心公开资料<sup class="cite" data-src="S12"></sup>整理：</p>
+        <div id="hazardList"></div>
+      </div>
+      <div class="keypoint"><b>记住三句话</b>：不认识的野生植物与蘑菇不采不吃（毒蘑菇中毒是我国食源性疾病死亡主因<sup class="cite" data-src="S12"></sup>）；
+        久放、发酵、变色的食物宁可丢弃；四季豆、豆浆、木薯、发芽土豆这类「家常但需处理对」的食物，务必彻底加热/正确处置。</div>
+    </section>
+
+    <section class="topic" id="s3">
+      <h2><span class="secno">2.3</span> 数据说明</h2>
+      <div class="card">
+        <ul>
+          <li><b>营养成分</b>：每 100g 可食部近似值（四舍五入），用于横向对比，不能作为个体营养计算的精确依据<sup class="cite" data-src="S2"></sup>。</li>
+          <li><b>GI（血糖生成指数）</b>：同种食物因品种、成熟度、烹调方式差异很大，标注值为常见做法参考值<sup class="cite" data-src="S2"></sup>。</li>
+          <li><b>性味归经</b>：传统中医药表述，属经验医学证据（本站标 <span class="level-badge lc">证据C</span>），与现代循证证据体系并行呈现、互不混同。</li>
+          <li><b>证据等级</b>：A=指南强推荐/系统评价·RCT；B=队列·观察性研究/弱推荐；C=传统典籍；D=证据不足（仅辟谣用）。详见<a href="references.html">参考文献页</a>。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic" id="s4">
+      <h2><span class="secno">2.4</span> 随堂检测</h2>
+      <div class="card"><div id="quiz1"></div></div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('foods.html');
+HUI.footer();
+HUI.pager('foods.html');
+HUI.progress('foods.html');
+
+/* 目录 */
+document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+  ['s1|2.1 图鉴检索', 's2|2.2 危险食物警示', 's3|2.3 数据说明', 's4|2.4 随堂检测']
+    .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const D = window.HDATA;
+  const state = { q: '', cat: 'all', tag: 'all' };
+  const TAGS = ['高蛋白', '高纤维', '低GI', '高钙', '高铁', '高维C', '高钾', 'omega3', '全谷物'];
+
+  function chipRow(hostId, items, cur, onPick) {
+    const host = document.getElementById(hostId);
+    host.className = 'chips';
+    host.innerHTML = items.map(t => {
+      const v = t[0];
+      return `<span class="chip btn ${v === cur ? 'on' : ''}" data-v="${HUI.esc(v)}">${t[1]}</span>`;
+    }).join('');
+    Array.prototype.forEach.call(host.querySelectorAll('.chip'), c => {
+      c.addEventListener('click', () => {
+        Array.prototype.forEach.call(host.querySelectorAll('.chip'), x => x.classList.remove('on'));
+        c.classList.add('on');
+        onPick(c.getAttribute('data-v'));
+      });
+    });
+  }
+
+  function draw() {
+    const q = state.q.trim().toLowerCase();
+    const list = D.FOODS.filter(f => {
+      if (state.cat !== 'all' && f.cat !== state.cat) return false;
+      if (state.tag !== 'all' && !(f.tags || []).includes(state.tag)) return false;
+      if (q) {
+        const hay = [f.name].concat(f.alias || []).join(' ').toLowerCase();
+        if (hay.indexOf(q) < 0) return false;
+      }
+      return true;
+    });
+    document.getElementById('fcount').textContent = '共 ' + list.length + ' 种';
+    document.getElementById('foodGrid').innerHTML = list.map(f => HUI.foodFlip(f)).join('') ||
+      '<p class="muted">没有匹配的食物，试试换个关键词或清除筛选。</p>';
+  }
+
+  chipRow('catChips', [['all', '全部']].concat(Object.keys(HUI.CAT_NAME).map(k => [k, HUI.CAT_NAME[k]])), 'all',
+    v => { state.cat = v; draw(); });
+  chipRow('tagChips', [['all', '全部']].concat(TAGS.map(t => [t, t])), 'all',
+    v => { state.tag = v; draw(); });
+  document.getElementById('fq').addEventListener('input', e => { state.q = e.target.value; draw(); });
+  draw();
+  HUI.bindFlip(document);
+
+  /* 危险食物警示卡 */
+  const HZ = [
+    ['🥔 发芽 / 变绿的土豆', '龙葵碱（茄碱）耐热且含量大幅升高，可致口舌发麻、呕吐甚至呼吸抑制。<b>整颗丢弃，不削掉芽继续吃</b>。'],
+    ['🌰 苦杏仁、桃仁、樱桃核仁', '含苦杏仁苷，水解产生氰化氢：儿童误食十余粒即可中毒。药膳所用苦杏仁必须按药典炮制并严格控制剂量<sup class="cite" data-src="S3"></sup>。'],
+    ['🥛 未煮透的豆浆', '「假沸」（约80℃起泡）后还需小火继续煮 5 分钟以上，破坏胰蛋白酶抑制剂与血球凝集素。'],
+    ['🫘 四季豆（菜豆）', '皂苷与植物血球凝集素未破坏可致恶心呕吐：必须彻底炒熟煮透，至失去生绿色、无豆腥味。'],
+    ['🌼 鲜黄花菜', '秋水仙碱在体内氧化为有毒的二秋水仙碱：鲜食前焯水并浸泡，每次少量；干制黄花菜安全得多。'],
+    ['🐡 河豚', '河豚毒素耐热，家庭烹调无法去毒，中毒可致呼吸麻痹。<b>不自行捕捞、加工、食用</b>（我国仅限持证企业加工产品）。'],
+    ['🦀 死蟹 / 死虾 / 死贝', '死后细菌迅速分解产生组胺等：组胺中毒表现为面红、头痛、心悸。选活物现做，蒸熟煮透。'],
+    ['🍯 蜂蜜 × 1岁以下婴儿', '可能含肉毒杆菌芽孢，婴儿肠道无法抑制其产毒——<b>1 岁内绝对禁食蜂蜜</b>（含蜂蜜的食品同样不行）。'],
+    ['🍚 久泡木耳 / 变质米面', '椰毒假单胞菌产生的米酵菌酸耐热且无解药（致死率高）：木耳现泡现吃（冷藏不超过1天），不在室温久泡。'],
+    ['🍷 开封已久的散装油 / 哈喇味坚果', '油脂氧化酸败产生自由基与醛类：有哈喇味即丢弃，不为「不浪费」冒险。']
+  ];
+  document.getElementById('hazardList').innerHTML = HZ.map(h =>
+    `<div class="hazard-card"><span class="hz-name">${h[0]}</span><p style="margin:6px 0 0">${h[1]}</p></div>`).join('');
+
+  if (D.QUIZ_BANK && D.QUIZ_BANK.foods && D.QUIZ_BANK.foods.length) {
+    HUI.quiz('quiz1', D.QUIZ_BANK.foods, { id: 'foods' });
+  }
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

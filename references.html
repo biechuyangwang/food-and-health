@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参考文献与证据说明 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">📚</div>
+      <div class="ch-no">附录 · 自测与参考</div>
+      <h1>参考文献与证据说明</h1>
+      <p>本站所有结论都在正文标注了编号出处（页脚可展开对应文献），证据等级 A/B/C/D 并列呈现。
+      本页是全站书目的<b>单一数据源汇总</b>（与页面引用同源于 assets/data.js 的 SOURCES 表）。</p>
+    </div>
+
+    <section class="topic" id="levels">
+      <h2><span class="secno">附.1</span> 证据等级说明</h2>
+      <div class="card">
+        <table class="tbl">
+          <tr><th>徽标</th><th class="l">定义</th><th class="l">典型来源</th></tr>
+          <tr><td><span class="level-badge la">证据A</span></td><td class="l">强证据：权威指南强推荐、系统评价或随机对照试验</td><td class="l">各专科防治指南、WHO/NIH 文件、Cochrane</td></tr>
+          <tr><td><span class="level-badge lb">证据B</span></td><td class="l">中等证据：队列或观察性研究、指南弱推荐</td><td class="l" >大样本队列、NIH 汇总评价</td></tr>
+          <tr><td><span class="level-badge lc">证据C</span></td><td class="l">传统典籍与经验医学记载（自洽但未经现代循证验证）</td><td class="l">《中华人民共和国药典》《本草纲目》、药膳学教材</td></tr>
+          <tr><td><span class="level-badge ld">证据D</span></td><td class="l">证据不足或矛盾——仅用于「辨析/辟谣」段落且必须明示</td><td class="l">民间说法、个案传闻</td></tr>
+        </table>
+        <p class="small muted">中西医结合的呈现原则：传统典籍记载（C）与现代研究证据（A/B）<b>分列不混同</b>——
+        「药典记载某功效」与「现代研究证实某作用」是两种不同性质的表述，本站不互相冒名。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="sources">
+      <h2><span class="secno">附.2</span> 全站参考文献（33 项）</h2>
+      <div id="srcList"></div>
+    </section>
+
+    <section class="topic" id="images">
+      <h2><span class="secno">附.3</span> 图片授权汇总</h2>
+      <div class="card">
+        <p>食物照片均取自 <b>Wikimedia Commons</b>，遵循各自许可（CC BY / CC BY-SA / 公有领域），本地缓存为宽 ≤560px 的缩略图。
+        完整的逐图来源表（原始页面、作者、许可）见 <b>assets/img/CREDITS.md</b>（由 tools/fetch_photos.js 自动生成，与本页同步）。</p>
+        <div id="imgCredits" class="small"></div>
+        <p class="small muted">示意图、流程图、急救演示图均为本站原创 SVG 绘制，无版权问题。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="disclaimer">
+      <h2><span class="secno">附.4</span> 完整免责声明</h2>
+      <div class="card">
+        <div class="danger">
+          <p><b>1 · 内容性质</b>：本站所有内容均为健康科普，不构成医疗建议、诊断或治疗方案。作者与发布者不对使用本站内容产生的后果承担责任。</p>
+          <p><b>2 · 食疗的边界</b>：膳食调整是健康维护与慢病管理的基础手段，<b>不能替代</b>药物治疗、手术或其他正规医疗。已确诊疾病者、孕妇、儿童、老年人、肝肾功能不全者以及正在服药者，任何饮食或药膳调整都应咨询医生或注册营养师。</p>
+          <p><b>3 · 急救章节的边界</b>：「简单环境下的外科急救」章节仅面向<b>野外、灾害等极端缺医少药环境</b>的知识普及，面向受过培训者更佳，不构成医疗建议，不能替代专业急救培训（建议参加红十字会等机构的标准课程）与医疗机构处置。凡有可能获得专业救治时，应立即呼救并转运就医。实施任何操作前请评估自身能力与现场安全。</p>
+          <p><b>4 · 数据的边界</b>：食物成分数值为《中国食物成分表》口径的近似值（四舍五入），用于科普对比而非个体营养计算；GI 等指标随品种、成熟度与烹调方式变化。</p>
+          <p><b>5 · 传统医学内容</b>：性味归经、体质辨识等中医内容按典籍与药典口径呈现，属经验医学证据体系（标 C），与现代循证体系并列而互相不可替代；中医诊疗请找执业中医师面诊。</p>
+          <p><b>6 · 时效性</b>：医学指南持续更新，本站内容以「知识复核日期」为截至时点，重大指南更新后应复核修订。</p>
+        </div>
+        <p class="small muted">版本 1.0 · 编写完成 2026-08-16 · 知识复核日期 2026-08-16</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('references.html');
+HUI.footer();
+
+document.getElementById('toc').innerHTML = '<div class="toc-title">本页目录</div>' +
+  ['levels|附.1 证据等级', 'sources|附.2 参考文献', 'images|附.3 图片授权', 'disclaimer|附.4 免责声明']
+    .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const D = window.HDATA;
+  const TYPE = {
+    guide: '国内指南与规范', book: '工具书与成分数据', classic: '中医典籍',
+    intl: '国际组织文件', textbook: '教材', journal: '系统评价与文献'
+  };
+  const keys = Object.keys(D.SOURCES).sort();
+  document.getElementById('srcList').innerHTML = Object.keys(TYPE).map(t => {
+    const items = keys.filter(k => D.SOURCES[k].type === t);
+    if (!items.length) return '';
+    return `<div class="card"><h3><span class="tag">${TYPE[t]}</span></h3><ol>` +
+      items.map(k => {
+        const s = D.SOURCES[k];
+        return `<li id="src-${k}"><b>[${k}]</b> ${HUI.esc(s.title)}．${HUI.esc(s.org || '')}${s.publisher ? '．' + HUI.esc(s.publisher) : ''}，${s.year || ''}．</li>`;
+      }).join('') + '</ol></div>';
+  }).join('');
+
+  const C = window.IMG_CREDITS || {};
+  const ckeys = Object.keys(C);
+  document.getElementById('imgCredits').innerHTML = ckeys.length
+    ? `<p>共 <b>${ckeys.length}</b> 张照片，逐图署名如下（亦见 assets/img/CREDITS.md）：</p><ul>` +
+      ckeys.map(k => `<li>img/${HUI.esc(k)}.jpg — ${HUI.esc(C[k])}</li>`).join('') + '</ul>'
+    : '<p class="muted">（暂无照片记录）</p>';
+})();
+</script>
+</body>
+</html>

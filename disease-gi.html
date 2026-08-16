@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>疾病食疗 II · 消化血液免疫骨骼 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">🩺</div>
+      <div class="ch-no">第 5 章 · 疾病食疗</div>
+      <h1>疾病食疗 II · 消化 · 血液 · 免疫 · 骨骼</h1>
+      <p>胃炎、便秘、腹泻与口服补液、两类贫血、免疫与呼吸道感染恢复、骨质疏松。
+      每节固定结构：<b>概述 → 目标 → 推荐食物 → 限制 → 红色警示</b>，依据 WHO 相关文件与国内指南编写<sup class="cite" data-src="S25,S26,S27,S1"></sup>。</p>
+      <div class="warn" style="margin-top:10px"><b>提醒</b>：本页内容帮助识别「可以先从饮食做起」与「必须就医」的边界——
+      后者永远优先。</div>
+    </div>
+
+    <section class="topic" id="s0">
+      <h2><span class="secno">5.0</span> 🔭 疾病 → 目标 → 食物 路径图</h2>
+      <div class="card"><div id="pathmap"></div></div>
+    </section>
+
+    <div id="sections"></div>
+
+    <section class="topic" id="ors">
+      <h2><span class="secno">5.8</span> 🧪 口服补液（ORS）家庭简化配方 · 分步演示</h2>
+      <div class="card">
+        <p>腹泻每年在全球造成大量儿童死亡，而<b>口服补液盐（ORS）+ 补锌</b>是 WHO/UNICEF 推荐的、
+        挽救生命最经济的手段<sup class="cite" data-src="S25"></sup>。买不到成品 ORS 时，可临时按经典简化比例自配：</p>
+        <div id="orsStepper"></div>
+        <div class="danger" style="margin-top:10px"><span class="dt">⚠️ 三条红线</span>
+          <ol>
+            <li>比例尽量准：盐太多有害（高钠），糖太少无效（钠无法吸收）——有成品 ORS 时永远优先成品。</li>
+            <li>少量多次：每次几勺、每几分钟一次，呕吐也继续小口喂。</li>
+            <li>出现红色警示（血便、持续高热、无尿、精神萎靡）立即就医——ORS 不能替代治疗。</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic" id="quiz">
+      <h2><span class="secno">5.9</span> 随堂检测</h2>
+      <div class="card"><div id="quiz1"></div></div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('disease-gi.html');
+HUI.footer();
+HUI.pager('disease-gi.html');
+HUI.progress('disease-gi.html');
+
+(function () {
+  const D = window.HDATA;
+  const PAGE = 'disease-gi.html';
+  const list = D.DISEASES.filter(d => d.page.indexOf(PAGE) === 0);
+
+  HUI.pathMap('pathmap', list);
+
+  document.getElementById('sections').innerHTML = list.map((d, i) => `
+    <section class="topic" id="s${i + 1}">
+      <h2><span class="secno">5.${i + 1}</span> ${HUI.esc(d.name)}</h2>
+      <div class="card">
+        <p>${d.brief} <sup class="cite" data-src="${d.src.join(',')}"></sup></p>
+        <h3>🎯 目标</h3>
+        <div class="chips">${d.targets.map(t => `<span class="chip hl">${HUI.esc(t)}</span>`).join('')}</div>
+        <h3 style="margin-top:14px">✅ 推荐食物（点击回图鉴查看详情）</h3>
+        <div class="chips">${(d.recommend || []).map(r => {
+          const f = HUI.foodById(r.food);
+          return `<a class="chip good" href="foods.html" title="${HUI.esc(r.why)}">${HUI.esc(f ? f.name : r.food)} ${HUI.badgeLevel(r.level)}</a>`;
+        }).join('')}</div>
+        <h3 style="margin-top:14px">🚫 限制 / 避免</h3>
+        <ul>${d.limit.map(x => `<li>${HUI.esc(x)}</li>`).join('')}</ul>
+        <div class="keypoint"><b>一日参考</b>：${HUI.esc(d.meal)}</div>
+        <div class="danger"><span class="dt">⛔ 何时必须就医</span><br>${HUI.esc(d.red_flag)}</div>
+      </div>
+    </section>`).join('');
+
+  /* ORS 分步演示 SVG */
+  const ORS_SVG = (stage) => {
+    const cup = `
+      <path d="M300 120 L340 320 Q341 332 353 332 L447 332 Q459 332 460 320 L500 120 Z" fill="none" stroke="var(--ink2)" stroke-width="5" stroke-linejoin="round"></path>
+      <path d="M303 130 L497 130 L460 318 Q459 328 447 328 L353 328 Q341 328 340 318 Z" fill="var(--tint3)" fill-opacity="${stage >= 1 ? 0.55 : 0}"></path>
+      ${stage >= 2 ? `<rect x="308" y="150" width="184" height="14" rx="7" fill="#fff" fill-opacity="0.85"></rect>` : ''}
+      ${stage >= 3 ? `<circle cx="330" cy="200" r="4" fill="var(--c7)" fill-opacity="0.7"></circle><circle cx="360" cy="210" r="4" fill="var(--c7)" fill-opacity="0.7"></circle><circle cx="395" cy="198" r="4" fill="var(--c7)" fill-opacity="0.7"></circle><circle cx="425" cy="212" r="4" fill="var(--c7)" fill-opacity="0.7"></circle><circle cx="455" cy="200" r="4" fill="var(--c7)" fill-opacity="0.7"></circle>` : ''}`;
+    return `<svg viewBox="0 0 800 360" style="max-width:640px">
+      ${cup}
+      <text x="400" y="70" text-anchor="middle" font-size="20" font-weight="700" fill="var(--ink2)">${stage === 0 ? '准备干净的容器与饮用水' : stage === 1 ? '第一步：量取 1 升清洁饮用水' : stage === 2 ? '第二步：加入 6 平茶匙白糖（约30g）' : '第三步：加入半平茶匙盐（约1.75g）'}</text>
+      ${stage === 3 ? `<text x="400" y="352" text-anchor="middle" font-size="15" fill="var(--cg)" font-weight="700">✓ 搅匀后少量多次饮用 —— 每次几勺，每几分钟一次</text>` : ''}
+    </svg>`;
+  };
+  HUI.stepper('orsStepper', {
+    title: 'ORS 简化配方（WHO/UNICEF 经典家庭配方）',
+    steps: [
+      { name: '准备', svg: ORS_SVG(0), text: '洗净双手与容器。使用凉开水或可靠饮用水。<b>有成品口服补液盐时永远优先成品</b>（配比精确）。' },
+      { name: '量水', svg: ORS_SVG(1), text: '量取 <b>1 升</b>饮用水倒入容器。' },
+      { name: '加糖', svg: ORS_SVG(2), text: '加入 <b>6 平茶匙白糖</b>（约30g）。糖帮助肠道「连带」吸收钠与水——这是 ORS 的核心原理（钠-葡萄糖协同转运）。', warn: '糖过量会使渗透压升高、腹泻加重——严格按比例。' },
+      { name: '加盐', svg: ORS_SVG(3), text: '加入 <b>半平茶匙食盐</b>（约1.75–2g），搅拌溶解。<sup class="cite" data-src="S25"></sup>', warn: '盐过量的危险大于不足——宁少勿多，尝起来比眼泪略咸即可。' }
+    ]
+  });
+
+  document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+    ['s0|5.0 路径图'].concat(list.map((d, i) => 's' + (i + 1) + '|5.' + (i + 1) + ' ' + d.name)).concat(['ors|5.8 ORS 分步演示', 'quiz|5.9 随堂检测'])
+      .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+  if (D.QUIZ_BANK && D.QUIZ_BANK.gi && D.QUIZ_BANK.gi.length) {
+    HUI.quiz('quiz1', D.QUIZ_BANK.gi, { id: 'gi' });
+  }
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

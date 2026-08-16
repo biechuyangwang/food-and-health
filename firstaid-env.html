@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>伤口、烧伤与环境急症 · 简单环境外科 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero" style="border-color:var(--cc)">
+      <div class="hero-emoji">🌡️</div>
+      <div class="ch-no" style="color:var(--cc)">第 9 章 · 简单环境下的外科急救（II）</div>
+      <h1>伤口、烧伤与环境急症</h1>
+      <p>伤口冲洗与清创原则、缝合的边界、烧伤五字诀、蛇虫咬蜇、失温与热射病、断肢保存与野外急救包。
+      依据 WHO BEC<sup class="cite" data-src="S7"></sup>、WHO《Surgical Care at the District Hospital》<sup class="cite" data-src="S6"></sup>、
+      WMS 荒野医学指南<sup class="cite" data-src="S23"></sup>、《中国蛇伤救治指南（2024）》<sup class="cite" data-src="S29"></sup>与热射病共识<sup class="cite" data-src="S30"></sup>。</p>
+    </div>
+
+    <section class="topic" id="s1">
+      <h2><span class="secno">9.1</span> 伤口冲洗与清创原则<sup class="cite" data-src="S6,S7"></sup></h2>
+      <div class="card">
+        <ul>
+          <li><b>冲洗是最好的清创</b>：用大量<b>清洁流动水或生理盐水</b>冲洗伤口（理想压力下冲净污物；条件有限时用瓶装水挤压冲洗）。动物咬伤冲 ≥15 分钟。</li>
+          <li><b>碘伏（聚维酮碘）</b>可用于伤口周围与浅表伤口消毒；<b>酒精不灌入伤口</b>（剧痛且损伤组织）；双氧水不作常规首选。</li>
+          <li><b>异物</b>：扎入体内的刀、钢筋、树枝等<b>保留原位并固定</b>（拔出可致大出血），尽快转运。</li>
+          <li><b>破伤风</b>评估：深刺伤、污染重（泥土/生锈）、烧伤、动物咬伤，超过 5–10 年未加强免疫者就医评估（受伤后尽快）。</li>
+          <li><b>感染征象</b>（就医信号）：红肿扩散、热痛加重、渗脓、发热、红线向心蔓延。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic" id="s2">
+      <h2><span class="secno">9.2</span> 缝合的边界：为什么「不建议自己缝」<sup class="cite" data-src="S6,S22"></sup></h2>
+      <div class="card">
+        <p>简单环境下自行缝合的<b>感染与操作风险通常大于收益</b>：没有彻底清创就缝合等于把细菌关进伤口，缺乏无菌器械与麻醉下操作也极易失败。正确的思路是：</p>
+        <ul>
+          <li><b>首选</b>：冲洗→清洁敷料覆盖→压迫止血→<b>尽快转运</b>。多数伤口在 <b>6–8 小时</b>内由医生处理都能良好闭合（面部可放宽至 24 小时）。</li>
+          <li><b>延迟闭合</b>（delayed primary closure）：污染重的伤口医生可能先敞开引流 2–5 天再缝合——这是医疗决策，不是现场决策。</li>
+          <li><b>蝶形伤口胶带</b>（butterfly closure）：表浅裂缘对合良好的伤口，可冲洗后用蝶形胶带拉拢皮缘作为临时措施——比「针线自缝」安全得多。</li>
+          <li><b>不闭合</b>：动物咬伤（尤其手/面部以外）、深刺伤、已感染伤口、大量坏死组织——保持开放引流。</li>
+        </ul>
+        <div class="danger"><span class="dt">⛔ 红线</span>：不要用未经消毒的针线、头发、鱼线缝合；不要往伤口撒粉末（香灰、牙膏、中草药粉）；不要用泥土「止血偏方」——破伤风梭菌就在土里。</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s3">
+      <h2><span class="secno">9.3</span> 🔥 烧伤：冲·脱·泡·盖·送<sup class="cite" data-src="S7,S24"></sup></h2>
+      <div id="stBurn"></div>
+      <div class="grid2">
+        <div class="card">
+          <h3>面积估算（ palm 法 + 九分法）</h3>
+          <ul>
+            <li><b>手掌法</b>：伤员本人五指并拢的手掌 ≈ 体表面积 <b>1%</b>——快速估算小面积烧伤。</li>
+            <li><b>中国九分法</b>（成人）：头颈 9%、双上肢 18%、躯干前后 27%、双下肢 46%（含臀）。</li>
+          </ul>
+          <div class="warn"><b>就医标准速记</b>：面积 &gt;10%（儿童/&gt;5%）、面部/手/足/会阴烧伤、电击伤、化学烧伤、吸入烟雾（面颈部熏黑、声嘶、咳黑痰）、合并其他创伤——一律尽快送医。</div>
+        </div>
+        <div class="card">
+          <h3>深度判断（三度四分法·简表）</h3>
+          <table class="tbl">
+            <tr><th>深度</th><th>表现</th><th>愈合</th></tr>
+            <tr><td>Ⅰ度</td><td class="l">红、干、痛、无水疱（晒伤样）</td><td>3–7天</td></tr>
+            <tr><td>浅Ⅱ度</td><td class="l">水疱、基底红润、剧痛</td><td>1–2周</td></tr>
+            <tr><td>深Ⅱ度</td><td class="l">水疱小、基底红白相间、痛觉迟钝</td><td>3–4周，可留疤</td></tr>
+            <tr><td>Ⅲ度</td><td class="l">蜡白/焦黄/炭化、无痛觉（神经毁损）</td><td>需手术</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic" id="s4">
+      <h2><span class="secno">9.4</span> 🐍 蛇咬伤<sup class="cite" data-src="S29,S23"></sup></h2>
+      <div class="card">
+        <ul>
+          <li><b>中国常见毒蛇</b>：神经毒为主——银环蛇、金环蛇（伤口小、不痛不肿，数小时后眼睑下垂、呼吸无力，<b>最危险恰恰是「看起来没事」</b>）；血循毒为主——蝮蛇、五步蛇、竹叶青（迅速肿痛瘀斑）；混合毒——眼镜蛇、眼镜王蛇。</li>
+          <li><b>正确做法</b>：让伤者<b>制动、患肢低于心脏</b>、摘除戒指手镯、保持镇定；有条件<b>拍照/记住蛇的外形</b>（不要抓蛇！）；尽快转运至有抗蛇毒血清的医院（可提前打 120 确认医院有无血清）。</li>
+          <li><b>压力固定技术</b>：适用于<b>神经毒蛇</b>咬伤且转运时间长的情形（澳洲经验）；<b>血循毒不推荐</b>（可能加重局部坏死）——我国指南对转运快的情况不常规推荐。分步演示见下方，<b>仅在明确神经毒或无法快速转运时考虑</b>。</li>
+        </ul>
+        <div class="danger"><span class="dt">⛔ 明确禁止</span>：切开伤口放血、用嘴吸吮、冰敷、止血带捆扎、火烧、饮酒「解毒」、抓蛇打蛇。
+        这些做法全部无效且有害，是蛇伤致残致死的重要推手。</div>
+        <p class="small muted">抗蛇毒血清是唯一特效治疗——一切现场处置的目的只有一个：<b>活着且肢体完好地到达血清</b>。</p>
+      </div>
+      <div id="stSnake"></div>
+    </section>
+
+    <section class="topic" id="s5">
+      <h2><span class="secno">9.5</span> 🐝 蜂蜇与蜱虫<sup class="cite" data-src="S23,S24"></sup></h2>
+      <div class="card">
+        <h3>蜂蜇（蜜蜂/黄蜂）</h3>
+        <ul>
+          <li>蜜蜂毒刺带毒囊留在皮肤：<b>用卡片侧刮除，不要夹挤</b>（挤=注毒）；黄蜂不留刺。</li>
+          <li>局部：清水冲洗、冷敷减轻肿痛；蜂蜇后 24–48 小时内留意全身反应。</li>
+          <li><b>过敏反应（危及生命）</b>：全身荨麻疹、面部/舌肿胀、喉头发紧、喘鸣、头晕休克——立即使用肾上腺素自动注射笔（有处方者）并呼救；无药也要立即呼救，让伤者平卧，呼吸困难可半坐位。</li>
+        </ul>
+        <h3 style="margin-top:12px">蜱虫（叮咬可传播森林脑炎、莱姆病等）</h3>
+        <ul><li>正确移除是关键（见分步演示）；<b>不要</b>用火烧、涂油/酒精「闷」——受刺激的蜱会反吐增加传染；移除后 2–4 周内出现游走性红斑、发热及时就医并告知蜱咬史。</li></ul>
+      </div>
+      <div id="stTick"></div>
+    </section>
+
+    <section class="topic" id="s6">
+      <h2><span class="secno">9.6</span> 失温与热射病<sup class="cite" data-src="S23,S30"></sup></h2>
+      <div class="grid2">
+        <div class="card">
+          <h3>🥶 失温（体温 &lt;35℃）</h3>
+          <ul>
+            <li><b>轻度</b>（35–32℃，清醒、寒战剧烈）：避风、换干衣、隔热垫隔绝地面、热饮（清醒者）、活动产热。</li>
+            <li><b>重度</b>（&lt;32℃，寒战消失、意识模糊、心律不稳）：<b>温和搬动</b>（粗暴搬动可诱发室颤）、整体包裹隔绝（躯干优先加温）、<b>禁止</b>剧烈搓揉四肢、禁止饮酒、不给意识不清者喂食、不现场「快速复温」四肢。</li>
+            <li>「喝了酒暖和」是错觉：酒精扩张血管加速散热。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🥵 热射病（致命性中暑）</h3>
+          <ul>
+            <li><b>识别</b>：高热（核心温度常 &gt;40℃）+ <b>意识障碍</b>（昏迷/抽搐/胡言乱语）；可能皮肤干热、也可能大汗。</li>
+            <li><b>黄金半小时</b>：<b>降温速度决定生死</b>——立即转移阴凉处脱去衣物，<b>冷水浸泡</b>最有效；无条件时持续泼水+扇风+冰袋/湿毛巾敷颈侧/腋窝/腹股沟。</li>
+            <li><b>降温优先于转运</b>：转运途中持续降温不中断（开空调、持续喷水扇风）。</li>
+            <li>⛔ 昏迷者<b>禁止喂水喂药</b>（误吸）；不掐人中、不放血。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic" id="s7">
+      <h2><span class="secno">9.7</span> 断肢（指）保存<sup class="cite" data-src="S22"></sup></h2>
+      <div class="card">
+        <ul>
+          <li>断端：清洁敷料加压包扎、抬高残肢；有活动性出血按止血流程。</li>
+          <li>断肢：<b>干燥保存</b>——清洁纱布/布包裹后放入防水袋，<b>隔水</b>置于冰水混合物旁（4℃ 左右）降温。</li>
+          <li>⛔ 不直接接触冰块（冻伤组织）、不全浸泡入水/消毒液、不自行用酒精泡。</li>
+          <li>随伤员一同转运，标注时间；尽快联系有再植能力的医院。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic" id="s8">
+      <h2><span class="secno">9.8</span> 野外急救包配置清单<sup class="cite" data-src="S23"></sup></h2>
+      <div class="card">
+        <table class="tbl">
+          <tr><th>模块</th><th class="l">内容</th><th>要点</th></tr>
+          <tr><td>止血包扎</td><td class="l">止血带×1–2、弹性绷带×2、三角巾×2、纱布/敷料若干、医用胶带</td><td>止血带要练过才带</td></tr>
+          <tr><td>伤口处理</td><td class="l">碘伏棉签、生理盐水（小瓶/安瓿）、蝶形胶带、镊子、小剪、一次性手套</td><td>镊子用于蜱虫/异物</td></tr>
+          <tr><td>骨折固定</td><td class="l">SAM 夹板（或可塑铝板）、大号三角巾/布带</td><td>杂志亦可</td></tr>
+          <tr><td>环境急症</td><td class="l">保温毯（铝膜）×2、化学热帖、水泡/防晒</td><td>保温毯双份</td></tr>
+          <tr><td>口服药物</td><td class="l">个人常用药+处方药备份、口服补液盐、对乙酰氨基酚/布洛芬</td><td>遵说明书与医嘱</td></tr>
+          <tr><td>信息工具</td><td class="l">笔+防水纸（记录时间！）、哨子、头灯、急救卡（血型/过敏/慢病）</td><td>记录是铁律第4条</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="topic" id="s9">
+      <h2><span class="secno">9.9</span> 🔀 决策流程：这个伤口怎么办？</h2>
+      <div class="card">
+        <p class="hint">按顺序回答，得到处置路径。仅为「缺医少药环境」的科普决策树——<b>凡能获得专业救治，优先呼救转运</b>。</p>
+        <div id="flowBox"></div>
+      </div>
+    </section>
+
+    <section class="topic" id="s10">
+      <h2><span class="secno">9.10</span> 知识回顾</h2>
+      <div class="card"><p>本章与第 8 章的随堂检测在 <a href="quiz.html">知识自测 · 急救分卷</a>（8 题含找错题），建议完成后再看一遍错题解析。</p></div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('firstaid-env.html');
+HUI.gate('env');
+HUI.footer();
+HUI.pager('firstaid-env.html');
+HUI.progress('firstaid-env.html');
+
+document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+  ['s1|9.1 冲洗与清创', 's2|9.2 缝合的边界', 's3|9.3 烧伤五字诀', 's4|9.4 蛇咬伤', 's5|9.5 蜂蜇与蜱虫', 's6|9.6 失温与热射病', 's7|9.7 断肢保存', 's8|9.8 急救包清单', 's9|9.9 决策流程', 's10|9.10 知识回顾']
+    .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const INK = 'var(--ink2)', RED = 'var(--cc)', SKIN = '#e8b98e', SKIN2 = '#d9a26f';
+  const wrap = inner => `<svg viewBox="0 0 560 240" style="max-width:560px">${inner}</svg>`;
+
+  function hand(extra) {
+    let s = `<rect x="300" y="140" width="90" height="26" rx="13" fill="${SKIN}" stroke="${INK}" stroke-width="2"></rect>`; /* 腕 */
+    s += `<ellipse cx="370" cy="152" rx="34" ry="40" fill="${SKIN}" stroke="${INK}" stroke-width="2"></ellipse>`;
+    [0, 1, 2, 3].forEach(i => {
+      const a = -50 + i * 33;
+      s += `<rect x="${368 + i * 2}" y="${112 + Math.abs(i - 1.5) * 4}" width="12" height="34" rx="6" transform="rotate(${a} 374 130)" fill="${SKIN}" stroke="${INK}" stroke-width="1.6"></rect>`;
+    });
+    return s + (extra || '');
+  }
+  function tap(on) {
+    let s = `<rect x="60" y="60" width="90" height="14" rx="7" fill="var(--c7)"></rect><rect x="130" y="74" width="16" height="14" fill="var(--c7)"></rect>`;
+    if (on) {
+      s += `<path d="M138 88 l0 56" stroke="var(--c3)" stroke-width="7" stroke-linecap="round" opacity="0.8"></path>`;
+      s += `<path d="M150 100 l0 44 M126 100 l0 44" stroke="var(--tint3)" stroke-width="5" stroke-linecap="round"></path>`;
+      s += `<text x="105" y="50" font-size="13.5" fill="${INK}" font-weight="700">15–25℃ 流动水</text>`;
+    }
+    return s;
+  }
+
+  HUI.stepper('stBurn', { title: '🔥 烧伤五字诀分步演示', steps: [
+    { name: '冲', svg: wrap(tap(true) + hand(`<ellipse cx="372" cy="150" rx="20" ry="16" fill="${RED}" fill-opacity="0.5"></ellipse>`)),
+      text: '立即用 <b>15–25℃ 流动清水冲洗</b>伤处约 <b>20 分钟</b>（降温止痛、带走余热）。', warn: '不用冰水/冰块直敷（冻伤叠加）；化学烧伤先冲 20 分钟以上。' },
+    { name: '脱', svg: wrap(`<text x="280" y="40" text-anchor="middle" font-size="14" fill="${INK}" font-weight="700">小心脱除衣物饰品</text>
+      <path d="M300 96 l60 30" stroke="${INK}" stroke-width="10" stroke-linecap="round" fill="none" opacity="0.25"></path>
+      <path d="M340 70 q20 10 16 34" stroke="var(--cw)" stroke-width="3" fill="none" stroke-dasharray="5 4"></path>
+      <path d="M356 104 l14 10 M356 104 l4 -17" stroke="var(--cw)" stroke-width="3" fill="none" stroke-linecap="round"></path>
+      <text x="120" y="150" font-size="13" fill="var(--cw)">剪开衣物而非硬脱；戒指手镯尽早摘除（会肿）</text>`),
+      text: '在冷水中小心<b>脱除或剪开</b>衣物；粘住皮肤的部分不要撕，剪周围留待医生。', warn: '水疱皮肤不要撕掉。' },
+    { name: '泡', svg: wrap(`<path d="M180 100 h200 v70 q0 22 -22 22 h-156 q-22 0 -22 -22 z" fill="var(--tint3)" stroke="${INK}" stroke-width="2"></path>
+      <text x="280" y="70" text-anchor="middle" font-size="13.5" fill="${INK}" font-weight="700">冷水继续浸泡（10–15 分钟，可止痛）</text>
+      <text x="280" y="216" text-anchor="middle" font-size="12.5" fill="${RED}">大面积烧伤不长时间浸泡——防低体温</text>`),
+      text: '疼痛明显者可继续冷水浸泡；<b>大面积烧伤以不冷得发抖为度</b>（低体温有害）。' },
+    { name: '盖', svg: wrap(hand(`<rect x="336" y="108" width="76" height="84" rx="8" fill="#fff" stroke="${INK}" stroke-width="2"></rect><line x1="346" y1="126" x2="402" y2="126" stroke="var(--grid)"></line><line x1="346" y1="142" x2="402" y2="142" stroke="var(--grid)"></line><line x1="346" y1="158" x2="402" y2="158" stroke="var(--grid)"></line>`).replace('viewBox', 'x="0" viewBox')),
+      text: '用<b>清洁纱布/布料/保鲜膜</b>松松覆盖创面，防污染、减少疼痛。', warn: '不涂牙膏/酱油/紫药水/香油/草灰；不挑破水疱。' },
+    { name: '送', svg: wrap(`<text x="280" y="52" text-anchor="middle" font-size="15" font-weight="700" fill="${INK}">尽快送医</text>
+      <rect x="170" y="90" width="200" height="70" rx="14" fill="var(--tintc)" stroke="${RED}" stroke-width="2"></rect>
+      <text x="270" y="132" text-anchor="middle" font-size="14" fill="${RED}" font-weight="700">🚑 120 / 转运</text>
+      <path d="M400 125 l60 0 m-14 -12 l14 12 l-14 12" stroke="${INK}" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <text x="280" y="196" text-anchor="middle" font-size="12.5" fill="${INK}">面积&gt;10%、面部/手足/会阴、电击、化学、吸入伤——优先送</text>`),
+      text: '按 9.3 节的就医标准评估并转运；途中注意保暖与补水（清醒者小口）。' }
+  ] });
+
+  HUI.stepper('stTick', { title: '🕷️ 蜱虫移除分步演示', steps: [
+    { name: '发现', svg: wrap(`<path d="M80 160 q120 -40 240 -10 q90 22 160 -6" stroke="${SKIN2}" stroke-width="26" fill="none" stroke-linecap="round"></path>
+      <circle cx="290" cy="128" r="12" fill="#5a4632"></circle><circle cx="290" cy="112" r="6" fill="#3d2f21"></circle>
+      <line x1="282" y1="122" x2="272" y2="116" stroke="#3d2f21" stroke-width="2"></line><line x1="298" y1="122" x2="308" y2="116" stroke="#3d2f21" stroke-width="2"></line>
+      <text x="280" y="60" text-anchor="middle" font-size="14" font-weight="700" fill="${INK}">蜱体叮附在皮肤上（头部埋入）</text>
+      <text x="280" y="204" text-anchor="middle" font-size="12.5" fill="${RED}">越早移除，感染风险越低</text>`),
+      text: '检查腋窝、腹股沟、头皮、耳后、腘窝等部位。' },
+    { name: '夹持', svg: wrap(`<path d="M80 160 q120 -40 240 -10 q90 22 160 -6" stroke="${SKIN2}" stroke-width="26" fill="none" stroke-linecap="round"></path>
+      <circle cx="290" cy="128" r="12" fill="#5a4632"></circle>
+      <path d="M250 60 q-14 40 34 56" stroke="#9aa0a6" stroke-width="5" fill="none"></path>
+      <path d="M330 60 q14 40 -34 56" stroke="#9aa0a6" stroke-width="5" fill="none"></path>
+      <text x="280" y="42" text-anchor="middle" font-size="13.5" font-weight="700" fill="${INK}">尖头镊子贴住皮肤，夹住蜱的头部（口器）</text>`),
+      text: '尖镊尽可能<b>贴近皮肤表面</b>夹住头部，不夹腹部。', warn: '不扭转猛拽（口器折断留在皮内）、不涂油/酒精/火烧。' },
+    { name: '垂直拔出', svg: wrap(`<path d="M80 168 q120 -40 240 -10 q90 22 160 -6" stroke="${SKIN2}" stroke-width="26" fill="none" stroke-linecap="round"></path>
+      <path d="M290 150 l0 -40 m-12 16 l12 -18 l12 18" stroke="var(--cg)" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <text x="280" y="70" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--cg)">稳定、缓慢、垂直向上拔出</text>`),
+      text: '保持稳定拉力<b>垂直皮肤缓慢拔出</b>，避免挤压蜱体。' },
+    { name: '消毒记录', svg: wrap(`<path d="M80 168 q120 -40 240 -10 q90 22 160 -6" stroke="${SKIN2}" stroke-width="26" fill="none" stroke-linecap="round"></path>
+      <circle cx="290" cy="140" r="14" fill="${RED}" fill-opacity="0.35"></circle>
+      <circle cx="150" cy="70" r="24" fill="none" stroke="${INK}" stroke-width="2"></circle>
+      <line x1="150" y1="70" x2="150" y2="54" stroke="${INK}" stroke-width="2"></line><line x1="150" y1="70" x2="162" y2="78" stroke="${INK}" stroke-width="2"></line>
+      <text x="240" y="62" font-size="13" fill="${INK}">碘伏消毒；记录日期与部位</text>
+      <text x="280" y="204" text-anchor="middle" font-size="12.5" fill="${RED}">2–4周内出现游走性红斑/发热 → 就医并告知蜱咬史</text>`),
+      text: '碘伏消毒叮咬处与双手；<b>记录日期</b>（含日历提醒），观察 2–4 周。' }
+  ] });
+
+  HUI.stepper('stSnake', { title: '🐍 蛇咬伤处置 + 压力固定技术（仅神经毒/长转运时考虑）', steps: [
+    { name: '制动', svg: wrap(`<circle cx="120" cy="60" r="16" fill="${SKIN}" stroke="${INK}" stroke-width="2"></circle>
+      <path d="M120 76 q-14 40 -6 84 l0 40 M120 76 q22 34 60 48" stroke="${INK}" stroke-width="2.6" fill="none" stroke-linecap="round"></path>
+      <path d="M180 124 q60 26 120 8 q60 -18 90 -34" stroke="${SKIN2}" stroke-width="20" fill="none" stroke-linecap="round"></path>
+      <circle cx="270" cy="112" r="5" fill="${RED}"></circle>
+      <text x="280" y="60" text-anchor="middle" font-size="14" font-weight="700" fill="${INK}">让伤者静卧、患肢低于心脏</text>
+      <text x="280" y="196" text-anchor="middle" font-size="12.5" fill="${INK}">摘戒指手镯；记住/拍下蛇的样子（不要抓蛇）</text>`),
+      text: '制动+低于心脏+镇定。呼救并确认医院有无抗蛇毒血清。', warn: '禁止切开、吸吮、冰敷、止血带、饮酒。' },
+    { name: '包扎', svg: wrap(`<path d="M180 124 q60 26 120 8 q60 -18 90 -34" stroke="${SKIN2}" stroke-width="20" fill="none" stroke-linecap="round"></path>
+      <circle cx="270" cy="112" r="5" fill="${RED}"></circle>
+      ${[0, 1, 2, 3, 4, 5].map(i => `<rect x="${230 + i * 26}" y="${96 + Math.abs(2.4 - i) * 4}" width="20" height="36" rx="5" transform="rotate(${-8 + i * 5} ${240 + i * 26} 114)" fill="#fff" stroke="${INK}" stroke-width="1.8"></rect>`).join('')}
+      <text x="280" y="60" text-anchor="middle" font-size="14" font-weight="700" fill="${INK}">宽绷带覆盖咬伤处，向近心端重叠缠绕</text>`),
+      text: '用<b>宽而扁</b>的弹性绷带（不是细绳）从咬伤部位开始，重叠 1/2 缠绕整段肢体。' },
+    { name: '松紧', svg: wrap(`<path d="M180 124 q60 26 120 8 q60 -18 90 -34" stroke="${SKIN2}" stroke-width="20" fill="none" stroke-linecap="round"></path>
+      <rect x="238" y="94" width="120" height="40" rx="8" fill="#fff" stroke="${INK}" stroke-width="1.8"></rect>
+      <path d="M250 114 l96 0 m-16 -12 l16 12 l-16 12" stroke="var(--cg)" stroke-width="3" fill="none" stroke-linecap="round"></path>
+      <text x="280" y="62" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--cg)">松紧：手指能滑入绷带下（不是止血带！）</text>
+      <text x="280" y="196" text-anchor="middle" font-size="12.5" fill="${RED}">此技术仅用于神经毒蛇咬伤；血循毒不推荐（加重局部损伤）</text>`),
+      text: '压力目标≈束缚感但不阻断动脉（远端仍可摸到脉搏、手指不麻木发紫）。' },
+    { name: '固定转运', svg: wrap(`<path d="M170 130 q70 24 130 6 q70 -22 110 -38" stroke="${SKIN2}" stroke-width="20" fill="none" stroke-linecap="round"></path>
+      <rect x="160" y="96" width="270" height="66" rx="10" fill="var(--tintw)" stroke="var(--cw)" stroke-width="2.5"></rect>
+      <path d="M470 128 l50 0 m-14 -12 l14 12 l-14 12" stroke="${INK}" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <text x="290" y="70" text-anchor="middle" font-size="14" font-weight="700" fill="${INK}">夹板固定患肢（ immobilize ）后尽快转运</text>`),
+      text: '夹板/木棍固定肢体减少活动（淋巴流动减慢=毒扩散减慢），持续观察呼吸与意识（神经毒最致命的是呼吸肌无力）。' }
+  ] });
+
+  /* ---------- 决策流程 ---------- */
+  const FLOW = {
+    n0: { q: '伤口出血情况如何？', opts: [['喷溅 / 搏动性 / 迅速浸透衣物（大出血）', 'n1'], ['无出血或少量渗血', 'n2']] },
+    n1: { res: '🩸 立即处置（按第 8 章）', steps: ['直接压迫：清洁敷料持续用力压 ≥10 分钟', '无法控制 → 止血带（近端 5–7cm，上紧至出血停止，记录时间）', '同时呼救 120 / 启动转运', '休克体征观察：脉搏细速 / 皮肤湿冷 / 意识改变'] },
+    n2: { q: '有异物刺入体内吗（刀、树枝、长钉）？', opts: [['有', 'n3'], ['没有', 'n4']] },
+    n3: { res: '⚡ 异物伤口', steps: ['不拔出、不晃动异物', '敷料环绕异物堆高固定（不压异物）', '剪开周围衣物，尽快转运', '转运时保护异物避免二次碰撞'] },
+    n4: { q: '是动物或人咬伤吗？', opts: [['是', 'n5'], ['不是', 'n6']] },
+    n5: { res: '🦷 咬伤（感染风险高）', steps: ['大量清水+肥皂水交替冲洗 ≥15 分钟', '碘伏消毒，清洁敷料覆盖，不缝合', '尽快就医：狂犬病疫苗评估 + 破伤风评估 + 抗生素评估', '若为蝙蝠/野外不明动物接触，即使无伤口也就医评估'] },
+    n6: { q: '伤口深、污染重（泥土/生锈物），或受伤超过 6 小时？', opts: [['是', 'n7'], ['否', 'n8']] },
+    n7: { res: '⚠️ 污染/深伤口', steps: ['大量清洁水冲洗，去除肉眼污物', '碘伏消毒，清洁敷料松覆（不紧密缝合）', '尽快就医：破伤风免疫评估（>5–10 年未加强需处理）', '出现红肿扩散/渗脓/发热 = 感染，立即就医'] },
+    n8: { res: '✅ 浅表清洁小伤口', steps: ['清水冲洗干净', '碘伏由伤口中心向外圈消毒', '创可贴/清洁敷料覆盖，保持干燥', '每日观察：红、肿、热、痛、渗液加重 → 就医'] }
+  };
+  const flowBox = document.getElementById('flowBox');
+  let trail = [];
+  function flowDraw(key) {
+    const node = FLOW[key];
+    if (!node) return;
+    let html = '';
+    if (node.q) {
+      html += `<div class="q-item"><div class="q-head">第 ${trail.length + 1} 步</div><div class="q-text"><b>${HUI.esc(node.q)}</b></div><div class="q-opts">` +
+        node.opts.map(o => `<button type="button" data-next="${o[1]}">${HUI.esc(o[0])}</button>`).join('') + '</div></div>';
+    } else {
+      html += `<div class="keypoint"><b>${HUI.esc(node.res)}</b><ol>${node.steps.map(s => `<li>${HUI.esc(s)}</li>`).join('')}</ol></div>`;
+      html += `<div class="btn-row"><button class="btn" id="flowRestart">↺ 重新评估</button>` +
+        (trail.length ? `<button class="btn" id="flowBack">← 上一步</button>` : '') + '</div>';
+    }
+    flowBox.innerHTML = html + (trail.length && node.q ? `<p class="small muted">已完成 ${trail.length} 步</p>` : '');
+    Array.prototype.forEach.call(flowBox.querySelectorAll('[data-next]'), b => {
+      b.addEventListener('click', () => { trail.push(key); flowDraw(b.getAttribute('data-next')); });
+    });
+    const rs = document.getElementById('flowRestart');
+    if (rs) rs.addEventListener('click', () => { trail = []; flowDraw('n0'); });
+    const bk = document.getElementById('flowBack');
+    if (bk) bk.addEventListener('click', () => { const p = trail.pop(); flowDraw(p || 'n0'); });
+  }
+  flowDraw('n0');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>增强体质 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">💪</div>
+      <div class="ch-no">第 6 章 · 强身</div>
+      <h1>增强体质：运动 · 增肌减脂 · 睡眠 · 大脑 · 肠道</h1>
+      <p>「增强体质」没有神仙食物，只有<b>能量与蛋白质的合理安排、训练恢复的循环、以及可坚持的整体膳食模式</b>。
+      本章含四个可操作的估算工具，依据 ACSM/AND《营养与运动表现》联合立场声明<sup class="cite" data-src="S28"></sup>与 DRIs 2023<sup class="cite" data-src="S20"></sup>。</p>
+    </div>
+
+    <section class="topic" id="s1">
+      <h2><span class="secno">6.1</span> 运动营养三时相</h2>
+      <div class="grid3">
+        <div class="card"><h3>🏃 运动前 1–3 小时</h3>
+          <ul><li>以<b>碳水为主</b>的正餐或加餐（面包香蕉、燕麦），适量蛋白质。</li>
+          <li>避免高脂高纤维（胃肠不适）与大量新食物。</li>
+          <li>补水 300–500ml，分次。</li></ul></div>
+        <div class="card"><h3>💧 运动中（&gt;60 分钟时）</h3>
+          <ul><li>每 15–20 分钟补液 150–250ml。</li>
+          <li>超过 1 小时：补充碳水（30–60g/小时）与电解质——运动饮料此时才有明确意义。</li>
+          <li>普通健身房 1 小时训练：<b>清水足够</b>。</li></ul></div>
+        <div class="card"><h3>🍳 运动后 2 小时内</h3>
+          <ul><li>碳水 + 蛋白质（比例约 <b>3:1</b>）：牛奶+香蕉、鸡蛋+全麦面包、酸奶+燕麦。</li>
+          <li>「30 分钟窗口」被夸大：<b>全天总量与规律训练更重要</b><sup class="cite" data-src="S28"></sup>。</li></ul></div>
+      </div>
+    </section>
+
+    <section class="topic" id="s2">
+      <h2><span class="secno">6.2</span> 增肌与减脂：一张对照表</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3>🏋️ 增肌</h3>
+          <ul>
+            <li>能量：维持量 +5–10% 温和盈余（不是越多越快）。</li>
+            <li>蛋白质 <b>1.6–2.0g/kg/日</b>，分 3–5 餐分布（每餐 0.4g/kg 左右）<sup class="cite" data-src="S28"></sup>。</li>
+            <li>抗阻训练是前提——没有训练刺激，吃再多蛋白也不会变成肌肉。</li>
+            <li>肌酸一水化物 3–5g/日：证据充分、常规剂量安全性良好（肾病人群除外）<sup class="cite" data-src="S11"></sup>。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🔥 减脂</h3>
+          <ul>
+            <li>能量缺口 <b>300–500kcal/日</b>（约每周减 0.5kg，可长期坚持）<sup class="cite" data-src="S19"></sup>。</li>
+            <li>蛋白质 1.2–1.6g/kg 保肌肉；抗阻训练同步进行。</li>
+            <li>高纤维 + 足量水 + 充足睡眠（睡眠不足升高食欲激素）。</li>
+            <li>警惕「液态热量」：含糖饮料、酒精、奶茶果汁——减脂第一刀砍这里。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic" id="s3">
+      <h2><span class="secno">6.3</span> 🧮 BMR / TDEE 估算器</h2>
+      <div class="card">
+        <p>采用 <b>Mifflin-St Jeor 公式</b>（静息代谢 BMR 估算，被广泛用于普通人群）<sup class="cite" data-src="S28"></sup>：</p>
+        <p class="center" style="font-size:15px">男：BMR = 10×体重(kg) + 6.25×身高(cm) − 5×年龄 + 5<br>
+        女：BMR = 10×体重(kg) + 6.25×身高(cm) − 5×年龄 − 161</p>
+        <div class="ctl-row"><span class="ctl-label">性别</span><div id="fSex" style="display:flex;gap:8px"></div><span></span></div>
+        <div class="ctl-row"><span class="ctl-label">年龄（岁）</span><input type="number" id="fAge" min="14" max="90" value="30" style="width:100%"><span></span></div>
+        <div class="ctl-row"><span class="ctl-label">身高（cm）</span><input type="number" id="fH" min="130" max="220" value="170" style="width:100%"><span></span></div>
+        <div class="ctl-row"><span class="ctl-label">体重（kg）</span><input type="number" id="fW" min="35" max="160" value="65" style="width:100%"><span></span></div>
+        <div class="ctl-row"><span class="ctl-label">活动水平</span><div id="fAct" style="display:flex;flex-wrap:wrap;gap:8px"></div><span></span></div>
+        <div id="bmrOut" class="chips" style="margin-top:12px"></div>
+        <p class="hint">估算法对个体误差可达 ±10%；病理状态（甲亢/甲减等）与特殊人群不适用。结果用于理解量级，不作为精确处方。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="s4">
+      <h2><span class="secno">6.4</span> 蛋白质需求滑块</h2>
+      <div class="card">
+        <div id="pW"></div>
+        <div class="ctl-row"><span class="ctl-label">目标水平</span><div id="pLv" style="display:flex;flex-wrap:wrap;gap:8px"></div><span></span></div>
+        <div id="pOut" class="chips" style="margin-top:8px"></div>
+        <p class="hint">来源：ACSM/AND 立场声明与 DRIs 2023<sup class="cite" data-src="S28,S20"></sup>。肾病人群蛋白质目标必须由医生/营养师个体化制定。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="s5">
+      <h2><span class="secno">6.5</span> ☕ 咖啡因半衰期模拟器</h2>
+      <div class="card">
+        <p>咖啡因半衰期约 <b>3–7 小时</b>（个体差异大：吸烟者偏快、孕妇与口服避孕药使用者偏慢）<sup class="cite" data-src="S20"></sup>。
+        拖动滑块看这杯咖啡到睡觉时还剩多少——<b>≈50mg 以上即可能影响部分人的睡眠</b>（个体阈值不同）。</p>
+        <div id="cfDose"></div>
+        <div id="cfTime"></div>
+        <div id="cfHalf"></div>
+        <div id="cfOut" class="chips" style="margin:8px 0"></div>
+        <div id="cfChart" class="pathmap"></div>
+      </div>
+    </section>
+
+    <section class="topic" id="s6">
+      <h2><span class="secno">6.6</span> 💧 运动补水估算</h2>
+      <div class="card">
+        <div id="hDur"></div>
+        <div class="ctl-row"><span class="ctl-label">强度</span><div id="hInt" style="display:flex;flex-wrap:wrap;gap:8px"></div><span></span></div>
+        <div id="hOut" class="chips" style="margin-top:8px"></div>
+        <p class="hint">运动前后<b>称体重</b>是最可靠的补水依据：每丢失 1kg 补 1.2–1.5L；超过 1 小时的大运动量注意电解质（运动饮料/淡盐水/食物），只大量喝白水有低钠血症风险<sup class="cite" data-src="S28"></sup>。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="s7">
+      <h2><span class="secno">6.7</span> 睡眠 · 大脑 · 肠道</h2>
+      <div class="grid3">
+        <div class="card"><h3>😴 睡眠与饮食</h3>
+          <ul><li>咖啡因：见 6.5 模拟器——午后是敏感人群的截止线。</li>
+          <li>酒精：缩短入睡潜伏期但<b>破坏后半夜 REM 睡眠</b>，整体睡眠质量下降。</li>
+          <li>睡前大餐、辛辣与高脂增加反流与夜醒；酸樱桃汁/褪黑素前体研究为「提示级」（B）。</li>
+          <li>镁（绿叶菜坚果）与规律进餐节律有间接关联证据。</li></ul></div>
+        <div class="card"><h3>🧠 大脑与情绪</h3>
+          <ul><li>地中海膳食模式与抑郁风险下降相关（大样本队列）<span class="level-badge lb">证据B</span>。</li>
+          <li>规律早餐与平稳血糖有助于上午专注力；n-3 脂肪酸为脑结构组分。</li>
+          <li>「补脑神器」（鱼油大剂量、各种提取物）证据普遍不足——整体膳食模式&gt;单一补充剂。</li></ul></div>
+        <div class="card"><h3>🌱 肠道微生态</h3>
+          <ul><li>益生菌：作用<b>菌株特异</b>，「喝酸奶=补益生菌」过于粗糙。</li>
+          <li>益生元与纤维：全谷物、杂豆、蔬果的多样性喂养不同菌群——「吃彩虹」的另一种理由。</li>
+          <li>发酵食品（酸奶、泡菜、纳豆、康普茶）人群研究提示可增加菌群多样性（B）。</li></ul></div>
+      </div>
+    </section>
+
+    <section class="topic" id="s8">
+      <h2><span class="secno">6.8</span> 随堂检测</h2>
+      <div class="card"><div id="quiz1"></div></div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('fitness.html');
+HUI.footer();
+HUI.pager('fitness.html');
+HUI.progress('fitness.html');
+
+document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+  ['s1|6.1 三时相', 's2|6.2 增肌与减脂', 's3|6.3 BMR/TDEE', 's4|6.4 蛋白质滑块', 's5|6.5 咖啡因模拟', 's6|6.6 补水估算', 's7|6.7 睡眠大脑肠道', 's8|6.8 随堂检测']
+    .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const D = window.HDATA;
+  const ACT = [['久坐', 1.2], ['轻活动(1-3次/周)', 1.375], ['中活动(3-5次/周)', 1.55], ['高活动(6-7次/周)', 1.725], ['运动员/体力劳动', 1.9]];
+
+  /* 6.3 BMR */
+  let sex = 0, act = 1;
+  const sexSeg = HUI.seg(document.getElementById('fSex'), ['男', '女'], { value: 0, on: i => { sex = i; bmrDraw(); } });
+  const actSeg = HUI.seg(document.getElementById('fAct'), ACT.map(a => a[0]), { value: 1, on: i => { act = i; bmrDraw(); } });
+  ['fAge', 'fH', 'fW'].forEach(id => document.getElementById(id).addEventListener('input', bmrDraw));
+  function bmrDraw() {
+    const a = +document.getElementById('fAge').value || 30;
+    const h = +document.getElementById('fH').value || 170;
+    const w = +document.getElementById('fW').value || 65;
+    const bmr = Math.round(10 * w + 6.25 * h - 5 * a + (sex === 0 ? 5 : -161));
+    const tdee = Math.round(bmr * ACT[act][1]);
+    document.getElementById('bmrOut').innerHTML =
+      `<span class="chip hl">BMR（静息代谢）≈ <b>${bmr}</b> kcal/日</span>` +
+      `<span class="chip hl">TDEE（总消耗）≈ <b>${tdee}</b> kcal/日</span>` +
+      `<span class="chip good">减脂参考：${tdee - 500}–${tdee - 300} kcal</span>` +
+      `<span class="chip">增肌参考：${tdee + 150}–${tdee + 300} kcal</span>`;
+  }
+  bmrDraw();
+
+  /* 6.4 蛋白质 */
+  const P_LV = [['普通久坐', 0.8, 1.2], ['日常健身', 1.2, 1.6], ['耐力/力量训练', 1.6, 2.0]];
+  let pLv = 1;
+  const pw = HUI.slider('pW', { label: '体重', min: 40, max: 120, value: 65, on: pDraw });
+  const plSeg = HUI.seg(document.getElementById('pLv'), P_LV.map(x => x[0]), { value: 1, on: i => { pLv = i; pDraw(); } });
+  function pDraw() {
+    const w = pw.get();
+    document.getElementById('pOut').innerHTML =
+      `<span class="chip">体重 <b>${w}</b> kg</span>` +
+      `<span class="chip hl">蛋白质 <b>${Math.round(w * P_LV[pLv][1])}–${Math.round(w * P_LV[pLv][2])}</b> g/日</span>` +
+      `<span class="chip">≈ <b>${Math.round(w * P_LV[pLv][1] / 0.25)}–${Math.round(w * P_LV[pLv][2] / 0.25)}</b> 个鸡蛋等效</span>`;
+  }
+  pDraw();
+
+  /* 6.5 咖啡因 */
+  const cfD = HUI.slider('cfDose', { label: '摄入量 mg', min: 30, max: 300, step: 10, value: 150, on: cfDraw });
+  const cfT = HUI.slider('cfTime', { label: '摄入时刻', min: 6, max: 22, step: 1, value: 15, on: cfDraw, fmt: v => v + ':00' });
+  const cfH = HUI.slider('cfHalf', { label: '半衰期 h', min: 3, max: 7, step: 0.5, value: 5, on: cfDraw });
+  function cfDraw() {
+    const dose = cfD.get(), t0 = cfT.get(), half = cfH.get();
+    const at = t => dose * Math.pow(0.5, (t - t0) / half);
+    const bedtime = 23;
+    const remain = at(bedtime);
+    const W = 860, H = 260, x0 = 40, x1 = W - 16, y0 = 30, y1 = H - 30;
+    const tMax = Math.min(38, t0 + 20);
+    const X = t => x0 + (t - t0) / (tMax - t0) * (x1 - x0);
+    const Y = v => y1 - Math.min(v / dose, 1) * (y1 - y0);
+    let pts = '';
+    for (let t = t0; t <= tMax; t += 0.25) {
+      pts += (pts ? ' ' : '') + (X(t).toFixed(1) + ',' + Y(at(t)).toFixed(1));
+    }
+    const Xb = X(bedtime);
+    let s = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;min-width:640px">`;
+    s += `<rect x="${x0}" y="${y0}" width="${x1 - x0}" height="${y1 - y0}" fill="var(--page)" stroke="var(--grid)"></rect>`;
+    s += `<line x1="${x0}" y1="${Y(50)}" x2="${x1}" y2="${Y(50)}" stroke="var(--cw)" stroke-dasharray="5 4"></line>`;
+    s += `<text x="${x1 - 4}" y="${Y(50) - 6}" text-anchor="end" font-size="12" fill="var(--cw)">≈50mg 睡眠影响参考线</text>`;
+    if (bedtime < tMax) {
+      s += `<rect x="${x0}" y="${y0}" width="${Math.max(0, Xb - x0)}" height="${y1 - y0}" fill="var(--tint1)" fill-opacity="0.35"></rect>`;
+      s += `<line x1="${Xb}" y1="${y0}" x2="${Xb}" y2="${y1}" stroke="var(--c7)" stroke-dasharray="3 3"></line>`;
+      s += `<text x="${Xb - 4}" y="${y0 + 14}" text-anchor="end" font-size="12" fill="var(--c7)">23:00 就寝</text>`;
+    }
+    s += `<polyline points="${pts}" fill="none" stroke="var(--c1)" stroke-width="2.6"></polyline>`;
+    for (let t = Math.ceil(t0); t <= tMax; t += 3) {
+      s += `<text x="${X(t)}" y="${y1 + 18}" text-anchor="middle" font-size="11" fill="var(--muted)">${t % 24}时</text>`;
+    }
+    s += '</svg>';
+    document.getElementById('cfChart').innerHTML = s;
+    document.getElementById('cfOut').innerHTML =
+      `<span class="chip">摄入 <b>${dose}</b>mg @ <b>${t0}:00</b>（约${dose >= 150 ? '一大杯滴滤' : '一杯'}咖啡）</span>` +
+      `<span class="chip ${remain > 50 ? 'bad' : 'good'}">23:00 就寝时血中约剩 <b>${Math.round(remain)}</b> mg</span>` +
+      `<span class="chip">半衰期 <b>${half}</b>h · 基本排清需 <b>${Math.ceil(half * 5)}h</b>（5个半衰期）</span>`;
+  }
+  cfDraw();
+
+  /* 6.6 补水 */
+  const H_INT = [['低（散步/瑜伽）', 400], ['中（慢跑/撸铁）', 600], ['高（长跑/球类/高温）', 900]];
+  let hInt = 1;
+  const hd = HUI.slider('hDur', { label: '运动时长 h', min: 0.5, max: 3, step: 0.5, value: 1, on: hDraw, fmt: v => v + ' 小时' });
+  const hiSeg = HUI.seg(document.getElementById('hInt'), H_INT.map(x => x[0]), { value: 1, on: i => { hInt = i; hDraw(); } });
+  function hDraw() {
+    const ml = H_INT[hInt][1] * hd.get();
+    document.getElementById('hOut').innerHTML =
+      `<span class="chip">时长 <b>${hd.get()}</b> h · ${H_INT[hInt][0]}</span>` +
+      `<span class="chip hl">运动中补水参考 <b>${Math.round(ml * 0.7)}–${ml}</b> ml</span>` +
+      (hd.get() >= 1 ? `<span class="chip">超过1小时：注意电解质（运动饮料或含钠食物）</span>` : `<span class="chip good">1小时内：清水即可</span>`);
+  }
+  hDraw();
+
+  if (D.QUIZ_BANK && D.QUIZ_BANK.fitness && D.QUIZ_BANK.fitness.length) {
+    HUI.quiz('quiz1', D.QUIZ_BANK.fitness, { id: 'fitness' });
+  }
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

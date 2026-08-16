@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>营养素基础 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">🧬</div>
+      <div class="ch-no">第 1 章 · 基础</div>
+      <h1>营养素基础</h1>
+      <p>看懂食物的第一步是看懂营养素。本章覆盖<b>宏量营养素、9 种维生素、6 种矿物质</b>，
+      数值口径取自《中国居民膳食营养素参考摄入量 DRIs（2023 版）》<sup class="cite" data-src="S20"></sup>、
+      《中国居民膳食指南（2022）》<sup class="cite" data-src="S1"></sup>与 NIH 膳食补充剂说明书<sup class="cite" data-src="S11"></sup>。</p>
+    </div>
+
+    <section class="topic" id="s1">
+      <h2><span class="secno">1.1</span> 宏量营养素：供给能量的三大块</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3><span class="tag">4 kcal/g</span>蛋白质</h3>
+          <ul>
+            <li>构成肌肉、酶、抗体与激素的基础原料；20 种氨基酸中 9 种为<b>必需氨基酸</b>（人体不能合成，必须食物供给）<sup class="cite" data-src="S20"></sup>。</li>
+            <li>「优质蛋白」：氨基酸组成接近人体需要——蛋、奶、鱼、禽、瘦肉、大豆<sup class="cite" data-src="S2"></sup>。</li>
+            <li>成人推荐摄入量约 <b>1g/kg/日</b>起步（0.8–1.16 g/kg，按活动量与年龄）<sup class="cite" data-src="S20"></sup>。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="tag">9 kcal/g</span>脂类</h3>
+          <ul>
+            <li>分类决定健康效应：<b>不饱和脂肪</b>（橄榄油、鱼油、坚果）替代<b>饱和脂肪</b>（肥肉、黄油）与<b>反式脂肪</b>（人造奶油、反复油炸）<sup class="cite" data-src="S10,S17"></sup>。</li>
+            <li>n-3（α-亚麻酸、EPA/DHA）与 n-6（亚油酸）均为必需脂肪酸<sup class="cite" data-src="S20"></sup>。</li>
+            <li>反式脂肪建议控制在总能量 1% 以下，能少则少<sup class="cite" data-src="S10"></sup>。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="tag">4 kcal/g</span>碳水化合物</h3>
+          <ul>
+            <li>大脑与红细胞的主要能量来源；「质」看来源：<b>全谷物、杂豆、薯类</b>优于精制糖与精白米面<sup class="cite" data-src="S1"></sup>。</li>
+            <li>添加糖 < 总能量 10%，条件性建议 <5%（约25g/日）<sup class="cite" data-src="S10"></sup>。</li>
+            <li>GI 与 GL：GI 衡量升糖速度（见 1.4 互动），GL = GI × 碳水克数 ÷ 100——<b>总量与种类同样重要</b>。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="tag">0 kcal</span>膳食纤维与水</h3>
+          <ul>
+            <li>纤维推荐 <b>25–30g/日</b>：全谷物、杂豆、蔬果、坚果是主力；可溶性纤维（燕麦β-葡聚糖、果胶）有助胆固醇管理<sup class="cite" data-src="S1,S20"></sup>。</li>
+            <li>饮水推荐量（低活动水平）：男 1700ml、女 1500ml；高温与运动增加<sup class="cite" data-src="S1"></sup>。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic" id="s2">
+      <h2><span class="secno">1.2</span> 🗼 中国居民膳食宝塔（2022）· 点击每层查看</h2>
+      <div class="card">
+        <div id="pagoda"></div>
+        <div id="pagodaInfo" class="keypoint" style="margin-top:10px">👆 点击宝塔任意一层，这里会显示该层的推荐量、举例与常见误区。</div>
+        <p class="hint">图形为示意（非等比例）。数据：《中国居民膳食指南（2022）》<sup class="cite" data-src="S1"></sup>。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="s3">
+      <h2><span class="secno">1.3</span> 维生素与矿物质：点击卡片翻面</h2>
+      <div class="card">
+        <p>正面：功能与缺乏表现；背面：代表食物 + 摄入量参考（RNI=推荐摄入量，UL=可耐受最高摄入量，成人一般口径）<sup class="cite" data-src="S20,S11"></sup>。</p>
+        <div class="food-grid" id="vitGrid"></div>
+      </div>
+    </section>
+
+    <section class="topic" id="s4">
+      <h2><span class="secno">1.4</span> 📊 血糖生成指数（GI）对比器</h2>
+      <div class="card">
+        <p>GI 衡量含碳水食物升血糖的速度：<b>低 ≤55（绿）｜中 56–69（黄）｜高 ≥70（红）</b>。
+        同一食物因品种、成熟度与烹法变化（数值为常见做法参考）<sup class="cite" data-src="S2"></sup>。
+        控糖策略 = 低 GI 种类 + 控总量 + 先菜肉后主食的进餐顺序<sup class="cite" data-src="S15"></sup>。</p>
+        <div id="giChart"></div>
+      </div>
+    </section>
+
+    <section class="topic" id="s5">
+      <h2><span class="secno">1.5</span> 食品标签：30 秒看懂两件事</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3><span class="tag">配料表</span>越靠前含量越高</h3>
+          <p>配料按加入量递减排列（GB 28050）<sup class="cite" data-src="S33"></sup>。买全麦面包看第一位是不是「全麦粉」；
+          买酸奶看到第一位是「水」、中间夹着「果葡糖浆」，就明白它是什么了。</p>
+          <div class="keypoint"><b>速判口诀</b>：糖排前三不买；「氢化/部分氢化植物油」「植脂末」出现即有反式脂肪嫌疑；钠 NRV% 超过能量 NRV% 的要警惕。</div>
+        </div>
+        <div class="card">
+          <h3><span class="tag">NRV%</span>营养素参考值百分比</h3>
+          <p>NRV% 表示每 100g（或每份）提供的能力占一个普通成人日参考量的比例<sup class="cite" data-src="S33"></sup>。
+          例：某方便面钠 NRV% = 85% → 一包就吃掉全天近九成的盐额度。</p>
+          <div class="warn"><b>注意「每份」陷阱</b>：有的产品用 30g「一份」标注，看着数值都低——先看清楚计量单位再比较。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic" id="s6">
+      <h2><span class="secno">1.6</span> 随堂检测</h2>
+      <div class="card"><div id="quiz1"></div></div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('nutrient.html');
+HUI.footer();
+HUI.pager('nutrient.html');
+HUI.progress('nutrient.html');
+
+document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+  ['s1|1.1 宏量营养素', 's2|1.2 膳食宝塔互动', 's3|1.3 维生素与矿物质', 's4|1.4 GI 对比器', 's5|1.5 食品标签', 's6|1.6 随堂检测']
+    .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const D = window.HDATA;
+
+  /* ---------- 1.2 膳食宝塔 SVG ---------- */
+  const LAYERS = [
+    { name: '第一层 · 谷薯类', fill: 'var(--c2)', txt: '🍚',
+      detail: '推荐量：谷类 <b>200–300g/日</b>（其中全谷物和杂豆 <b>50–150g</b>）＋ 薯类 <b>50–100g</b>。<br>举例：糙米饭、燕麦、玉米、红薯。<br>常见误区：顿顿白米白面=精制谷物，全谷物吃不够；「不吃主食减肥」不可取。<br>能量占比约50–65%。' },
+    { name: '第二层 · 蔬菜水果', fill: 'var(--cg)', txt: '🥦',
+      detail: '推荐量：蔬菜 <b>300–500g/日</b>（深色蔬菜占一半）＋ 水果 <b>200–350g</b>。<br>举例：菠菜、西兰花、番茄、橙子、猕猴桃。<br>常见误区：用果汁替代水果；土豆算「菜」其实该算主食。' },
+    { name: '第三层 · 动物性食物', fill: 'var(--c8)', txt: '🐟',
+      detail: '推荐量：鱼、禽、蛋、瘦肉合计 <b>120–200g/日</b>——每周至少 <b>2 次水产</b>，每天 <b>1 个鸡蛋</b>（不弃蛋黄）。<br>举例：三文鱼、鸡胸肉、鸡蛋。<br>常见误区：吃肉多而鱼少；加工肉（香肠腊肉）计入即超标。' },
+    { name: '第四层 · 奶豆坚果', fill: 'var(--c3)', txt: '🥛',
+      detail: '推荐量：奶及奶制品 <b>300–500g/日</b>（2022 版由 300g 上调）＋ 大豆及坚果 <b>25–35g</b>。<br>举例：牛奶、无糖酸奶、北豆腐、核桃10g。<br>常见误区：乳糖不耐受就完全放弃奶制品（可换酸奶/低乳糖奶）；坚果吃过量（一把≈半碗饭能量）。' },
+    { name: '第五层 · 油盐', fill: 'var(--cc)', txt: '🧂',
+      detail: '推荐量：烹调油 <b>25–30g/日</b>（约3白瓷勺）＋ 食盐 <b>&lt;5g</b>（一啤酒瓶盖）。<br>举例：橄榄油/茶籽油交替；用限盐勺、醋与香料替代部分盐。<br>常见误区：隐形盐（酱油、鸡精、挂面、话梅、加工肉）被忽略。' }
+  ];
+  (function drawPagoda() {
+    const W = 720, LH = 62, TOP = 26, BOT = TOP + 5 * LH;
+    let s = `<svg viewBox="0 0 ${W} ${BOT + 40}" style="width:100%;max-width:720px" role="img" aria-label="中国居民膳食宝塔2022示意图">`;
+    const ramp = 0.86;
+    LAYERS.forEach((L, i) => {
+      const y0 = TOP + i * LH, y1 = y0 + LH - 6;
+      const wTop = 420 * Math.pow(ramp, 4 - i), wBot = 420 * Math.pow(ramp, 3 - i);
+      const cx = 250;
+      s += `<polygon data-l="${i}" points="${cx - wTop / 2},${y0} ${cx + wTop / 2},${y0} ${cx + wBot / 2},${y1} ${cx - wBot / 2},${y1}"
+        fill="${L.fill}" fill-opacity="0.82" stroke="var(--surface)" stroke-width="2" style="cursor:pointer">
+        </polygon>`;
+      s += `<text x="${cx}" y="${(y0 + y1) / 2 + 6}" text-anchor="middle" font-size="15" font-weight="700" fill="var(--surface)" style="pointer-events:none">${L.name}</text>`;
+      s += `<text x="${cx + 250}" y="${(y0 + y1) / 2 + 7}" text-anchor="middle" font-size="24" style="pointer-events:none">${L.txt}</text>`;
+    });
+    s += `<text x="250" y="16" text-anchor="middle" font-size="13" fill="var(--muted)">🔻 层数越高推荐量越少</text>`;
+    s += `<g style="cursor:help">
+      <rect x="560" y="${TOP + 40}" width="150" height="86" rx="10" fill="var(--tint3)" stroke="var(--c3)"></rect>
+      <text x="635" y="${TOP + 68}" text-anchor="middle" font-size="14" font-weight="700" fill="var(--c3)">💧 水 1500–1700ml</text>
+      <text x="635" y="${TOP + 92}" text-anchor="middle" font-size="13" fill="var(--ink2)">🚶 主动身体活动</text>
+      <text x="635" y="${TOP + 112}" text-anchor="middle" font-size="13" fill="var(--ink2)">相当于日行 6000 步</text>
+    </g>`;
+    s += '</svg>';
+    const host = document.getElementById('pagoda');
+    host.className = 'pathmap';
+    host.innerHTML = s;
+    Array.prototype.forEach.call(host.querySelectorAll('polygon[data-l]'), p => {
+      p.addEventListener('click', () => {
+        Array.prototype.forEach.call(host.querySelectorAll('polygon'), x => x.setAttribute('fill-opacity', '0.82'));
+        p.setAttribute('fill-opacity', '1');
+        const L = LAYERS[+p.getAttribute('data-l')];
+        document.getElementById('pagodaInfo').innerHTML = `<b>${L.name}</b><br>${L.detail}`;
+      });
+    });
+  })();
+
+  /* ---------- 1.3 维生素/矿物质翻转卡 ---------- */
+  const VITS = [
+    { name: '维生素 A', front: '功能：视觉（暗光）、上皮完整、免疫。<br>缺乏：夜盲、眼干、皮肤角化。', back: '来源：动物肝脏、蛋黄、奶；植物来源为β-胡萝卜素（胡萝卜、菠菜、红薯）。<br>参考：成人 RNI 男800/女700μgRAE。<br>⚠️ 动物来源过量中毒风险（孕妇尤其注意肝脏摄入量）。', cls: 'lc' },
+    { name: '维生素 D', front: '功能：钙磷吸收、骨骼与免疫调节。<br>缺乏：儿童佝偻病、成人骨软化、骨质疏松风险。', back: '来源：日光（主要）、深海鱼、蛋黄、强化奶。<br>参考：成人 RNI 10μg（400IU）/日，UL 50μg。<br>北方冬季与日晒不足人群常需关注。', cls: 'la' },
+    { name: '维生素 C', front: '功能：胶原合成、抗氧化、促铁吸收。<br>缺乏：牙龈出血、伤口愈合差（坏血病）。', back: '来源：鲜枣、猕猴桃、柑橘、西兰花、彩椒。<br>参考：RNI 100mg/日，UL 2000mg。<br>感冒时大剂量补C证据不支持「预防」，或略缩短病程。', cls: 'lb' },
+    { name: '维生素 E', front: '功能：脂溶性抗氧化、保护细胞膜。<br>缺乏：罕见（多见于脂肪吸收障碍者）。', back: '来源：植物油、坚果（巴旦木）、全谷物。<br>参考：成人 AI 14mg α-TE/日。<br>补充剂大剂量未证实获益，食物优先。', cls: 'lb' },
+    { name: '维生素 B1', front: '功能：碳水代谢辅酶、神经功能。<br>缺乏：脚气病（干性/湿性）、Wernicke脑病（酗酒者）。', back: '来源：全谷物、豆类、瘦猪肉、坚果。<br>参考：成人 RNI 男1.4/女1.2mg。<br>精白米面+酗酒是典型缺乏场景。', cls: 'lb' },
+    { name: '维生素 B2', front: '功能：能量代谢（FAD/FMN）、黏膜皮肤健康。<br>缺乏：口角炎、舌炎、阴囊皮炎。', back: '来源：奶类、蛋、动物内脏、深绿叶菜。<br>参考：成人 RNI 男1.4/女1.2mg。', cls: 'lb' },
+    { name: '维生素 B6', front: '功能：氨基酸代谢、神经递质合成。<br>缺乏：皮炎、口炎、抑郁样表现（罕见）。', back: '来源：鸡肉、鱼、土豆、香蕉、鹰嘴豆。<br>参考：成人 RNI 约1.4mg；长期大剂量补充剂（>UL）可致周围神经病变。', cls: 'lb' },
+    { name: '叶酸', front: '功能：DNA合成、红细胞生成。<br>缺乏：巨幼细胞性贫血；孕早期缺乏致神经管缺陷。', back: '来源：绿叶菜、豆类、动物肝；备孕/孕早期建议补充400μgDFE/日（遵医嘱）。<br>参考：成人 RNI 400μgDFE，合成叶酸 UL 1000μg。', cls: 'la' },
+    { name: '维生素 B12', front: '功能：神经系统维护、红细胞生成（与叶酸协同）。<br>缺乏：巨幼贫+不可逆神经损伤（手足麻木、平衡差）。', back: '来源：几乎仅动物性食品（肉、鱼、蛋、奶）与强化食品。<br>参考：成人 RNI 2.4μg。<br>纯素者必须补充；老年人吸收下降也需关注。', cls: 'la' }
+  ];
+  const MINS = [
+    { name: '钙', front: '功能：骨骼牙齿、肌肉收缩、凝血信号。<br>不足：骨量流失、骨质疏松。', back: '来源：奶类（吸收率最高的大宗来源）、石膏豆腐、绿叶菜（焯水）、芝麻酱、带骨小鱼。<br>参考：成人 RNI 800mg/日，UL 2000mg。', cls: 'la' },
+    { name: '铁', front: '功能：血红蛋白携氧、能量代谢。<br>缺乏：缺铁性贫血（乏力、苍白、异食癖）。', back: '来源分两类：血红素铁（猪肝、红肉——吸收率高）与非血红素铁（菠菜、豆类——配维C促吸收）。<br>参考：RNI 约男12mg/女18mg，UL 42mg。', cls: 'la' },
+    { name: '锌', front: '功能：免疫、伤口愈合、味觉、生殖。<br>缺乏：味觉减退、伤口不愈、易感染。', back: '来源：牡蛎（突出）、红肉、动物内脏、坚果。<br>参考：RNI 约男12mg/女8.5mg；长期过量补锌干扰铜吸收。', cls: 'lb' },
+    { name: '硒', front: '功能：谷胱甘肽过氧化物酶组成（抗氧化）、甲状腺代谢。<br>缺乏：克山病（地方性心肌病）。', back: '来源：海产品、动物内脏、富硒地区谷物（含量与土壤强相关）。<br>参考：RNI 60μg/日，UL 400μg。', cls: 'lb' },
+    { name: '钾', front: '功能：电解质平衡、血压调节、神经肌肉兴奋性。<br>不足：乏力、心律失常（常见于腹泻/利尿剂使用）。', back: '来源：几乎所有未加工食物——蔬菜水果（菠菜、香蕉、土豆）、豆类、奶。<br>参考：成人 AI 2000mg/日。<br>肾功能不全者高钾有风险，遵医嘱。', cls: 'la' },
+    { name: '钠', front: '功能：细胞外液容量与渗透压、神经传导。<br>过量：血压升高、胃癌风险增加、钙流失。', back: '来源：食盐+隐形盐（酱油、加工食品）。<br>参考：WHO 建议成人钠 <2000mg/日（≈5g盐）。<br>中国居民平均摄入约为推荐2倍——减盐是全国性公共健康重点。', cls: 'lc' }
+  ];
+  function flipCard(v, badge) {
+    return `<div class="flip" style="min-height:250px"><div class="flip-inner" style="min-height:250px">
+      <div class="face" style="justify-content:flex-start">
+        <div class="fmeta" style="padding:14px 14px 0"><b style="font-size:16px">${v.name} <span class="level-badge ${v.cls}">${badge}</span></b></div>
+        <div class="fmeta" style="padding:8px 14px 10px">${v.front}</div>
+        <div class="flip-hint">点击翻面：来源与参考量 ↻</div>
+      </div>
+      <div class="face back" style="transform:rotateY(180deg);position:absolute;inset:0">${v.back}</div>
+    </div></div>`;
+  }
+  document.getElementById('vitGrid').innerHTML =
+    VITS.map(v => flipCard(v, '维生素')).join('') + MINS.map(m => flipCard(m, '矿物质')).join('');
+  HUI.bindFlip(document);
+
+  /* ---------- 1.4 GI 对比器 ---------- */
+  (function drawGI() {
+    const items = D.FOODS.filter(f => f.nutrients && f.nutrients.gi != null)
+      .map(f => ({ name: f.name, gi: f.nutrients.gi, note: f.nutrients.notable || '' }))
+      .sort((a, b) => a.gi - b.gi);
+    const W = 700, LH = 26, H = items.length * LH + 60;
+    const col = g => g <= 55 ? 'var(--cg)' : (g <= 69 ? 'var(--cw)' : 'var(--cc)');
+    let s = `<svg viewBox="0 0 ${W} ${H}" style="width:100%">`;
+    s += `<text x="8" y="18" font-size="13" fill="var(--muted)">低GI ≤55</text>
+          <text x="120" y="18" font-size="13" fill="var(--muted)">中 56–69</text>
+          <text x="240" y="18" font-size="13" fill="var(--muted)">高 ≥70</text>`;
+    [55.5, 69.5].forEach(x => {
+      const px = 330 + x / 100 * 340;
+      s += `<line x1="${px}" y1="26" x2="${px}" y2="${H - 26}" stroke="var(--axis)" stroke-dasharray="4 4"></line>`;
+    });
+    items.forEach((it, i) => {
+      const y = 34 + i * LH;
+      const w = it.gi / 100 * 340;
+      s += `<text x="318" y="${y + 13}" text-anchor="end" font-size="13" fill="var(--ink2)">${it.name}</text>`;
+      s += `<rect x="330" y="${y}" width="${w}" height="17" rx="4" fill="${col(it.gi)}" fill-opacity="0.85"><title>${it.name} GI≈${it.gi}${it.note ? '（' + it.note + '）' : ''}</title></rect>`;
+      s += `<text x="${330 + w + 6}" y="${y + 13}" font-size="12" fill="var(--muted)">${it.gi}</text>`;
+    });
+    s += '</svg>';
+    document.getElementById('giChart').innerHTML = s;
+  })();
+
+  if (D.QUIZ_BANK && D.QUIZ_BANK.nutrient && D.QUIZ_BANK.nutrient.length) {
+    HUI.quiz('quiz1', D.QUIZ_BANK.nutrient, { id: 'nutrient' });
+  }
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

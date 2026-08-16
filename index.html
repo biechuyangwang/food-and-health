@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食物与健康 · 图文交互科普（中西并重 · 每条结论标注出处）</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5）：组件库加载失败或脚本报错时给出可见提示 */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹（含 style.css、healthui.js、data.js）与页面文件在同一目录，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="home-hero">
+  <div style="font-size:46px">🥗</div>
+  <h1>食物与健康 · 图文交互科普</h1>
+  <p class="sub">
+    用<b>真实照片、手绘图示与可操作的交互工具</b>，讲清常见食物、搭配与疾病防治和增强体质的关系。<br>
+    <b>中西并重</b>：现代营养学（《中国居民膳食指南 2022》《中国食物成分表》、WHO / NIH）与中医药食同源（《中华人民共和国药典》2020 年版、卫健委目录、《本草纲目》）并列呈现；<br>
+    <b>每条结论都标注出处与证据等级</b>（A 强证据 / B 中等 / C 传统典籍 / D 证据不足）。<br>
+    <span class="muted">全部页面离线可用，无需联网，直接用浏览器打开即可。</span>
+  </p>
+</div>
+
+<div class="keypoint" style="max-width:880px;margin:14px auto 6px">
+  <b>⚠️ 全站免责声明</b>：本站所有内容均为健康科普，<b>不构成医疗建议、诊断或治疗方案</b>；食疗与膳食调整<b>不能替代</b>正规医疗。如有不适请及时就医；用药与重大饮食调整请咨询医生或注册营养师。「急救」章节仅面向极端缺医少药环境的知识普及。<a href="references.html#disclaimer">完整声明见参考文献页 ↗</a>
+</div>
+
+<div class="progress-wrap"><div id="progSummary"></div></div>
+
+<div class="group-title"><h3>基础 · 看懂营养</h3></div>
+<div class="ch-grid">
+  <a class="ch-card" href="nutrient.html">
+    <span class="no" style="color:var(--c3)">第 1 章</span>
+    <h2>营养素基础 🧬</h2>
+    <p>宏量营养素 · 9 种维生素 · 6 种矿物质 · 膳食宝塔</p>
+    <div class="secs">膳食宝塔分层互动 / GI 对比器 / 营养素翻转卡 / 饮水纤维计算器</div>
+    <div class="go">进入 →</div>
+  </a>
+</div>
+
+<div class="group-title"><h3>食物与搭配</h3></div>
+<div class="ch-grid">
+  <a class="ch-card" href="foods.html">
+    <span class="no" style="color:var(--c1)">第 2 章</span>
+    <h2>食物图鉴 🍅</h2>
+    <p>50 余种常见食物：真实照片 + 每100g成分 + 性味归经 + 健康作用</p>
+    <div class="secs">搜索 / 分类 / 目标营养素三维筛选 · 卡片翻转 · 危险食物警示</div>
+    <div class="go">进入 →</div>
+  </a>
+  <a class="ch-card" href="pairing.html">
+    <span class="no" style="color:var(--c1)">第 3 章</span>
+    <h2>食物搭配宜忌 🧂</h2>
+    <p>协同与拮抗的机理、「食物相克」辟谣、食物–药物相互作用</p>
+    <div class="secs">配对查询器（食物×食物 / 食物×药物）/ 宜忌速查矩阵</div>
+    <div class="go">进入 →</div>
+  </a>
+</div>
+
+<div class="group-title"><h3>疾病食疗</h3></div>
+<div class="ch-grid">
+  <a class="ch-card" href="disease-metabolic.html">
+    <span class="no" style="color:var(--c2)">第 4 章</span>
+    <h2>疾病食疗 · 代谢与心血管 ❤️</h2>
+    <p>糖尿病 / 血脂异常 / 高血压 / 肥胖 / 痛风 / 脂肪肝</p>
+    <div class="secs">疾病→食物路径图 · 一日食谱示例 · 「何时必须就医」红色警示 · 随堂测</div>
+    <div class="go">进入 →</div>
+  </a>
+  <a class="ch-card" href="disease-gi.html">
+    <span class="no" style="color:var(--c2)">第 5 章</span>
+    <h2>疾病食疗 · 消化·血液·免疫·骨骼 🩺</h2>
+    <p>胃炎 / 便秘 / 腹泻与口服补液 / 贫血 / 免疫 / 骨质疏松</p>
+    <div class="secs">ORS 配方互动演示 · 疾病路径图 · 随堂测</div>
+    <div class="go">进入 →</div>
+  </a>
+</div>
+
+<div class="group-title"><h3>强身与本草</h3></div>
+<div class="ch-grid">
+  <a class="ch-card" href="fitness.html">
+    <span class="no" style="color:var(--c5)">第 6 章</span>
+    <h2>增强体质 💪</h2>
+    <p>运动营养 · 增肌减脂 · 睡眠 · 大脑情绪 · 肠道微生态</p>
+    <div class="secs">BMR/TDEE 计算器 · 蛋白质需求滑块 · 咖啡因半衰期曲线 · 补水计算器</div>
+    <div class="go">进入 →</div>
+  </a>
+  <a class="ch-card" href="herbs.html">
+    <span class="no" style="color:var(--c5)">第 7 章</span>
+    <h2>药食同源 🌿</h2>
+    <p>卫健委目录沿革 · 36 种目录物质详解 · 安全红线</p>
+    <div class="secs">体质自测问卷 · 药材卡片 · 功效分类筛选 · 有毒品种红色警示</div>
+    <div class="go">进入 →</div>
+  </a>
+</div>
+
+<div class="group-title"><h3>简单环境下的外科急救</h3></div>
+<div class="ch-grid">
+  <a class="ch-card emg" href="firstaid-trauma.html">
+    <span class="no">第 8 章</span>
+    <h2>创伤急救五技术 🩸</h2>
+    <p>野外/灾害缺医环境：止血（含止血带）· 包扎 · 固定 · 搬运 · 休克识别</p>
+    <div class="secs">进入确认层 · 分步 SVG 演示（4 组）· 找错题随堂测</div>
+    <div class="go">进入（先阅读免责说明）→</div>
+  </a>
+  <a class="ch-card emg" href="firstaid-env.html">
+    <span class="no">第 9 章</span>
+    <h2>伤口、烧伤与环境急症 🌡️</h2>
+    <p>冲洗清创 · 烧伤五字诀 · 蛇虫咬蜇 · 失温中暑 · 断肢保存</p>
+    <div class="secs">分步 SVG 演示（3 组）· 「这个伤口怎么办」决策流程图</div>
+    <div class="go">进入（先阅读免责说明）→</div>
+  </a>
+</div>
+
+<div class="group-title"><h3>自测与参考</h3></div>
+<div class="ch-grid">
+  <a class="ch-card" href="quiz.html">
+    <span class="no" style="color:var(--c7)">第 10 章</span>
+    <h2>知识自测 ✍️</h2>
+    <p>六个分卷约 56 题 + 综合随机 15 题，每题附出处解析</p>
+    <div class="secs">即时判分 · 错题解析 · 成绩本机记忆</div>
+    <div class="go">进入 →</div>
+  </a>
+  <a class="ch-card" href="references.html">
+    <span class="no" style="color:var(--c7)">附</span>
+    <h2>参考文献与证据说明 📚</h2>
+    <p>全站书目单一来源汇总 · 证据等级定义 · 图片授权 · 完整免责声明</p>
+    <div class="secs">供核查：每条结论都能溯源</div>
+    <div class="go">进入 →</div>
+  </a>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script>
+HUI.renderNav('index.html');
+HUI.progressSummary('progSummary');
+HUI.footer();
+</script>
+</body>
+</html>

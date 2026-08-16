@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>食物搭配宜忌 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">🧂</div>
+      <div class="ch-no">第 3 章 · 食物与搭配</div>
+      <h1>食物搭配宜忌</h1>
+      <p>「食物相克」绝大多数缺乏科学依据；真正值得记住的搭配问题只有三类：<b>营养素之间的吸收干扰</b>、
+      <b>食物与药物的相互作用</b>，以及<b>烹调处理是否正确</b><sup class="cite" data-src="S1,S20,S31"></sup>。
+      本页用查询器把常见组合的机理讲清楚，每条结论标注证据等级。</p>
+    </div>
+
+    <section class="topic" id="s1">
+      <h2><span class="secno">3.1</span> 协同与拮抗：机理总论</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3><span class="tag">协同</span>「1 + 1 &gt; 2」的搭配</h3>
+          <ul>
+            <li><b>维生素 C + 非血红素铁</b>：维C将三价铁还原为更易吸收的亚铁态，同餐促进吸收<sup class="cite" data-src="S20"></sup>——菠菜配橙子、杂粮配彩椒。</li>
+            <li><b>脂肪 + 脂溶性维生素（A/D/E/K、番茄红素、β-胡萝卜素）</b>：同餐有油吸收更好<sup class="cite" data-src="S1"></sup>——胡萝卜用油炒、番茄炖牛腩。</li>
+            <li><b>谷类 + 豆类</b>：氨基酸互补（谷缺赖氨酸、豆缺蛋氨酸），提高蛋白质生物学价值<sup class="cite" data-src="S1"></sup>——杂豆饭、豆浆配全麦面包。</li>
+            <li><b>蛋白质分散到三餐</b>：比集中一餐更利于肌肉合成（尤其老年人）<sup class="cite" data-src="S20"></sup>。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="tag">拮抗</span>影响吸收或安全的组合</h3>
+          <ul>
+            <li><b>草酸 / 植酸 / 单宁 + 矿物质</b>：抑制钙、铁、锌吸收——菠菜豆腐（焯水解决）、浓茶配补铁餐（错开时间）<sup class="cite" data-src="S20"></sup>。</li>
+            <li><b>钙 + 铁</b>：肠上皮竞争吸收通道，补铁剂不与牛奶/钙片同服<sup class="cite" data-src="S31"></sup>。</li>
+            <li><b>食物 × 药物代谢酶</b>：西柚抑制肠道 CYP3A4，使多种药物浓度升高（详见 3.5 节）<sup class="cite" data-src="S31"></sup>。</li>
+            <li><b>酒精</b>：与头孢（双硫仑样反应）、对乙酰氨基酚（肝损伤）、降糖药（低血糖）、痛风（尿酸升高）等多类药物/疾病相互作用<sup class="cite" data-src="S31,S18"></sup>。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="warn"><b>「食物相克表」的真相</b>：流传的数百种「相克组合」在人群实验中均未得到证实；
+      历史上正规机构做过相关试食实验（如蟹柿同食），未发现中毒<sup class="cite" data-src="S12"></sup>。
+      个体不适多源于<b>食物不洁、过敏、过量、疾病本身或药物作用</b>，而非「相克」。
+      真正会「相克」的是<b>食物与药物</b>——这一节请重点看 3.5。</div>
+    </section>
+
+    <section class="topic" id="s2">
+      <h2><span class="secno">3.2</span> 🔍 配对查询器</h2>
+      <div id="pairFinder"></div>
+    </section>
+
+    <section class="topic" id="s3">
+      <h2><span class="secno">3.3</span> 推荐搭配精选</h2>
+      <div class="card"><div id="goodList"></div></div>
+    </section>
+
+    <section class="topic" id="s4">
+      <h2><span class="secno">3.4</span> 「忌搭配」科学辨析（含辟谣）</h2>
+      <div class="card"><div id="debunkList"></div></div>
+      <div class="keypoint"><b>方法论</b>：判断一条「搭配禁忌」是否靠谱，问三个问题——① 说的机理是什么（有无可测量的吸收/代谢影响）？
+      ② 剂量条件是什么（正常吃饭量 vs 大量浓缩提取物）？③ 证据在哪一级（指南/研究/典籍/只是「听说」）？
+      满足不了前两问的「禁忌」，大概率是讹传。</div>
+    </section>
+
+    <section class="topic" id="s5">
+      <h2><span class="secno">3.5</span> ⛔ 食物–药物相互作用（重点）</h2>
+      <div class="danger">
+        <span class="dt">这一节请认真读</span>
+        <p>食物与药物之间的相互作用有明确的药理学机制，后果可能致命。以下为最常见、证据最充分的组合<sup class="cite" data-src="S31"></sup>。
+        <b>正在长期服药者，任何「食疗」「保健品」「药膳」计划都应先告知医生或药师。</b></p>
+      </div>
+      <div class="card"><div id="drugList"></div></div>
+      <div class="card">
+        <h3>更多要点（表格之外的常见问题）</h3>
+        <ul>
+          <li><b>西柚的「波及面」</b>：除他汀与部分降压药，环孢素、部分抗心律失常药、部分精神类药物也经 CYP3A4 代谢——服药期间简单起见<b>一律不吃西柚</b>，普通橙子不受影响。</li>
+          <li><b>甘草与降压</b>：长期大量甘草（含甘草酸，如某些蜜饯、复方甘草片）可致假性醛固酮增多——血压升高、低血钾，与降压药作用方向相反<sup class="cite" data-src="S3,S31"></sup>。</li>
+          <li><b>高纤维与左甲状腺素 / 地高辛</b>：大量麸皮、豆类可减少吸收，与服药间隔开<sup class="cite" data-src="S31"></sup>。</li>
+          <li><b>酒精的通用建议</b>：服药期间默认不饮酒——清单太长（镇静药、降糖药、抗凝药、甲硝唑同样致双硫仑样反应……），一一记忆不如一刀切<sup class="cite" data-src="S31"></sup>。</li>
+          <li><b>葡萄柚≠葡萄</b>：受影响的是西柚（grapefruit），葡萄、普通柚子影响小得多；不要混淆后连水果都不敢吃。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic" id="s6">
+      <h2><span class="secno">3.6</span> 中医配伍理论：七情与十八反</h2>
+      <div class="card">
+        <p>中药配伍讲「七情」：<b>单行、相须、相使、相畏、相杀、相恶、相反</b><sup class="cite" data-src="S13"></sup>。
+        其中单行为单独施用；相须、相使为增效；相畏、相杀为减毒制约；<b>「相恶」（互相削弱）与「相反」（合用生毒）属配伍禁忌</b>。</p>
+        <ul>
+          <li><b>相须/相使</b>（强强联合）：如经典药膳「姜醋配蟹」以温制寒——食物层面最常见的七情应用。</li>
+          <li><b>相恶</b>（互相削弱）：传统「人参忌萝卜」即属此类，为经验医学记载 <span class="level-badge lc">证据C</span>，现代证据不充分，尊重传统习惯即可。</li>
+          <li><b>十八反 / 十九畏</b>：主要针对<b>药物</b>（如乌头反半夏、甘草反甘遂），涉及食材极少。日常食物搭配几乎不触及「十八反」范围——
+          用「十八反」解释日常饭菜相克，属于概念误用<sup class="cite" data-src="S13"></sup>。</li>
+        </ul>
+        <p class="small muted">中医配伍理论用于指导<b>药膳与用药</b>，与「食物相克」民间说法不是一回事，本站对两者严格区分并分别标注证据等级。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="s7">
+      <h2><span class="secno">3.7</span> 随堂检测</h2>
+      <div class="card"><div id="quiz1"></div></div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('pairing.html');
+HUI.footer();
+HUI.pager('pairing.html');
+HUI.progress('pairing.html');
+
+document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+  ['s1|3.1 协同与拮抗机理', 's2|3.2 配对查询器', 's3|3.3 推荐搭配', 's4|3.4 忌搭配辨析', 's5|3.5 食物×药物 ⚠', 's6|3.6 七情与十八反', 's7|3.7 随堂检测']
+    .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const D = window.HDATA;
+  const nameOf = id => {
+    const f = HUI.foodById(id);
+    if (f) return f.name;
+    const d = (D.DRUGS || []).find(x => x.id === id);
+    return d ? '💊 ' + d.name : id;
+  };
+  const card = (p, cls) => `
+    <div class="card" style="margin-bottom:12px">
+      <h3>${HUI.verdictBadge(p.verdict)} ${HUI.esc(nameOf(p.a))} ＋ ${HUI.esc(nameOf(p.b))}　${HUI.badgeLevel(p.level)}</h3>
+      <p>${p.modern}</p>
+      ${p.tcm ? `<p class="small"><b>中医角度：</b>${HUI.esc(p.tcm)}</p>` : ''}
+      ${p.tip ? `<div class="keypoint" style="margin:6px 0"><b>怎么做</b>：${HUI.esc(p.tip)}</div>` : ''}
+      ${p.drugWarn ? `<div class="danger" style="margin:6px 0"><span class="dt">⚠</span> ${HUI.esc(p.drugWarn)}</div>` : ''}
+      <p class="small muted">来源：${(p.src || []).join('、')}</p>
+    </div>`;
+
+  const good = D.PAIRS.filter(p => p.verdict === 'good');
+  const debunk = D.PAIRS.filter(p => p.verdict === 'caution' || p.verdict === 'neutral');
+  const drug = D.PAIRS.filter(p => p.verdict === 'bad' || (D.DRUGS || []).some(d => d.id === p.a || d.id === p.b));
+
+  document.getElementById('goodList').innerHTML = good.map(p => card(p)).join('');
+  document.getElementById('debunkList').innerHTML = debunk.map(p => card(p)).join('');
+  document.getElementById('drugList').innerHTML = drug.map(p => card(p)).join('');
+
+  HUI.pairFinder('pairFinder');
+  if (D.QUIZ_BANK && D.QUIZ_BANK.pairing && D.QUIZ_BANK.pairing.length) {
+    HUI.quiz('quiz1', D.QUIZ_BANK.pairing, { id: 'pairing' });
+  }
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

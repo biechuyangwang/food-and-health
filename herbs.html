@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>药食同源 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">🌿</div>
+      <div class="ch-no">第 7 章 · 强身</div>
+      <h1>药食同源</h1>
+      <p>「药食同源」不是营销概念，而是一份<b>国家发布的法定目录</b>。本章讲清目录的法规沿革，
+      详解 40 余种目录物质（性味归经与功能主治为《中华人民共和国药典》2020 年版一部口径转述<sup class="cite" data-src="S3"></sup>），
+      并划出<b>安全红线</b>——哪些东西看起来「天然」，却绝对不能自行入口。</p>
+    </div>
+
+    <section class="topic" id="s1">
+      <h2><span class="secno">7.1</span> 目录是什么：法规框架与沿革</h2>
+      <div class="card">
+        <ul>
+          <li><b>法律依据</b>：《食品安全法》第三十八条——生产经营的食品中<b>不得添加药品</b>，但可以添加<b>按照传统既是食品又是中药材的物质</b>；目录由国务院卫生行政部门会同市场监管部门制定、公布并更新<sup class="cite" data-src="S4"></sup>。</li>
+          <li><b>沿革</b>：原目录 86 种（2002 年《既是食品又是药品的物品名单》）→
+          2019 年将<b>当归、山柰、西红花、草果、姜黄、荜茇</b> 6 种纳入试点 →
+          2023 年 11 月将<b>党参、肉苁蓉（荒漠）、铁皮石斛、西洋参、黄芪、灵芝、山茱萸、天麻、杜仲叶</b> 9 种正式纳入 →
+          2024 年 8 月第 4 号公告增补<b>地黄、麦冬、天冬、化橘红</b>，目录达 <b>106 种</b><sup class="cite" data-src="S4"></sup>。</li>
+          <li><b>边界</b>：目录 ≠「随便吃」。新增公告对每种物质都明确了<b>使用范围、食用限量与不适宜人群</b>；
+          作为药材使用时（剂量、配伍）仍属药品管理范畴。</li>
+        </ul>
+        <div class="warn"><b>常见误读</b>：「药食同源 = 上品无害」是错的。目录内物质同样有性味偏性、剂量边界与禁忌人群
+        （苦杏仁、甘草、决明子、肉桂等都在目录内，也都有限量与禁忌）——本站每张卡片都标注了这些信息。</div>
+      </div>
+    </section>
+
+    <section class="topic" id="s2">
+      <h2><span class="secno">7.2</span> 药膳基础：四气五味 · 归经 · 体质</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3>四气五味与归经<sup class="cite" data-src="S13"></sup></h3>
+          <ul>
+            <li><b>四气</b>：寒、凉、平、温、热——寒热之性用以纠偏（热者寒之、寒者热之）。</li>
+            <li><b>五味</b>：辛散、甘补、酸收、苦泄、咸软。</li>
+            <li><b>归经</b>：作用趋向的脏腑定位（如枸杞归肝肾、山药归脾肺肾）。</li>
+            <li>药膳配伍讲<b>寒温制衡</b>（姜配蟹）、<b>补泻兼顾</b>（补气配理气防壅滞）。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>九种体质（标准 ZYYXH/T157-2009）<sup class="cite" data-src="S14"></sup></h3>
+          <p>平和、气虚、阳虚、阴虚、痰湿、湿热、血瘀、气郁、特禀。
+          体质辨识是药膳「因人制宜」的工具——<b>本页的简化问卷仅供科普体验，不能替代中医师的四诊辨证</b>。
+          下方 7.4 可自测。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="topic" id="s3">
+      <h2><span class="secno">7.3</span> 🌿 目录物质图鉴（点击翻面）</h2>
+      <div class="card">
+        <div class="ctl-row" style="grid-template-columns:70px 1fr auto;align-items:center">
+          <span class="ctl-label">🔍 搜索</span>
+          <input type="text" id="hq" placeholder="药材名称，如：陈皮、罗汉果…" style="width:100%">
+          <span class="muted small" id="hcount"></span>
+        </div>
+        <div style="margin-top:10px"><span id="hcatChips"></span></div>
+      </div>
+      <div class="food-grid" id="herbGrid"></div>
+      <div class="card">
+        <p class="small muted">说明：「功能主治」为药典 2020 一部对<b>药材</b>的表述口径（证据等级 C，经验医学体系）；
+        「现代研究」栏按本站证据等级标注。剂量为药典药材剂量，<b>日常食疗用量应更保守</b>；
+        有毒品种（苦杏仁）必须按炮制规范使用。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="s4">
+      <h2><span class="secno">7.4</span> 🧾 体质自测（科普简化版）</h2>
+      <div class="card">
+        <p>以下为《中医体质分类与判定》的<b>极简科普版</b>（每型一题）：选择最符合你近一年的状态。
+        结果仅提示体质倾向与食养方向，<b>不构成诊断</b>；慢病、孕产、用药人群请咨询中医师。</p>
+        <div id="btQuiz"></div>
+        <div id="btResult"></div>
+      </div>
+    </section>
+
+    <section class="topic" id="s5">
+      <h2><span class="secno">7.5</span> ⛔ 安全红线：这些「天然物」不要自行入口</h2>
+      <div class="card"><div id="redlines"></div></div>
+      <div class="danger"><span class="dt">一句话原则</span>：不认识的不吃；「纯天然」不等于安全；
+      以「养生」「偏方」为目的自行长期服用任何药材前，先问医生或药师。</div>
+    </section>
+
+    <section class="topic" id="s6">
+      <h2><span class="secno">7.6</span> 随堂检测</h2>
+      <div class="card"><div id="quiz1"></div></div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('herbs.html');
+HUI.footer();
+HUI.pager('herbs.html');
+HUI.progress('herbs.html');
+
+document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+  ['s1|7.1 目录法规沿革', 's2|7.2 四气五味与体质', 's3|7.3 药材图鉴', 's4|7.4 体质自测', 's5|7.5 ⛔ 安全红线', 's6|7.6 随堂检测']
+    .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const D = window.HDATA;
+  const CATS = { qipi: '益气健脾', buxue: '补血滋阴', queshi: '健脾祛湿', xiaoshi: '理气消食', qingre: '清热', wenli: '温里', zhike: '止咳利咽', ganshen: '补益肝肾', jiebiao: '解表活血', xin: '目录新增' };
+  const state = { q: '', cat: 'all' };
+
+  function herbCard(h) {
+    const toxic = h.toxic;
+    return `<div class="flip" style="min-height:240px"><div class="flip-inner" style="min-height:240px">
+      <div class="face" style="justify-content:flex-start;${toxic ? 'border-color:var(--cc);border-width:1.5px' : ''}">
+        <div class="fmeta" style="padding:14px 14px 0">
+          <b style="font-size:17px">${HUI.esc(h.name)}</b>
+          ${toxic ? '<span class="verdict bad">有毒 慎用</span>' : ''}
+          <div class="muted small">${HUI.esc(CATS[h.cat] || '')} · ${HUI.esc(h.catalog_note || '')}</div>
+        </div>
+        <div class="fmeta" style="padding:8px 14px 10px">
+          <p style="margin:4px 0"><b>性味</b>：${HUI.esc(h.tcm.nature)} · ${HUI.esc(h.tcm.flavor)}</p>
+          <p style="margin:4px 0"><b>归经</b>：${HUI.esc(h.tcm.meridian)}经</p>
+          <p style="margin:4px 0"><b>药材用量</b>：${HUI.esc(h.dose)} <span class="level-badge lc">证据C</span></p>
+        </div>
+        <div class="flip-hint">点击翻面：功能主治 / 现代研究 / 禁忌 ↻</div>
+      </div>
+      <div class="face back" style="position:absolute;inset:0;transform:rotateY(180deg)">
+        <h4>${HUI.esc(h.name)}（${HUI.esc(CATS[h.cat] || '')}）</h4>
+        <div class="sec-t">功能主治（药典 2020 口径）</div>
+        <p>${HUI.esc(h.tcm.func)} <sup class="cite" data-src="S3"></sup></p>
+        <div class="sec-t">现代研究 / 应用 ${HUI.badgeLevel(h.modern.level)}</div>
+        <p>${HUI.esc(h.modern.text)}</p>
+        <div class="sec-t">禁忌与注意</div>
+        <p>${toxic ? '<span class="verdict bad">⛔</span> ' : '⚠️ '}${HUI.esc(h.caution)}</p>
+      </div>
+    </div></div>`;
+  }
+
+  function draw() {
+    const q = state.q.trim().toLowerCase();
+    const list = D.HERBS.filter(h => {
+      if (state.cat !== 'all' && h.cat !== state.cat) return false;
+      if (q && h.name.toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    document.getElementById('hcount').textContent = '共 ' + list.length + ' 种';
+    document.getElementById('herbGrid').innerHTML = list.map(herbCard).join('') ||
+      '<p class="muted">没有匹配的药材。</p>';
+  }
+
+  (function chips() {
+    const host = document.getElementById('hcatChips');
+    host.className = 'chips';
+    host.innerHTML = [['all', '全部']].concat(Object.keys(CATS).map(k => [k, CATS[k]]))
+      .map(t => `<span class="chip btn ${t[0] === 'all' ? 'on' : ''}" data-v="${t[0]}">${t[1]}</span>`).join('');
+    Array.prototype.forEach.call(host.querySelectorAll('.chip'), c => {
+      c.addEventListener('click', () => {
+        Array.prototype.forEach.call(host.querySelectorAll('.chip'), x => x.classList.remove('on'));
+        c.classList.add('on');
+        state.cat = c.getAttribute('data-v');
+        draw();
+      });
+    });
+  })();
+  document.getElementById('hq').addEventListener('input', e => { state.q = e.target.value; draw(); });
+  draw();
+  HUI.bindFlip(document);
+
+  /* ---------- 体质自测 ---------- */
+  const BT = [
+    { type: '气虚', q: '你容易疲乏、说话声低、稍动即出汗或易感冒吗？',
+      tips: ['山药', '大枣', '黄芪', '小米', '鸡肉'], note: '食养方向：益气健脾；避免过度耗气（过汗过劳）。' },
+    { type: '阳虚', q: '你手脚经常发凉、胃脘部怕冷、比别人不耐寒吗？',
+      tips: ['干姜', '肉桂', '生姜', '龙眼肉'], note: '食养方向：温阳散寒；少食生冷寒凉。' },
+    { type: '阴虚', q: '你手脚心发热、口干咽燥、眼睛皮肤偏干吗？',
+      tips: ['百合', '玉竹', '麦冬', '桑椹', '梨'], note: '食养方向：滋阴润燥；少食辛辣煎炸与温燥之品。' },
+    { type: '痰湿', q: '你常觉身体沉重、腹部肥满、舌苔厚腻吗？',
+      tips: ['薏苡仁', '赤小豆', '白扁豆', '陈皮', '茯苓'], note: '食养方向：健脾祛湿；控油控糖、多动。' },
+    { type: '湿热', q: '你面部油腻易生痘、口苦口臭、大便黏滞吗？',
+      tips: ['绿豆', '苦瓜', '金银花', '菊花'], note: '食养方向：清热利湿；少酒少辣少油炸。' },
+    { type: '血瘀', q: '你面色口唇偏暗、皮肤易见瘀斑、局部有固定刺痛吗？',
+      tips: ['山楂', '玫瑰花', '黑木耳', '洋葱'], note: '食养方向：活血行气；规律运动。' },
+    { type: '气郁', q: '你常情绪低落或紧张焦虑、胸胁胀闷、爱叹气吗？',
+      tips: ['玫瑰花', '陈皮', '薄荷', '佛手'], note: '食养方向：疏肝理气；运动与社交同样重要。' },
+    { type: '特禀', q: '你容易过敏吗（药物、食物、花粉、荨麻疹等）？',
+      tips: [], note: '首要任务：就医明确并规避过敏原；不要盲目「调体质」，新食材逐一少量尝试。' }
+  ];
+  const scores = {};
+  document.getElementById('btQuiz').innerHTML = BT.map((b, i) => `
+    <div class="q-item" data-bt="${i}">
+      <div class="q-head">第 ${i + 1} 题</div>
+      <div class="q-text">${HUI.esc(b.q)}</div>
+      <div class="q-opts">
+        ${['经常', '偶尔', '没有'].map((t, k) => `<button type="button" data-s="${k}">${t}</button>`).join('')}
+      </div>
+    </div>`).join('');
+  Array.prototype.forEach.call(document.querySelectorAll('[data-bt] .q-opts button'), btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('[data-bt]');
+      Array.prototype.forEach.call(item.querySelectorAll('button'), x => x.classList.remove('ok'));
+      btn.classList.add('ok');
+      scores[+item.getAttribute('data-bt')] = 2 - +btn.getAttribute('data-s');
+      showResult();
+    });
+  });
+  function showResult() {
+    if (Object.keys(scores).length < BT.length) return;
+    let best = '平和', bestV = 0, tie = [];
+    BT.forEach((b, i) => {
+      const v = scores[i] || 0;
+      if (v > bestV) { bestV = v; best = b.type; tie = [b]; }
+      else if (v === bestV && v > 1) { tie.push(b); }
+    });
+    let html = '';
+    if (bestV < 2) {
+      html = `<div class="keypoint"><b>倾向：平和质</b> —— 没有明显偏颇倾向。保持均衡膳食与规律作息即可，
+        无需刻意「补」或「清」。<br><span class="small muted">（若个别题目选了「偶尔」，可参考对应方向微调）</span></div>`;
+    } else {
+      const b = BT.find(x => x.type === best);
+      html = `<div class="keypoint"><b>倾向：${best}质</b>（得分最高的维度）<br>${b.note}<br>
+        食养参考：${b.tips.length ? b.tips.map(t => `<span class="chip hl" style="margin:2px 4px 2px 0">${t}</span>`).join('') : '遵医嘱'}
+        </div><p class="small muted">⚠ 简化问卷仅供科普体验；体质常为兼夹，请以中医师面诊为准。</p>`;
+    }
+    document.getElementById('btResult').innerHTML = html;
+  }
+
+  /* ---------- 安全红线 ---------- */
+  const RED = [
+    ['何首乌（自行服用）', '生首乌与长期自行服用有明确肝损伤报告，药监部门多次发布警示；制首乌也须凭医师处方。不属于食药物质目录。'],
+    ['土三七（菊三七）', '含吡咯里西啶生物碱，致肝小静脉闭塞病（HVOD）——「泡酒治跌打」的偏方是真实致命案例来源。'],
+    ['含马兜铃酸的药材', '关木通、广防己、青木香、天仙藤等——马兜铃酸有明确肾毒性与泌尿系致癌性，已从药典剔除。'],
+    ['生川乌、生草乌、雪上一枝蒿', '乌头碱剧毒：泡酒外擦内服均有致死案例；必须炮制且凭处方使用，家庭绝对禁止。'],
+    ['鱼胆（生吞「明目」）', '鱼胆毒素致急性肾衰竭——「清热明目」偏方是急诊真实病例来源，生熟皆不可。'],
+    ['雷公藤、断肠草（钩吻）', '剧毒植物：与可食植物外形相近（钩吻花似金银花），误采误泡酒致命。'],
+    ['有毒蘑菇', '我国食源性疾病死亡首要原因：鹅膏属「假愈期」后暴发肝衰竭。不采、不买、不吃野生蘑菇。'],
+    ['曼陀罗、商陆、蓖麻籽', '常被误当野菜/零食；商陆「人参果」、蓖麻籽中毒均为儿童急诊常见。']
+  ];
+  document.getElementById('redlines').innerHTML = RED.map(r =>
+    `<div class="hazard-card"><span class="hz-name">⛔ ${r[0]}</span><p style="margin:6px 0 0">${r[1]}</p></div>`).join('');
+
+  if (D.QUIZ_BANK && D.QUIZ_BANK.herbs && D.QUIZ_BANK.herbs.length) {
+    HUI.quiz('quiz1', D.QUIZ_BANK.herbs, { id: 'herbs' });
+  }
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

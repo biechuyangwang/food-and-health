@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>疾病食疗 I · 代谢与心血管 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">❤️</div>
+      <div class="ch-no">第 4 章 · 疾病食疗</div>
+      <h1>疾病食疗 I · 代谢与心血管</h1>
+      <p>2型糖尿病、血脂异常、高血压、肥胖、痛风、脂肪肝——六种最常见的慢性代谢问题。
+      每节固定结构：<b>概述 → 饮食目标 → 推荐食物（链到图鉴）→ 限制食物 → 一日食谱示例 → 红色警示（何时必须就医）</b>。
+      依据各专科防治指南编写<sup class="cite" data-src="S15,S16,S17,S18,S19,S21"></sup>。</p>
+      <div class="warn" style="margin-top:10px"><b>总原则</b>：膳食调整是慢性病治疗的<b>基础</b>而非<b>替代</b>；
+      已确诊并用药者，任何饮食计划都应告知主管医生；本页食谱为示意，具体方案需个体化。</div>
+    </div>
+
+    <section class="topic" id="s0">
+      <h2><span class="secno">4.0</span> 🔭 疾病 → 目标 → 食物 路径图</h2>
+      <div class="card"><div id="pathmap"></div></div>
+    </section>
+
+    <div id="sections"></div>
+
+    <section class="topic" id="quiz">
+      <h2><span class="secno">4.7</span> 随堂检测</h2>
+      <div class="card"><div id="quiz1"></div></div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('disease-metabolic.html');
+HUI.footer();
+HUI.pager('disease-metabolic.html');
+HUI.progress('disease-metabolic.html');
+
+(function () {
+  const D = window.HDATA;
+  const PAGE = 'disease-metabolic.html';
+  const list = D.DISEASES.filter(d => d.page.indexOf(PAGE) === 0);
+
+  HUI.pathMap('pathmap', list);
+
+  document.getElementById('sections').innerHTML = list.map((d, i) => `
+    <section class="topic" id="s${i + 1}">
+      <h2><span class="secno">4.${i + 1}</span> ${HUI.esc(d.name)}</h2>
+      <div class="card">
+        <p>${d.brief} <sup class="cite" data-src="${d.src.join(',')}"></sup></p>
+        <h3>🎯 饮食目标</h3>
+        <div class="chips">${d.targets.map(t => `<span class="chip hl">${HUI.esc(t)}</span>`).join('')}</div>
+        <h3 style="margin-top:14px">✅ 推荐食物（点击回图鉴查看详情）</h3>
+        <div class="chips">${(d.recommend || []).map(r => {
+          const f = HUI.foodById(r.food);
+          return `<a class="chip good" href="foods.html" title="${HUI.esc(r.why)}">${HUI.esc(f ? f.name : r.food)} ${HUI.badgeLevel(r.level)}</a>`;
+        }).join('')}</div>
+        <h3 style="margin-top:14px">🚫 限制 / 避免</h3>
+        <ul>${d.limit.map(x => `<li>${HUI.esc(x)}</li>`).join('')}</ul>
+        <div class="keypoint"><b>一日食谱示例</b>（示意，非个体处方）：${HUI.esc(d.meal)}</div>
+        <div class="danger"><span class="dt">⛔ 何时必须就医</span><br>${HUI.esc(d.red_flag)}</div>
+      </div>
+    </section>`).join('');
+
+  document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+    ['s0|4.0 路径图'].concat(list.map((d, i) => 's' + (i + 1) + '|4.' + (i + 1) + ' ' + d.name)).concat(['quiz|4.7 随堂检测'])
+      .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+  if (D.QUIZ_BANK && D.QUIZ_BANK.metabolic && D.QUIZ_BANK.metabolic.length) {
+    HUI.quiz('quiz1', D.QUIZ_BANK.metabolic, { id: 'metabolic' });
+  }
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

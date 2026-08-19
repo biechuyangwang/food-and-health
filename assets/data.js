@@ -164,7 +164,7 @@ window.HDATA = {
       pairs_good: ['kelp'], pairs_bad: [], disease_tags: ['hypertension', 'dyslipidemia', 'osteoporosis'], tags: ['高蛋白', '高钙'] },
     { id: 'soymilk', name: '豆浆（无糖）', cat: 'bean', photo: 'assets/img/soymilk.jpg', emoji: '🥛',
       tcm: null,
-      nutrients: { energy: 31, protein: 3.0, fat: 1.6, carb: 1.2, fiber: 0, notable: '蛋白质约3g/100ml；不含乳糖', src: 'S2' },
+      nutrients: { energy: 31, protein: 3.0, fat: 1.6, carb: 1.2, fiber: 0, notable: '蛋白质约3g/100ml（豆浆 100ml≈100g）；不含乳糖', src: 'S2' },
       benefits: [
         { text: '乳糖不耐受人群的牛奶替代品之一', level: 'B', src: ['S1'] }
       ],
@@ -420,12 +420,12 @@ window.HDATA = {
       pairs_good: ['milk', 'tomato', 'bittergourd'], pairs_bad: [], disease_tags: ['fitness'], tags: ['高蛋白'] },
     { id: 'milk', name: '牛奶（全脂）', cat: 'animal', photo: 'assets/img/milk.jpg', emoji: '🥛',
       tcm: { nature: '平', flavor: '甘', meridian: '心、肺、胃', func: '补虚损、益肺胃、生津润肤（《本草纲目》·牛乳）', src: 'S5', level: 'C' },
-      nutrients: { energy: 54, protein: 3.0, fat: 3.2, carb: 3.4, fiber: 0, notable: '钙约104mg/100ml；维B2', src: 'S2' },
+      nutrients: { energy: 54, protein: 3.0, fat: 3.2, carb: 3.4, fiber: 0, notable: '钙约104mg/100ml（牛奶 100ml≈100g，密度≈1）；维B2', src: 'S2' },
       benefits: [
         { text: '钙与优质蛋白的核心膳食来源', level: 'A', src: ['S1', 'S20'] }
       ],
       caution: '乳糖不耐受者：选酸奶/低乳糖奶/分次少量；不要空腹大量饮奶。',
-      serve: '每日 300–500g 奶及奶制品（指南 2022 推荐量）。',
+      serve: '每日 300–500ml 液态奶，或相当量的酸奶、奶酪折算（指南 2022 推荐奶及奶制品 300–500g/日）。',
       pairs_good: ['oat'], pairs_bad: [], disease_tags: ['osteoporosis'], tags: ['高钙', '高蛋白'] },
     { id: 'yogurt', name: '酸奶（无糖）', cat: 'animal', photo: 'assets/img/yogurt.jpg', emoji: '🥛',
       tcm: null,
@@ -467,9 +467,9 @@ window.HDATA = {
       pairs_good: ['ginger'], pairs_bad: [], disease_tags: [], tags: ['高蛋白', '富锌'] },
     { id: 'porkliver', name: '猪肝', cat: 'animal', photo: 'assets/img/porkliver.jpg', emoji: '🍖',
       tcm: { nature: '温', flavor: '甘、苦', meridian: '肝', func: '补肝明目、养血（《本草纲目》·猪肝）', src: 'S5', level: 'C' },
-      nutrients: { energy: 129, protein: 19.3, fat: 3.5, carb: 5.0, fiber: 0, notable: '血红素铁约22.6mg/100g；维生素A约4972μgRAE；叶酸', src: 'S2' },
+      nutrients: { energy: 129, protein: 19.3, fat: 3.5, carb: 5.0, fiber: 0, notable: '铁约22.6mg/100g（动物性血红素铁为主，吸收率高）；维生素A约4972μgRAE；叶酸', src: 'S2' },
       benefits: [
-        { text: '血红素铁（吸收率高）与维生素A的浓缩来源，缺铁性贫血膳食补充的经典选择', level: 'A', src: ['S26', 'S2'] }
+        { text: '铁与维生素A的浓缩来源，缺铁性贫血膳食补充的经典选择', level: 'A', src: ['S26', 'S2'] }
       ],
       caution: '维生素A 有可耐受最高摄入量：孕妇每周不超过 1–2 次、每次少量（过量有致畸风险）；高胆固醇血症者控制。',
       serve: '每周 1–2 次、每次 25–50g；与深色蔬菜同餐。',
@@ -759,7 +759,7 @@ window.HDATA = {
       brief: '最常见的贫血类型；膳食补铁有效但前提是查明并处理病因（月经量多、消化道失血、吸收不良等）。',
       targets: ['增加血红素铁摄入', '植物铁配维C促吸收', '干扰因素错时（茶/咖啡/钙）'],
       recommend: [
-        { food: 'porkliver', why: '血红素铁约22.6mg/100g，吸收率高', level: 'A' },
+        { food: 'porkliver', why: '铁约22.6mg/100g（血红素铁为主，吸收率高）', level: 'A' },
         { food: 'spinach', why: '非血红素铁+自带维C', level: 'B' },
         { food: 'orange', why: '维C同餐促非血红素铁吸收', level: 'A' },
         { food: 'egg', why: '辅助优质蛋白', level: 'B' }
@@ -912,7 +912,7 @@ window.HDATA = {
       modern: { text: '桑叶茶（霜桑叶）为传统清肺明目茶饮；含 DNJ 生物碱，降糖研究多在实验阶段', level: 'C', src: ['S3'] },
       caution: '脾胃虚寒者慎用。' },
     { id: 'juemingzi', name: '决明子', cat: 'qingre', in_catalog: true, catalog_note: '原86种目录',
-      tcm: { nature: '微寒', flavor: '甘、苦', meridian: '肝、肾、大肠', func: '清热明目、润肠通便' }, dose: '9–15g',
+      tcm: { nature: '微寒', flavor: '甘、苦、咸', meridian: '肝、肾、大肠', func: '清热明目、润肠通便' }, dose: '9–15g',
       modern: { text: '决明子代茶饮与轻度降压降脂的荟萃分析提示作用微弱，证据质量有限', level: 'B', src: ['S3'] },
       caution: '便溏腹泻者慎用；低血压者注意；孕妇慎用；不宜长期连续大量饮用。' },
     { id: 'pugongying', name: '蒲公英', cat: 'qingre', in_catalog: true, catalog_note: '原86种目录',

@@ -45,8 +45,8 @@
     </div>
 
     <section class="topic" id="s1">
-      <h2><span class="secno">1.1</span> 宏量营养素：三大供能物质 ＋ 膳食纤维与水</h2>
-      <p class="small muted" style="margin:0 0 6px">蛋白质、脂类、碳水化合物是<b>三大供能营养素</b>（卡片标注每克产能，酒精也供能但不属于营养素）；膳食纤维与水<b>不提供能量</b>，但同属每日需要量大的膳食基本成分，一并在本节介绍。</p>
+      <h2><span class="secno">1.1</span> 三大宏量营养素 ＋ 膳食纤维与水</h2>
+      <p class="small muted" style="margin:0 0 6px"><b>宏量营养素 = 蛋白质、脂类、碳水化合物</b>（每克产能 4 / 9 / 4 kcal；酒精也供能但不属于营养素）。膳食纤维与水<b>不属于宏量营养素、也不提供能量</b>，但同属每日需要量大的膳食基本成分，故一并在本节介绍。</p>
       <div class="grid2">
         <div class="card">
           <h3><span class="tag">4 kcal/g</span>蛋白质</h3>
@@ -144,7 +144,7 @@ HUI.pager('nutrient.html');
 HUI.progress('nutrient.html');
 
 document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
-  ['s1|1.1 宏量营养素', 's2|1.2 膳食宝塔互动', 's3|1.3 维生素与矿物质', 's4|1.4 GI 对比器', 's5|1.5 食品标签', 's6|1.6 随堂检测']
+  ['s1|1.1 宏量营养素与纤维水', 's2|1.2 膳食宝塔互动', 's3|1.3 维生素与矿物质', 's4|1.4 GI 对比器', 's5|1.5 食品标签', 's6|1.6 随堂检测']
     .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
 
 (function () {

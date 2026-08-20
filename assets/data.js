@@ -171,6 +171,33 @@ window.HDATA = {
       caution: '⛔ 必须彻底煮沸：「假沸」（约80℃大量起泡）后继续小火煮5分钟，破坏胰蛋白酶抑制剂与凝集素。',
       serve: '不加糖；与谷类早餐搭配提高蛋白质互补。',
       pairs_good: ['egg', 'oat'], pairs_bad: [], disease_tags: [], tags: ['高蛋白'] },
+    { id: 'driedtofu', name: '豆腐干（白）', alias: ['白干', '豆干'], cat: 'bean', photo: 'assets/img/driedtofu.jpg', emoji: '🍥',
+      tcm: null,
+      nutrients: { energy: 140, protein: 17.0, fat: 4.0, carb: 6.0, fiber: 0.5, notable: '钙约140–300mg/100g（点卤与压制工艺差异大，卤干/千张更高）', src: 'S2' },
+      benefits: [
+        { text: '高蛋白、高钙的浓缩豆制品，便携耐储', level: 'A', src: ['S2'] }
+      ],
+      caution: '卤制豆干钠含量常偏高：高血压人群看营养成分表选低钠款。',
+      serve: '凉拌、快炒；替代部分肉类作为蛋白质来源。',
+      pairs_good: ['celery'], pairs_bad: [], disease_tags: ['osteoporosis'], tags: ['高蛋白', '高钙'] },
+    { id: 'yuzhu', name: '腐竹', alias: ['豆腐皮', '枝竹'], cat: 'bean', photo: 'assets/img/yuzhu.jpg', emoji: '🥢',
+      tcm: null,
+      nutrients: { energy: 461, protein: 44.6, fat: 21.7, carb: 19.8, fiber: 2.2, notable: '蛋白质约44.6%——植物蛋白的浓缩形态', src: 'S2' },
+      benefits: [
+        { text: '豆制品中蛋白质密度最高的品类之一', level: 'A', src: ['S2'] }
+      ],
+      caution: '能量与脂肪较高（豆浆表面油皮晒制）：减脂期注意份量。',
+      serve: '冷水泡发 1–2 小时后凉拌或烧菜。',
+      pairs_good: [], pairs_bad: [], disease_tags: [], tags: ['高蛋白'] },
+    { id: 'edamame', name: '毛豆（鲜）', cat: 'bean', photo: 'assets/img/edamame.jpg', emoji: '🫛',
+      tcm: null,
+      nutrients: { energy: 123, protein: 13.1, fat: 5.0, carb: 10.5, fiber: 4.0, notable: '蛋白质约13%（鲜豆类中最高之一）；钾约478mg；叶酸丰富', src: 'S2' },
+      benefits: [
+        { text: '优质植物蛋白 + 钾 + 叶酸的组合，膳食纤维高于多数蔬菜', level: 'A', src: ['S2'] }
+      ],
+      caution: '痛风急性期限量（嘌呤中等）；盐水毛豆注意盐量。',
+      serve: '盐水毛豆是经典夏季吃法；替代部分零食。',
+      pairs_good: [], pairs_bad: [], disease_tags: ['hypertension'], tags: ['高蛋白', '高钾', '高纤维'] },
 
     /* —— 蔬菜 —— */
     { id: 'spinach', name: '菠菜', alias: ['赤根菜'], cat: 'veg', photo: 'assets/img/spinach.jpg', emoji: '🥬',
@@ -270,6 +297,15 @@ window.HDATA = {
       ],
       serve: '干香菇泡发后炖煮；泡发水沉淀后可入汤（鲜味物质溶于水）。',
       pairs_good: [], pairs_bad: [], disease_tags: [], tags: ['高纤维'] },
+    { id: 'woodear', name: '黑木耳（干）', alias: ['木耳'], cat: 'veg', photo: 'assets/img/woodear.jpg', emoji: '🍄',
+      tcm: null,
+      nutrients: { energy: 205, protein: 12.1, fat: 1.5, carb: 65.6, fiber: 29.9, notable: '铁约97mg/100g（干基，泡发后大幅稀释）；木耳多糖（可溶性胶质）', src: 'S2' },
+      benefits: [
+        { text: '膳食纤维与木耳多糖丰富；多糖的抗凝研究多在实验阶段，不能替代抗凝药物', level: 'B', src: ['S2', 'S31'] }
+      ],
+      caution: '干品铁数值泡发后大打折扣，不能当主力补铁；泡发 ≤24 小时并冷藏（久泡有米酵菌酸中毒风险）；服抗凝药者保持食量稳定。',
+      serve: '冷水泡发 1–2 小时后凉拌或快炒。',
+      pairs_good: [], pairs_bad: [], disease_tags: ['constipation'], tags: ['高铁', '高纤维'] },
     { id: 'kelp', name: '海带（鲜）', alias: ['昆布', '江白菜'], cat: 'veg', photo: 'assets/img/kelp.jpg', emoji: '🌊',
       tcm: { nature: '寒', flavor: '咸', meridian: '肝、胃、肾', func: '消痰软坚散结、利水消肿（药典 2020·昆布）', src: 'S3', level: 'C' },
       nutrients: { energy: 13, protein: 1.2, fat: 0.1, carb: 2.1, fiber: 0.5, notable: '碘（含量因产地与干燥方式差异大）；海藻酸；钾', src: 'S2' },
@@ -455,7 +491,7 @@ window.HDATA = {
       ],
       caution: '嘌呤较高：高尿酸血症与痛风患者急性期避免，缓解期限量。',
       serve: '水浸罐头优于油浸；连骨食用补钙。',
-      pairs_good: [], pairs_bad: ['alcohol'], disease_tags: ['gout'], tags: ['omega3', '高蛋白'] },
+      pairs_good: [], pairs_bad: ['alcohol'], disease_tags: ['gout'], tags: ['omega3', '高蛋白', '高钙'] },
     { id: 'oyster', name: '牡蛎', alias: ['生蚝', '海蛎子'], cat: 'animal', photo: 'assets/img/oyster.jpg', emoji: '🦪',
       tcm: { nature: '微温', flavor: '甘、咸', meridian: '肝、肾', func: '滋阴养血、补虚（《本草纲目》·蛎肉）', src: 'S5', level: 'C' },
       nutrients: { energy: 73, protein: 5.3, fat: 2.1, carb: 8.2, fiber: 0, notable: '锌含量因产地差异大（约9–70mg/100g），居常见食物前列', src: 'S2' },
@@ -500,6 +536,42 @@ window.HDATA = {
       caution: '常见过敏原；头部嘌呤与胆固醇较高，痛风患者限量。',
       serve: '白灼保留鲜味；「虾+维C中毒」为谣言（见搭配页辨析）。',
       pairs_good: [], pairs_bad: [], disease_tags: [], tags: ['高蛋白'] },
+    { id: 'cheese', name: '奶酪（干酪）', alias: ['芝士', '干酪'], cat: 'animal', photo: 'assets/img/cheese.jpg', emoji: '🧀',
+      tcm: null,
+      nutrients: { energy: 328, protein: 25.7, fat: 23.5, carb: 3.5, fiber: 0, notable: '钙约799mg/100g（浓缩乳制品）；钠较高', src: 'S2' },
+      benefits: [
+        { text: '钙与蛋白质的浓缩来源（指南奶及奶制品推荐量的折算形式之一）', level: 'A', src: ['S1', 'S20'] }
+      ],
+      caution: '脂肪与钠较高：优先原制奶酪，再制奶酪看配料表；儿童选低钠款。',
+      serve: '每日 20–30g（计入 300–500ml 奶当量）；佐餐或加餐。',
+      pairs_good: [], pairs_bad: [], disease_tags: ['osteoporosis'], tags: ['高钙', '高蛋白'] },
+    { id: 'driedshrimp', name: '虾皮', alias: ['虾米'], cat: 'animal', photo: 'assets/img/driedshrimp.jpg', emoji: '🦐',
+      tcm: null,
+      nutrients: { energy: 153, protein: 30.7, fat: 2.2, carb: 2.5, fiber: 0, notable: '钙约991mg/100g（带壳干制浓缩）', src: 'S2' },
+      benefits: [
+        { text: '传统补钙配料：单位钙含量极高（实际吸收受壳质影响，勿作唯一钙源）', level: 'B', src: ['S2'] }
+      ],
+      caution: '⚠️ 钠极高（约5000mg/100g）：每次一小撮调味，可先温水泡洗减盐；高血压者少用。',
+      serve: '汤羹、馅料、拌菜提鲜补钙用一小撮。',
+      pairs_good: [], pairs_bad: [], disease_tags: ['osteoporosis'], tags: ['高钙', '高蛋白'] },
+    { id: 'duckblood', name: '鸭血', cat: 'animal', photo: 'assets/img/duckblood.jpg', emoji: '🍲',
+      tcm: null,
+      nutrients: { energy: 108, protein: 13.6, fat: 0.4, carb: 12.4, fiber: 0, notable: '铁约30.5mg/100g（血红素铁为主，吸收率高）；低脂低嘌呤', src: 'S2' },
+      benefits: [
+        { text: '血红素铁含量与吸收率俱佳的平价补铁食材，低脂低嘌呤', level: 'A', src: ['S2', 'S26'] }
+      ],
+      caution: '选正规预包装产品（散装来源不明者慎）；铁数值因品牌工艺有差异。',
+      serve: '鸭血粉丝汤、鸭血豆腐汤；每周 1–2 次替代部分红肉。',
+      pairs_good: ['spinach'], pairs_bad: [], disease_tags: ['anemia'], tags: ['高铁'] },
+    { id: 'beef', name: '瘦牛肉', cat: 'animal', photo: 'assets/img/beef.jpg', emoji: '🥩',
+      tcm: { nature: '温', flavor: '甘', meridian: '脾、胃', func: '补脾胃、益气血、强筋骨（《本草纲目》·牛）', src: 'S5', level: 'C' },
+      nutrients: { energy: 106, protein: 20.2, fat: 2.3, carb: 1.2, fiber: 0, notable: '铁约2.8–3.3mg/100g（血红素铁）；锌约4.7mg；维B12', src: 'S2' },
+      benefits: [
+        { text: '血红素铁 + 锌 + 维生素B12 的优质组合', level: 'A', src: ['S26', 'S20'] }
+      ],
+      caution: '红肉总量控制：畜肉每日 40–75g（指南推荐量）；香肠培根等加工肉另计且应尽量少吃。',
+      serve: '与蔬菜同炒或炖煮；选里脊等瘦部位。',
+      pairs_good: [], pairs_bad: [], disease_tags: ['anemia', 'fitness'], tags: ['高铁', '高蛋白'] },
 
     /* —— 油脂、饮品与调味 —— */
     { id: 'oliveoil', name: '橄榄油', cat: 'oil', photo: 'assets/img/oliveoil.jpg', emoji: '🫒',
@@ -583,6 +655,8 @@ window.HDATA = {
       modern: '低温烹调时以单不饱和油脂为主，避免n-3脂肪酸在高饱和油/反复油炸下氧化。', tcm: '', tip: '锡纸包烤或清蒸更优。' },
     { a: 'ginger', b: 'crab', verdict: 'good', level: 'C', src: ['S13'],
       modern: '姜醋汁去腥提味，并为高蛋白寒性食材增添温性风味（感官与饮食习惯层面）。', tcm: '蟹性寒，传统以姜之温制之——药膳学经典「寒温制衡」配伍。', tip: '蒸蟹配姜醋是风味与传统的双重经典。' },
+    { a: 'duckblood', b: 'spinach', verdict: 'good', level: 'B', src: ['S26', 'S20'],
+      modern: '经典补铁组合：鸭血提供血红素铁（吸收率高），菠菜补叶酸并自带维C促进非血红素铁吸收。', tcm: '鸭血菠菜汤为民间传统补血汤方。', tip: '菠菜先焯水去草酸，与鸭血同煮成汤。' },
     /* —— 拮抗 / 需注意（慎） —— */
     { a: 'spinach', b: 'tofu', verdict: 'caution', level: 'B', src: ['S20'],
       modern: '草酸可与钙结合影响吸收，但「菠菜豆腐结石」被夸大：菠菜焯水 30 秒可去除大部分草酸，两者完全可以同食。', tcm: '典籍无此禁忌，为现代流传说法。', tip: '关键动作：菠菜先焯水，再与豆腐同烹。' },

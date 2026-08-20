@@ -332,7 +332,7 @@
   "title": "File:Joghurt.jpg",
   "pageUrl": "https://commons.wikimedia.org/wiki/File:Joghurt.jpg",
   "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Joghurt.jpg?width=560",
-  "artist": "见 Commons 文件页",
+  "artist": "No machine-readable author provided. Rainer Zenz assumed …",
   "license": "GFDL"
  },
  "salmon": {
@@ -430,5 +430,61 @@
   "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Bitter_gourd.jpg?width=560",
   "artist": "Tenbon",
   "license": "GFDL"
+ },
+ "edamame": {
+  "id": "edamame",
+  "title": "File:Edamame_by_Zesmerelda_in_Chicago.jpg",
+  "pageUrl": "https://commons.wikimedia.org/wiki/File:Edamame_by_Zesmerelda_in_Chicago.jpg",
+  "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Edamame_by_Zesmerelda_in_Chicago.jpg?width=560",
+  "artist": "Tammy Green (aka Zesmerelda) from Chicago Upscale Dining …",
+  "license": "CC BY-SA 2.0"
+ },
+ "cheese": {
+  "id": "cheese",
+  "title": "File:Cheese_platter.jpg",
+  "pageUrl": "https://commons.wikimedia.org/wiki/File:Cheese_platter.jpg",
+  "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Cheese_platter.jpg?width=560",
+  "artist": "见 Commons 文件页",
+  "license": "GFDL"
+ },
+ "driedshrimp": {
+  "id": "driedshrimp",
+  "title": "File:Dried_river_shrimp.JPG",
+  "pageUrl": "https://commons.wikimedia.org/wiki/File:Dried_river_shrimp.JPG",
+  "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Dried_river_shrimp.JPG?width=560",
+  "artist": "Humanfeather / Michelle Jo",
+  "license": "CC BY 3.0"
+ },
+ "beef": {
+  "id": "beef",
+  "title": "File:Standing-rib-roast.jpg",
+  "pageUrl": "https://commons.wikimedia.org/wiki/File:Standing-rib-roast.jpg",
+  "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Standing-rib-roast.jpg?width=560",
+  "artist": "Michael C. Berch, aka MCB at en.wikipedia",
+  "license": "CC BY-SA 2.5"
+ },
+ "woodear": {
+  "id": "woodear",
+  "title": "File:Jelly_Ear,_Auricularia_auricula-judae,_UK_2.jpg",
+  "pageUrl": "https://commons.wikimedia.org/wiki/File:Jelly_Ear%2C_Auricularia_auricula-judae%2C_UK_2.jpg",
+  "thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/Jelly_Ear%2C_Auricularia_auricula-judae%2C_UK_2.jpg?width=560",
+  "artist": "Stu's Images",
+  "license": "CC BY-SA 4.0"
+ },
+ "driedtofu": {
+  "id": "driedtofu",
+  "title": "File:豆干.jpg",
+  "pageUrl": "https://commons.wikimedia.org/wiki/File:%E8%B1%86%E5%B9%B2.jpg",
+  "thumb": "",
+  "artist": "EHALAM BorG 600M",
+  "license": "CC BY-SA 4.0"
+ },
+ "duckblood": {
+  "id": "duckblood",
+  "title": "File:Duck_blood_as_food.jpg",
+  "pageUrl": "https://commons.wikimedia.org/wiki/File:Duck_blood_as_food.jpg",
+  "thumb": "",
+  "artist": "Pauloleong2002",
+  "license": "CC BY-SA 4.0"
  }
 }

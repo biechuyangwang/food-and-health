@@ -59,3 +59,10 @@
 | img/honey.jpg | [File:Runny_hunny.jpg](https://commons.wikimedia.org/wiki/File:Runny_hunny.jpg) | Scott Bauer, USDA ARS | Public domain |
 | img/tea.jpg | [File:Green_tea_3_appearances.jpg](https://commons.wikimedia.org/wiki/File:Green_tea_3_appearances.jpg) | Alessandro Martini | CC0 |
 | img/bittergourd.jpg | [File:Bitter_gourd.jpg](https://commons.wikimedia.org/wiki/File:Bitter_gourd.jpg) | Tenbon | GFDL |
+| img/edamame.jpg | [File:Edamame_by_Zesmerelda_in_Chicago.jpg](https://commons.wikimedia.org/wiki/File:Edamame_by_Zesmerelda_in_Chicago.jpg) | Tammy Green (aka Zesmerelda) from Chicago Upscale Dining … | CC BY-SA 2.0 |
+| img/cheese.jpg | [File:Cheese_platter.jpg](https://commons.wikimedia.org/wiki/File:Cheese_platter.jpg) | 见 Commons 文件页 | GFDL |
+| img/driedshrimp.jpg | [File:Dried_river_shrimp.JPG](https://commons.wikimedia.org/wiki/File:Dried_river_shrimp.JPG) | Humanfeather / Michelle Jo | CC BY 3.0 |
+| img/beef.jpg | [File:Standing-rib-roast.jpg](https://commons.wikimedia.org/wiki/File:Standing-rib-roast.jpg) | Michael C. Berch, aka MCB at en.wikipedia | CC BY-SA 2.5 |
+| img/woodear.jpg | [File:Jelly_Ear,_Auricularia_auricula-judae,_UK_2.jpg](https://commons.wikimedia.org/wiki/File:Jelly_Ear%2C_Auricularia_auricula-judae%2C_UK_2.jpg) | Stu's Images | CC BY-SA 4.0 |
+| img/driedtofu.jpg | [File:豆干.jpg](https://commons.wikimedia.org/wiki/File:%E8%B1%86%E5%B9%B2.jpg) | EHALAM BorG 600M | CC BY-SA 4.0 |
+| img/duckblood.jpg | [File:Duck_blood_as_food.jpg](https://commons.wikimedia.org/wiki/File:Duck_blood_as_food.jpg) | Pauloleong2002 | CC BY-SA 4.0 |

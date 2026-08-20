@@ -53,5 +53,12 @@ window.IMG_CREDITS = {
   "camelliaoil": "图：Simon A. Eugster（GFDL），via Wikimedia Commons",
   "honey": "图：Scott Bauer, USDA ARS（Public domain），via Wikimedia Commons",
   "tea": "图：Alessandro Martini（CC0），via Wikimedia Commons",
-  "bittergourd": "图：Tenbon（GFDL），via Wikimedia Commons"
+  "bittergourd": "图：Tenbon（GFDL），via Wikimedia Commons",
+  "edamame": "图：Tammy Green (aka Zesmerelda) from Chicago Upscale Dining …（CC BY-SA 2.0），via Wikimedia Commons",
+  "cheese": "图：见 Commons 文件页（GFDL），via Wikimedia Commons",
+  "driedshrimp": "图：Humanfeather / Michelle Jo（CC BY 3.0），via Wikimedia Commons",
+  "beef": "图：Michael C. Berch, aka MCB at en.wikipedia（CC BY-SA 2.5），via Wikimedia Commons",
+  "woodear": "图：Stu's Images（CC BY-SA 4.0），via Wikimedia Commons",
+  "driedtofu": "图：EHALAM BorG 600M（CC BY-SA 4.0），via Wikimedia Commons",
+  "duckblood": "图：Pauloleong2002（CC BY-SA 4.0），via Wikimedia Commons"
 };

@@ -13,12 +13,8 @@ const STATE = path.join(__dirname, 'photo_state.json');
 const UA = 'OfflineHealthSite/1.0 (educational static site)';
 const WIDTH = 560;
 
-const OVERRIDE = {
-  blackbean: 'Black_soybeans.jpg',
-  salmon: 'Salmon_fillet.jpg',
-  chickenbreast: 'Raw_chicken_breast.jpg',
-  bittergourd: 'Bitter_gourd.jpg'
-};
+/* 仅列需要替换/补抓的项；已完成的不要保留（避免重复下载撞限流） */
+const OVERRIDE = { /* 见 git 历史：替换记录 */ };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const stripTags = s => String(s || '')
@@ -74,11 +70,12 @@ async function fileInfo(fileTitle) {
     await sleep(1500);
   }
 
-  /* 2. 刷新授权信息 */
+  /* 2. 刷新授权信息（已有有效署名的跳过，减少请求防限流） */
   const keys = Object.keys(state);
   for (const k of keys) {
     const p = path.join(IMG_DIR, state[k].id + '.jpg');
     if (!fs.existsSync(p)) continue;
+    if (state[k].artist !== '?' && !/^\?|^见 Commons 文件页/.test(state[k].artist) && state[k].license !== '?') continue;
     const title = state[k].title.replace(/^File:/, '');
     const info = await fileInfo(title);
     state[k].artist = info.artist;

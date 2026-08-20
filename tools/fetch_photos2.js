@@ -28,7 +28,9 @@ const MAP = {
   egg: 'Egg as food', milk: 'Milk', yogurt: 'Yogurt', salmon: 'Salmon as food', sardine: 'Sardine as food',
   oyster: 'Oyster as food', porkliver: 'Liver as food', chickenbreast: 'Chicken as food',
   crab: 'Crab as food', shrimp: 'Shrimp',
-  oliveoil: 'Olive oil', camelliaoil: 'Tea seed oil', honey: 'Honey', tea: 'Green tea', coffee: 'Coffee'
+  oliveoil: 'Olive oil', camelliaoil: 'Tea seed oil', honey: 'Honey', tea: 'Green tea', coffee: 'Coffee',
+  driedtofu: 'Dried tofu', yuzhu: 'Yuba (food)', edamame: 'Edamame', cheese: 'Cheese',
+  driedshrimp: 'Dried shrimp', duckblood: 'Duck blood (food)', beef: 'Beef', woodear: 'Auricularia auricula-judae'
 };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));

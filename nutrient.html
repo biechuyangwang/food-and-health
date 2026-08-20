@@ -39,14 +39,15 @@
       <div class="hero-emoji">🧬</div>
       <div class="ch-no">第 1 章 · 基础</div>
       <h1>营养素基础</h1>
-      <p>看懂食物的第一步是看懂营养素。本章覆盖<b>宏量营养素、9 种维生素、6 种矿物质</b>，
+      <p>看懂食物的第一步是看懂营养素。本章从<b>三大宏量营养素</b>讲到<b>维生素与矿物质</b>，
+      再用<b>膳食宝塔</b>（含膳食纤维与水的推荐）把它们组装成一日餐盘。
       数值口径取自《中国居民膳食营养素参考摄入量 DRIs（2023 版）》<sup class="cite" data-src="S20"></sup>、
       《中国居民膳食指南（2022）》<sup class="cite" data-src="S1"></sup>与 NIH 膳食补充剂说明书<sup class="cite" data-src="S11"></sup>。</p>
     </div>
 
     <section class="topic" id="s1">
-      <h2><span class="secno">1.1</span> 三大宏量营养素 ＋ 膳食纤维与水</h2>
-      <p class="small muted" style="margin:0 0 6px"><b>宏量营养素 = 蛋白质、脂类、碳水化合物</b>（每克产能 4 / 9 / 4 kcal；酒精也供能但不属于营养素）。膳食纤维与水<b>不属于宏量营养素、也不提供能量</b>，但同属每日需要量大的膳食基本成分，故一并在本节介绍。</p>
+      <h2><span class="secno">1.1</span> 三大宏量营养素</h2>
+      <p class="small muted" style="margin:0 0 6px"><b>宏量营养素 = 蛋白质、脂类、碳水化合物</b>，每克产能 4 / 9 / 4 kcal（酒精也供能但不属于营养素）。</p>
       <div class="grid2">
         <div class="card">
           <h3><span class="tag">4 kcal/g</span>蛋白质</h3>
@@ -72,30 +73,41 @@
             <li>GI 与 GL：GI 衡量升糖速度（见 1.4 互动），GL = GI × 碳水克数 ÷ 100——<b>总量与种类同样重要</b>。</li>
           </ul>
         </div>
-        <div class="card">
-          <h3><span class="tag">0 kcal</span>膳食纤维与水</h3>
-          <ul>
-            <li>纤维推荐 <b>25–30g/日</b>：全谷物、杂豆、蔬果、坚果是主力；可溶性纤维（燕麦β-葡聚糖、果胶）有助胆固醇管理<sup class="cite" data-src="S1,S20"></sup>。</li>
-            <li>饮水推荐量（低活动水平）：男 1700ml、女 1500ml；高温与运动增加<sup class="cite" data-src="S1"></sup>。</li>
-          </ul>
-        </div>
       </div>
     </section>
 
     <section class="topic" id="s2">
-      <h2><span class="secno">1.2</span> 🗼 中国居民膳食宝塔（2022）· 点击每层查看</h2>
+      <h2><span class="secno">1.2</span> 维生素与矿物质：点击卡片翻面</h2>
+      <div class="card">
+        <p>正面：功能与缺乏表现；背面：代表食物 + 摄入量参考（RNI=推荐摄入量，UL=可耐受最高摄入量，成人一般口径）<sup class="cite" data-src="S20,S11"></sup>。</p>
+        <div class="food-grid" id="vitGrid"></div>
+      </div>
+    </section>
+
+    <section class="topic" id="s3">
+      <h2><span class="secno">1.3</span> 🗼 中国居民膳食宝塔（2022）· 点击每层查看</h2>
       <div class="card">
         <div id="pagoda"></div>
         <div id="pagodaInfo" class="keypoint" style="margin-top:10px">👆 点击宝塔任意一层，这里会显示该层的推荐量、举例与常见误区。</div>
         <p class="hint">图形为示意（非等比例）。数据：《中国居民膳食指南（2022）》<sup class="cite" data-src="S1"></sup>。</p>
       </div>
-    </section>
-
-    <section class="topic" id="s3">
-      <h2><span class="secno">1.3</span> 维生素与矿物质：点击卡片翻面</h2>
-      <div class="card">
-        <p>正面：功能与缺乏表现；背面：代表食物 + 摄入量参考（RNI=推荐摄入量，UL=可耐受最高摄入量，成人一般口径）<sup class="cite" data-src="S20,S11"></sup>。</p>
-        <div class="food-grid" id="vitGrid"></div>
+      <div class="grid2">
+        <div class="card">
+          <h3><span class="tag">0 kcal</span>膳食纤维（不供能）</h3>
+          <ul>
+            <li>推荐 <b>25–30g/日</b>：全谷物、杂豆、蔬果、坚果是主力——正对应宝塔第一、二层<sup class="cite" data-src="S1,S20"></sup>。</li>
+            <li><b>可溶性纤维</b>（燕麦β-葡聚糖、果胶）有助胆固醇管理；<b>不溶性纤维</b>促进肠道蠕动。</li>
+            <li>平常吃精米白面多的人，把一部分主食换成全谷物杂豆，是最容易达成的一条。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><span class="tag">0 kcal</span>水（不供能）</h3>
+          <ul>
+            <li>推荐量（低活动水平）：男 <b>1700ml</b>、女 <b>1500ml</b>；高温与运动增加<sup class="cite" data-src="S1"></sup>——即宝塔图右侧的旁注。</li>
+            <li>少量多次饮用；实用自评信号：<b>口渴 + 尿色淡黄</b>。</li>
+            <li>含糖饮料、浓汤不算有效补水（前者还计入添加糖）。</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -144,7 +156,7 @@ HUI.pager('nutrient.html');
 HUI.progress('nutrient.html');
 
 document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
-  ['s1|1.1 宏量营养素与纤维水', 's2|1.2 膳食宝塔互动', 's3|1.3 维生素与矿物质', 's4|1.4 GI 对比器', 's5|1.5 食品标签', 's6|1.6 随堂检测']
+  ['s1|1.1 三大宏量营养素', 's2|1.2 维生素与矿物质', 's3|1.3 膳食宝塔与纤维水', 's4|1.4 GI 对比器', 's5|1.5 食品标签', 's6|1.6 随堂检测']
     .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
 
 (function () {

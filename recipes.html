@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家常食谱推荐 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">🍳</div>
+      <div class="ch-no">第 8 章 · 食谱</div>
+      <h1>家常食谱推荐 · 七份营养均衡的早中晚餐</h1>
+      <p>把前七章的知识落进锅里：每份食谱都按<b>「主食＋蛋白质＋蔬菜」</b>的结构设计<sup class="cite" data-src="S1"></sup>，
+      食材给到克数、步骤给到火候与时间，<b>普通家庭厨房可复刻</b>。营养数据为单份近似估算（依《中国食物成分表》口径折算<sup class="cite" data-src="S2"></sup>）。
+      想扩展菜谱，见下一章收录的开源菜谱库。</p>
+    </div>
+
+    <section class="topic" id="s0">
+      <h2><span class="secno">8.0</span> 配餐三原则（先看这个再看菜）</h2>
+      <div class="grid3">
+        <div class="card"><h3>① 每餐三件套</h3>
+          <p><b>主食（拳头）＋ 蛋白质（掌心）＋ 蔬菜（双手捧）</b>——这是膳食宝塔落成一顿饭的最小结构<sup class="cite" data-src="S1"></sup>。
+          主食里留一半给全谷物杂豆，蛋白质在鱼/禽/蛋/瘦肉/豆制品间轮换。</p></div>
+        <div class="card"><h3>② 油盐在锅外省</h3>
+          <p>全家用限油壶（25–30g/日）与限盐勺（<5g/日）；善用醋、柠檬、葱姜蒜、香菇虾皮提鲜替盐<sup class="cite" data-src="S1,S16"></sup>；
+          蒸、炖、白灼优先于煎炸。</p></div>
+        <div class="card"><h3>③ 轮换而非重复</h3>
+          <p>每周 25 种以上食物、每天 12 种以上<sup class="cite" data-src="S1"></sup>——同结构换食材即可：鱼↔鸡↔豆腐、糙米↔燕麦↔小米、菠菜↔西兰花↔油麦菜。</p></div>
+      </div>
+    </section>
+
+    <div id="recipes"></div>
+
+    <section class="topic" id="rotate">
+      <h2><span class="secno">8.8</span> 一周轮换示例</h2>
+      <div class="card">
+        <table class="tbl">
+          <tr><th>餐次</th><th>组合示例（对应上方编号）</th></tr>
+          <tr><td>早餐</td><td class="l">周一/四：① 燕麦牛奶粥套餐；周二/五：② 蔬菜鸡蛋软饼＋豆浆；周三/六：⑦ 酸奶杯＋全麦馒头＋蛋；周日：小米粥＋包子＋拌菜</td></tr>
+          <tr><td>午餐</td><td class="l">周一/四：③ 番茄炖牛腩套餐；周二/五：④ 清蒸鲈鱼套餐；周三/六：菌菇鸡肉饭（⑤ 的变体）；周日：杂酱面＋焯拌绿叶菜</td></tr>
+          <tr><td>晚餐</td><td class="l">周一/三/五：⑥ 鸭血豆腐汤套餐；周二/四：⑤ 香菇蒸滑鸡（量减 1/3）；周末：清汤火锅（多菜少肉少蘸料）</td></tr>
+          <tr><td>加餐</td><td class="l">⑦ 酸奶水果坚果杯 / 一小把原味坚果 / 应季水果</td></tr>
+        </table>
+        <div class="keypoint"><b>分量基准</b>：以上食谱按 1–2 人份设计；主食生重每餐 50–80g、肉禽鱼每餐 75–120g（生重）、蔬菜每餐 150–200g，可按家庭成员数等比放大<sup class="cite" data-src="S1"></sup>。</div>
+      </div>
+      <div class="card">
+        <h3>📖 想吃更多菜？</h3>
+        <p>下一章 <a href="appendix-howtocook.html">附 · HowToCook 开源菜谱库</a> 收录了 369 篇社区菜谱（荤菜/素菜/汤羹/主食/早餐/甜点等全品类，公有领域许可），
+        可按分类浏览与搜索——先用本章的三件套结构选菜，再从那里扩展做法。</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('recipes.html');
+HUI.footer();
+HUI.pager('recipes.html');
+HUI.progress('recipes.html');
+
+document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+  ['s0|8.0 配餐三原则'].concat((window.HDATA.RECIPES || []).map((r, i) => 'r' + (i + 1) + '|8.' + (i + 1) + ' ' + r.name.split(' · ')[0]))
+    .concat(['rotate|8.8 一周轮换示例'])
+    .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const D = window.HDATA;
+  const DTAG = { t2dm: '糖尿病友好', dyslipidemia: '血脂管理', hypertension: '高血压友好', obesity: '减脂友好', gout: '痛风注意', anemia: '补铁', constipation: '通便', osteoporosis: '补钙', fitness: '健身餐' };
+  const MEAL_CLS = { '早餐': 'hl', '午餐': 'good', '晚餐': 'info' };
+
+  document.getElementById('recipes').innerHTML = (D.RECIPES || []).map((r, i) => `
+    <section class="topic" id="r${i + 1}">
+      <h2><span class="secno">8.${i + 1}</span> ${HUI.esc(r.name)}</h2>
+      <div class="card">
+        <p><span class="chip hl">${HUI.esc(r.meal)}</span>
+           <span class="chip">⏱ ${HUI.esc(r.time)}</span>
+           <span class="chip">难度：${HUI.esc(r.difficulty)}</span></p>
+        <h3>🧺 食材（1–2 人份）</h3>
+        <table class="tbl">
+          <tr><th class="l">名称</th><th>用量</th></tr>
+          ${r.ingredients.map(x => `<tr><td class="l">${HUI.esc(x[0])}</td><td>${HUI.esc(x[1])}</td></tr>`).join('')}
+        </table>
+        <h3 style="margin-top:14px">👩‍🍳 做法</h3>
+        <ol>${r.steps.map(s => `<li>${HUI.esc(s)}</li>`).join('')}</ol>
+        <div class="keypoint"><b>实操要点</b>：${HUI.esc(r.tips)}</div>
+        <div class="warn"><b>营养点评</b>：${HUI.esc(r.nutrition)}</div>
+        <p><b>相关食材</b>（点击回图鉴）：
+          ${(r.pairs || []).map(id => { const f = HUI.foodById(id); return f ? `<a class="chip good" href="foods.html">${HUI.esc(f.emoji || '')} ${HUI.esc(f.name)}</a>` : ''; }).join(' ')}</p>
+        ${(r.disease_tags || []).length ? `<p><b>适合方向</b>：${r.disease_tags.map(t => `<span class="chip">${HUI.esc(DTAG[t] || t)}</span>`).join(' ')}</p>` : ''}
+        <p class="small muted">营养估算口径：《中国食物成分表》近似折算<sup class="cite" data-src="S2"></sup>，结构设计依据《中国居民膳食指南（2022）》<sup class="cite" data-src="S1"></sup>。</p>
+      </div>
+    </section>`).join('');
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>附 · HowToCook 开源菜谱库 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .hc-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 20px; align-items: start; }
+  @media (max-width: 900px) { .hc-layout { grid-template-columns: 1fr; } }
+  .hc-list { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 8px; max-height: 70vh; overflow: auto; box-shadow: var(--shadow); }
+  .hc-list button { display: block; width: 100%; text-align: left; background: transparent; border: none; color: var(--ink2);
+    padding: 7px 10px; border-radius: 8px; cursor: pointer; font-size: 14px; line-height: 1.5; }
+  .hc-list button:hover { background: var(--tint1); color: var(--ink); }
+  .hc-list button.cur { background: var(--tint1); color: var(--c1); font-weight: 600; }
+  .hc-view { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 24px; box-shadow: var(--shadow); min-height: 300px; }
+  .hc-view h3, .hc-view h4, .hc-view h5, .hc-view h6 { margin: 18px 0 8px; }
+  .hc-view h3 { font-size: 18px; border-bottom: 2px solid var(--border); padding-bottom: 6px; }
+  .hc-view ul, .hc-view ol { margin: 8px 0; padding-left: 24px; }
+  .hc-view li { margin: 4px 0; }
+  .hc-view blockquote { border-left: 3px solid var(--axis); margin: 8px 0; padding: 4px 12px; color: var(--ink2); background: var(--page); border-radius: 0 8px 8px 0; }
+  .hc-img { display: inline-block; background: var(--tintw); color: var(--cw); border-radius: 6px; padding: 1px 8px; font-size: 12.5px; }
+  .hc-view code { background: var(--page); border: 1px solid var(--grid); border-radius: 5px; padding: 0 5px; font-size: 13px; }
+  .hc-meta { font-size: 12.5px; color: var(--muted); margin: 4px 0 0; }
+</style>
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">📖</div>
+      <div class="ch-no">附录 · 开源菜谱库</div>
+      <h1>HowToCook · 程序员在家做饭指南（全文收录）</h1>
+      <p>GitHub 十万星社区项目 <b>HowToCook</b> 的 368 篇菜谱全文（荤菜 110 · 素菜 63 · 主食 58 · 水产 28 · 汤羹 23 · 饮品 23 · 早餐 25 · 甜点 19 · 酱料 9 · 半成品 10）<sup class="cite" data-src="S36"></sup>。
+      项目以 <b>Unlicense（公有领域）</b>许可发布，可自由使用与分发；本站于 2026-08-20 按 commit 快照收录其<b>文字版</b>（图片未收录，标注处见原仓库）。</p>
+    </div>
+
+    <section class="topic" id="s1">
+      <h2><span class="secno">附.1</span> 使用说明与安全提示</h2>
+      <div class="card">
+        <ul>
+          <li>点击左侧分类与菜名即可离线阅读全文；顶部搜索框可跨全部分类检索菜名。</li>
+          <li><b>本项目内容为开源社区贡献</b>：火候、时间、调味为各家经验，本站未逐条核实其营养与安全表述——与主线章节的 A/B/C/D 证据体系<b>无关</b>。</li>
+          <li>食品安全底线不因菜谱而变：肉禽水产<b>务必做熟</b>（中心温度足够、不见血水）；豆角/豆浆类见<a href="foods.html#s2">危险食物警示</a>；生食类菜品谨慎评估食材来源。</li>
+          <li>选菜建议沿用第 8 章的「主食＋蛋白质＋蔬菜」三件套结构，再从这里扩展做法。</li>
+          <li>许可与出处：Unlicense 全文见 <span class="small">assets/howtocook/LICENSE.txt</span>；每篇文末附原文链接（需联网），深表感谢项目作者 Anduin2017 与全体贡献者。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic" id="s2">
+      <h2><span class="secno">附.2</span> 🔍 菜谱浏览</h2>
+      <div class="card">
+        <div class="ctl-row" style="grid-template-columns:70px 1fr auto;align-items:center">
+          <span class="ctl-label">🔍 搜索</span>
+          <input type="text" id="hcq" placeholder="菜名关键词，如：红烧、豆腐、汤…" style="width:100%">
+          <span class="muted small" id="hccount"></span>
+        </div>
+        <div style="margin-top:10px"><span id="hcCats"></span></div>
+      </div>
+      <div class="hc-layout">
+        <div class="hc-list" id="hcList"></div>
+        <div class="hc-view" id="hcView"><p class="muted">👈 在左侧选择一道菜开始阅读。<br><br>小提示：先用搜索找到想吃的，再回到第 8 章的配餐原则组合成一餐。</p></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/howtocook/index.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('appendix-howtocook.html');
+HUI.footer();
+HUI.pager('appendix-howtocook.html');
+HUI.progress('appendix-howtocook.html');
+
+document.getElementById('toc').innerHTML = '<div class="toc-title">本页目录</div>' +
+  ['s1|附.1 使用说明', 's2|附.2 菜谱浏览'].map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const IDX = window.HC_INDEX;
+  const DATA = (window.HC_DATA = window.HC_DATA || {});
+  let curCat = null, allLoaded = false;
+  const loaded = {};
+
+  function loadScript(key, cb) {
+    if (loaded[key]) { cb(); return; }
+    const s = document.createElement('script');
+    s.src = 'assets/howtocook/' + key + '.js';
+    s.onload = () => { loaded[key] = true; cb(); };
+    s.onerror = () => { loaded[key] = true; DATA[key] = []; cb(); };
+    document.head.appendChild(s);
+  }
+  function loadAll(cb) {
+    if (allLoaded) { cb(); return; }
+    let n = IDX.cats.length;
+    IDX.cats.forEach(c => loadScript(c.key, () => { if (--n === 0) { allLoaded = true; cb(); } }));
+  }
+
+  /* ---------- 迷你 Markdown 渲染（标题/列表/表格/粗斜体/链接/引用/图片占位） ---------- */
+  function escHtml(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function inline(s) {
+    s = escHtml(s);
+    s = s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<span class="hc-img" title="$2">📷 $1（图见原仓库）</span>');
+    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (m, t, u) {
+      return /^(https?:|\/\/)/i.test(u) ? '<a href="' + u + '" target="_blank" rel="noopener">' + t + '</a>' : t;
+    });
+    s = s.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+    s = s.replace(/(^|[^\w*])\*([^*\n]+)\*/g, '$1<i>$2</i>');
+    s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+    return s;
+  }
+  function mdToHtml(md) {
+    const lines = md.split(/\r?\n/);
+    let html = '', i = 0, inUl = false, inOl = false;
+    const close = () => { if (inUl) { html += '</ul>'; inUl = false; } if (inOl) { html += '</ol>'; inOl = false; } };
+    const isTableSep = s => /^\s*\|?[\s:|-]*-[\s:|-]*\|?\s*$/.test(s) && s.includes('-');
+    while (i < lines.length) {
+      const L = lines[i];
+      if (/^\s*$/.test(L)) { close(); i++; continue; }
+      let m;
+      if ((m = L.match(/^#{1,6}\s+(.*)$/))) { close(); const lv = Math.min(m[0].replace(/\s.*/, '').length + 2, 6); html += '<h' + lv + '>' + inline(m[1]) + '</h' + lv + '>'; i++; continue; }
+      if (/^(\*\s*\*\s*\*|-{3,}|_{3,})\s*$/.test(L.replace(/\s/g, '')) && L.trim()) { close(); html += '<hr>'; i++; continue; }
+      if ((m = L.match(/^>\s?(.*)$/))) { close(); html += '<blockquote>' + inline(m[1]) + '</blockquote>'; i++; continue; }
+      if (L.includes('|') && i + 1 < lines.length && isTableSep(lines[i + 1])) {
+        close();
+        const rows = [L]; let j = i + 2;
+        while (j < lines.length && lines[j].includes('|') && lines[j].trim()) { rows.push(lines[j]); j++; }
+        const cells = r => r.replace(/^\s*\|/, '').replace(/\|\s*$/, '').split('|').map(c => inline(c.trim()));
+        html += '<table class="tbl"><tr>' + cells(rows[0]).map(c => '<th>' + c + '</th>').join('') + '</tr>';
+        for (let k = 1; k < rows.length; k++) html += '<tr>' + cells(rows[k]).map(c => '<td class="l">' + c + '</td>').join('') + '</tr>';
+        html += '</table>'; i = j; continue;
+      }
+      if ((m = L.match(/^\s*[-*+]\s+(.*)$/))) { if (inOl) { html += '</ol>'; inOl = false; } if (!inUl) { html += '<ul>'; inUl = true; } html += '<li>' + inline(m[1]) + '</li>'; i++; continue; }
+      if ((m = L.match(/^\s*\d+[.、)]\s+(.*)$/))) { if (inUl) { html += '</ul>'; inUl = false; } if (!inOl) { html += '<ol>'; inOl = true; } html += '<li>' + inline(m[1]) + '</li>'; i++; continue; }
+      close();
+      const para = [L]; let j2 = i + 1;
+      while (j2 < lines.length && !/^\s*$/.test(lines[j2]) && !/^(#{1,6}\s|>\s?|\s*[-*+]\s|\s*\d+[.、)]\s)/.test(lines[j2]) &&
+             !(lines[j2].includes('|') && j2 + 1 < lines.length && isTableSep(lines[j2 + 1]))) { para.push(lines[j2]); j2++; }
+      html += '<p>' + inline(para.join(' ')) + '</p>'; i = j2;
+    }
+    close();
+    return html;
+  }
+
+  function srcLink(p) {
+    return IDX.repo + '/blob/' + IDX.commit + '/dishes/' + p.split('/').map(encodeURIComponent).join('/');
+  }
+
+  function drawCats() {
+    const host = document.getElementById('hcCats');
+    host.className = 'chips';
+    host.innerHTML = IDX.cats.map(c =>
+      `<span class="chip btn ${c.key === curCat ? 'on' : ''}" data-k="${c.key}">${HUI.esc(c.name)}（${c.count}）</span>`).join('');
+    Array.prototype.forEach.call(host.querySelectorAll('.chip'), ch => {
+      ch.addEventListener('click', () => {
+        curCat = ch.getAttribute('data-k');
+        document.getElementById('hcq').value = '';
+        drawCats();
+        loadScript(curCat, drawList);
+      });
+    });
+  }
+
+  function currentItems() {
+    const q = document.getElementById('hcq').value.trim().toLowerCase();
+    let items = [];
+    if (q && allLoaded) {
+      IDX.cats.forEach(c => (DATA[c.key] || []).forEach(it => items.push(Object.assign({ _cat: c.name }, it))));
+      items = items.filter(it => it.t.toLowerCase().indexOf(q) >= 0 || it.md.toLowerCase().indexOf(q) >= 0);
+      /* 全文命中过多时退回标题匹配，避免长列表卡顿 */
+      if (items.length > 200) items = items.filter(it => it.t.toLowerCase().indexOf(q) >= 0);
+    } else if (q) {
+      items = [];
+    } else if (curCat) {
+      items = (DATA[curCat] || []).map(it => Object.assign({ _cat: '' }, it));
+    }
+    return items;
+  }
+
+  function drawList() {
+    const items = currentItems();
+    document.getElementById('hccount').textContent = '共 ' + items.length + ' 篇';
+    document.getElementById('hcList').innerHTML = items.slice(0, 400).map((it, i) =>
+      `<button data-i="${i}">${HUI.esc(it.t)}${it._cat ? ' <span class="muted small">·' + HUI.esc(it._cat) + '</span>' : ''}</button>`).join('') ||
+      '<p class="muted" style="padding:10px">输入关键词搜索（首次将载入全部索引）或选择分类。</p>';
+    const btns = document.querySelectorAll('#hcList button');
+    Array.prototype.forEach.call(btns, b => {
+      b.addEventListener('click', () => {
+        Array.prototype.forEach.call(btns, x => x.classList.remove('cur'));
+        b.classList.add('cur');
+        show(items[+b.getAttribute('data-i')]);
+      });
+    });
+  }
+
+  function show(it) {
+    if (!it) return;
+    document.getElementById('hcView').innerHTML =
+      `<h3>${HUI.esc(it.t)}</h3>
+       <p class="hc-meta">收录自 HowToCook · <a href="${srcLink(it.p)}" target="_blank" rel="noopener">查看原文（含图片）↗</a></p>
+       <div>${mdToHtml(it.md)}</div>
+       <hr><p class="hc-meta">⚠ 社区贡献内容，本站未逐条核实；肉禽水产务必做熟。许可：Unlicense（公有领域）。</p>`;
+    document.getElementById('hcView').scrollTop = 0;
+  }
+
+  drawCats();
+  if (IDX.cats.length) {
+    curCat = IDX.cats[0].key;
+    drawCats();
+    loadScript(curCat, drawList);
+  }
+  document.getElementById('hcq').addEventListener('input', () => {
+    if (document.getElementById('hcq').value.trim()) {
+      loadAll(drawList);
+    } else drawList();
+  });
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

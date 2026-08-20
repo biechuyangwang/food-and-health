@@ -105,7 +105,7 @@ document.getElementById('toc').innerHTML = '<div class="toc-title">本页目录<
   const D = window.HDATA;
   const TYPE = {
     guide: '国内指南与规范', book: '工具书与成分数据', classic: '中医典籍',
-    intl: '国际组织文件', textbook: '教材', journal: '系统评价与文献'
+    intl: '国际组织文件', textbook: '教材', journal: '系统评价与文献', opensource: '开源项目'
   };
   const keys = Object.keys(D.SOURCES).sort();
   document.getElementById('srcList').innerHTML = Object.keys(TYPE).map(t => {

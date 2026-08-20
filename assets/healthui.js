@@ -30,6 +30,8 @@ const HUI = (() => {
     { file: 'disease-gi.html', short: '食疗·消化免疫', group: '食疗', title: '疾病食疗 · 消化血液免疫骨骼' },
     { file: 'fitness.html', short: '强身', group: '强身', title: '增强体质' },
     { file: 'herbs.html', short: '药食同源', group: '强身', title: '药食同源' },
+    { file: 'recipes.html', short: '食谱', group: '食谱', title: '家常食谱推荐' },
+    { file: 'appendix-howtocook.html', short: '开源菜谱', group: '食谱', title: 'HowToCook 开源菜谱库（附录）' },
     { file: 'firstaid-trauma.html', short: '创伤急救', group: '急救', title: '创伤急救五技术' },
     { file: 'firstaid-env.html', short: '环境急症', group: '急救', title: '伤口、烧伤与环境急症' },
     { file: 'quiz.html', short: '自测', group: '自测', title: '知识自测' },

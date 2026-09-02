@@ -37,14 +37,14 @@
   <main>
     <div class="chapter-hero">
       <div class="hero-emoji">✍️</div>
-      <div class="ch-no">第 11 章 · 自测与参考</div>
+      <div class="ch-no">第 9 章 · 自测与参考</div>
       <h1>知识自测</h1>
-      <p>八个分卷共 <b>56 题</b> + 综合随机 15 题，每题附<b>完整解析与出处</b>。成绩与错题保存在本机浏览器（localStorage）。
+      <p>七个分卷共 <b>48 题</b> + 综合随机 15 题，每题附<b>完整解析与出处</b>。成绩与错题保存在本机浏览器（localStorage）。
       学完对应章节再来测，效果最好。</p>
     </div>
 
     <section class="topic" id="s1">
-      <h2><span class="secno">11.1</span> 选择分卷</h2>
+      <h2><span class="secno">9.1</span> 选择分卷</h2>
       <div class="card">
         <div id="bankChips"></div>
         <div id="quiz1" style="margin-top:14px"></div>
@@ -52,7 +52,7 @@
     </section>
 
     <section class="topic" id="s2">
-      <h2><span class="secno">11.2</span> 📌 错题回顾</h2>
+      <h2><span class="secno">9.2</span> 📌 错题回顾</h2>
       <div class="card">
         <p class="small muted">汇总各分卷最近一次作答的错题（重新做对所属分卷并全对后，该卷错题清空）。</p>
         <div id="wrongBox"></div>
@@ -71,14 +71,14 @@ HUI.pager('quiz.html');
 HUI.progress('quiz.html');
 
 document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
-  ['s1|11.1 分卷测验', 's2|11.2 错题回顾'].map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+  ['s1|9.1 分卷测验', 's2|9.2 错题回顾'].map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
 
 (function () {
   const D = window.HDATA;
   const BANKS = [
     ['nutrient', '营养素基础'], ['foods', '食物图鉴'], ['pairing', '搭配宜忌'],
     ['metabolic', '食疗·代谢'], ['gi', '食疗·消化免疫'], ['fitness', '增强体质'],
-    ['herbs', '药食同源'], ['firstaid', '急救知识']
+    ['herbs', '药食同源']
   ];
   let cur = 'nutrient';
 

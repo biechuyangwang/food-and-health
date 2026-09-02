@@ -1,7 +1,7 @@
 /* ============================================================
    data.js — 全站数据单一来源
    window.HDATA = { SOURCES, FOODS, DRUGS, PAIRS, DISEASES, HERBS,
-                    FIRSTAID, QUIZ_BANK }
+                    RECIPES, QUIZ_BANK }
    约定：所有跨实体引用使用字符串 id；src 一律指向 SOURCES 键，
    由 tools/audit.js 校验悬空。
    营养数值为《中国食物成分表·标准版·第6版》口径的近似值
@@ -17,9 +17,6 @@ window.HDATA = {
     S3: { type: 'book', title: '《中华人民共和国药典》（2020年版）一部', org: '国家药典委员会', publisher: '中国医药科技出版社', year: 2020 },
     S4: { type: 'intl', title: '《按照传统既是食品又是中药材的物质目录》及历次增补公告（2024年第4号公告增补地黄、麦冬、天冬、化橘红，目录达106种）', org: '国家卫生健康委员会 / 国家市场监督管理总局', publisher: '', year: 2024 },
     S5: { type: 'classic', title: '《本草纲目》', org: '明·李时珍（人民卫生出版社校点本）', publisher: '人民卫生出版社', year: 2004 },
-    S6: { type: 'intl', title: 'Surgical Care at the District Hospital（区级医院外科诊疗手册）', org: '世界卫生组织 WHO', publisher: 'WHO Press', year: 2003 },
-    S7: { type: 'intl', title: 'Basic Emergency Care: approach to the acutely ill and injured（基础急诊救治课程）', org: '世界卫生组织 WHO', publisher: 'WHO Press', year: 2020 },
-    S8: { type: 'textbook', title: '《野战外科学》（第2版）', org: '王正国 主编', publisher: '人民军医出版社', year: 2010 },
     S10: { type: 'intl', title: '健康饮食概况文件及膳食糖/钠/脂肪酸摄入建议（Healthy diet；Guidelines on sugars / sodium / saturated and trans fatty acid intake）', org: '世界卫生组织 WHO', publisher: '', year: 2023 },
     S11: { type: 'intl', title: 'Dietary Supplement Fact Sheets（膳食补充剂成分说明书）', org: '美国国立卫生研究院 NIH Office of Dietary Supplements', publisher: '', year: 2024 },
     S12: { type: 'guide', title: '食源性疾病与食物中毒防治公开资料（毒蘑菇/组胺/肉毒杆菌/副溶血性弧菌等风险提示）', org: '国家食品安全风险评估中心 / 中国疾病预防控制中心', publisher: '', year: 2023 },
@@ -32,17 +29,11 @@ window.HDATA = {
     S19: { type: 'guide', title: '《中国肥胖患者减重营养治疗指南（2021）》', org: '中国营养学会', publisher: '', year: 2021 },
     S20: { type: 'book', title: '《中国居民膳食营养素参考摄入量（DRIs）（2023版）》', org: '中国营养学会', publisher: '人民卫生出版社', year: 2023 },
     S21: { type: 'guide', title: '《非酒精性脂肪性肝病防治指南（2018年更新版）》', org: '中华医学会肝病学分会脂肪肝和酒精性肝病学组', publisher: '中华肝脏病杂志', year: 2018 },
-    S22: { type: 'textbook', title: 'PHTLS 院前创伤生命支持（Prehospital Trauma Life Support，第9版）', org: 'NAEMT', publisher: 'Jones & Bartlett Learning', year: 2023 },
-    S23: { type: 'intl', title: 'Wilderness Medical Society Clinical Practice Guidelines（荒野医学会临床实践指南）', org: 'Wilderness Medical Society', publisher: 'Wilderness & Environmental Medicine', year: 2024 },
-    S24: { type: 'textbook', title: '应急救护标准化培训教材（救护员教程）', org: '中国红十字会总会', publisher: '', year: 2020 },
     S25: { type: 'intl', title: 'WHO/UNICEF Joint Statement: Clinical Management of Acute Diarrhoea；WHO《The Treatment of Diarrhoea》（第4版）', org: '世界卫生组织 / 联合国儿童基金会', publisher: 'WHO Press', year: 2005 },
     S26: { type: 'intl', title: 'Nutritional anaemias: tools for effective prevention and control（营养性贫血防治工具包）', org: '世界卫生组织 WHO', publisher: 'WHO Press', year: 2017 },
     S27: { type: 'guide', title: '《原发性骨质疏松症诊疗指南（2022）》', org: '中华医学会骨质疏松和骨矿盐疾病分会', publisher: '中华骨质疏松和骨矿盐疾病杂志', year: 2022 },
     S28: { type: 'intl', title: 'Nutrition and Athletic Performance（营养与运动表现联合立场声明）', org: 'ACSM / AND / DC', publisher: 'Med Sci Sports Exerc', year: 2016 },
-    S29: { type: 'guide', title: '《中国蛇伤救治指南（2024）》（首版共识 2018，中华急诊医学杂志）', org: '中华医学会急诊医学分会', publisher: '中华急诊医学杂志', year: 2024 },
-    S30: { type: 'guide', title: '《热射病急诊诊断与治疗专家共识（2021年更新版）》', org: '全军热射病防治专家组', publisher: '解放军医学杂志', year: 2021 },
     S31: { type: 'book', title: '《中华人民共和国药典临床用药须知（2020年版）》（化学药卷·食物-药物相互作用）及 NIH 药物-营养相互作用公开资料', org: '国家药典委员会 / NIH', publisher: '中国医药科技出版社', year: 2020 },
-    S32: { type: 'intl', title: 'Highlights of the 2020 AHA Guidelines for CPR and ECC（美国心脏协会心肺复苏与心血管急救指南要点）', org: 'American Heart Association', publisher: 'Circulation', year: 2020 },
     S33: { type: 'guide', title: '《食品安全国家标准 预包装食品营养标签通则》（GB 28050）', org: '国家卫生健康委员会', publisher: '', year: 2011 },
     S34: { type: 'journal', title: '蜂蜜用于儿童急性咳嗽的系统评价（Cochrane Review）及各国儿科自我照护建议', org: 'Cochrane Library', publisher: '', year: 2018 },
     S36: { type: 'opensource', title: 'HowToCook·程序员在家做饭指南（开源菜谱库，Unlicense 公有领域许可）', org: 'Anduin2017 及社区贡献者（GitHub）', publisher: 'github.com/Anduin2017/HowToCook', year: 2026 }
@@ -1164,26 +1155,6 @@ window.HDATA = {
       caution: '脾胃虚寒泄泻者慎用（传统）。' }
   ],
 
-  /* ---------- 急救元数据（步骤与图示在各页；内容分级见页面） ---------- */
-  FIRSTAID: [
-    { id: 'assess', title: '现场评估与 CABCDE 初查', tier: 'core', src: ['S7', 'S22'] },
-    { id: 'tourniquet', title: '止血带', tier: 'core', src: ['S7', 'S22', 'S8'] },
-    { id: 'pressure', title: '直接压迫与加压包扎', tier: 'core', src: ['S7', 'S24'] },
-    { id: 'bandage', title: '三角巾与悬臂带', tier: 'core', src: ['S24'] },
-    { id: 'splint', title: '骨折临时固定', tier: 'core', src: ['S7', 'S24'] },
-    { id: 'move', title: '搬运与整体翻身', tier: 'core', src: ['S7', 'S22'] },
-    { id: 'shock', title: '休克识别与处置', tier: 'core', src: ['S7', 'S22'] },
-    { id: 'wound', title: '伤口冲洗与清创原则', tier: 'core', src: ['S6', 'S7'] },
-    { id: 'suture', title: '缝合的边界（不建议自行操作）', tier: 'caution', src: ['S6', 'S22'] },
-    { id: 'burn', title: '烧伤五字诀', tier: 'core', src: ['S7', 'S24'] },
-    { id: 'snake', title: '蛇咬伤', tier: 'core', src: ['S29', 'S23'] },
-    { id: 'insect', title: '蜂蜇与蜱虫', tier: 'core', src: ['S23', 'S24'] },
-    { id: 'hypothermia', title: '失温', tier: 'core', src: ['S23'] },
-    { id: 'heatstroke', title: '热射病', tier: 'core', src: ['S30'] },
-    { id: 'amputation', title: '断肢保存', tier: 'core', src: ['S22'] },
-    { id: 'kit', title: '野外急救包配置', tier: 'core', src: ['S23'] }
-  ],
-
   /* ---------- 题库 ---------- */
   QUIZ_BANK: {
     foods: [
@@ -1247,16 +1218,6 @@ window.HDATA = {
       { q: '苦杏仁的正确态度是：', opts: ['天然食物随便吃', '含氰苷，必须炮制并严格限量，家庭不自行使用', '煲汤多吃止咳', '只有苦味没有毒性'], ans: 1, exp: '苦杏仁苷水解生成氢氰酸，儿童十余粒可致命；药典规定炮制与5–10g剂量；家用请购买正规炮制品。', src: ['S3', 'S12'] },
       { q: '长期大量服用甘草（含复方甘草片、甘草蜜饯）的风险是：', opts: ['没有风险', '假性醛固酮增多——高血压、低血钾', '只会发胖', '维生素中毒'], ans: 1, exp: '甘草酸的类醛固酮作用有明确药理证据：血压升高、血钾降低、水肿——高血压患者慎用。', src: ['S31', 'S3'] },
       { q: '哺乳期不宜使用的食药物质是：', opts: ['麦芽（回乳作用）', '大枣', '山药', '百合'], ans: 0, exp: '麦芽传统用于回乳消胀，哺乳期不宜；此为传统记载，谨慎为上。', src: ['S3'] }
-    ],
-    firstaid: [
-      { q: '四肢致命大出血、直接压迫无法控制时，止血带的位置应选在：', opts: ['伤口正上方覆盖伤口', '伤口近端约5–7cm处（上肢避开上臂中下1/3）', '随便哪里都行', '伤口远端（离心脏一侧）'], ans: 1, exp: '置于伤口近端 5–7cm；上肢避开上臂中下 1/3（桡神经沟），此处易致神经损伤。', src: ['S22', 'S7'] },
-      { q: '上止血带后必须做的关键动作是：', opts: ['定时放松防止坏死', '记录上带时间并尽快转运（目标<2小时）', '用布遮盖不告诉任何人', '绑完就不管了'], ans: 1, exp: '必须在显眼处书写时间标记并交接给医务人员；转运途中不随意松解（松解决定由专业人员评估），院内目标 <2 小时。', src: ['S22', 'S7'] },
-      { q: '野外发现队友倒地，第一步应该是：', opts: ['立即冲过去扶起伤员', '先环顾四周确认环境对救己安全，再接近', '先翻找急救包', '大声摇晃伤员'], ans: 1, exp: '现场安全永远是第一步：危险未排除时贸然进入会造成第二个伤员（CABCDE 中的 C=Catastrophic bleeding 与场景安全评估）。', src: ['S7', 'S22'] },
-      { q: '对扎入身体的异物（刀/钢筋/树枝），正确做法是：', opts: ['立即拔出再包扎', '保留异物原位、固定后送医', '推进去一点好包扎', '摇动确认深浅'], ans: 1, exp: '异物可能正在压迫血管，拔出会导致大出血——原位固定（敷料环绕固定）后转运。', src: ['S7', 'S22'] },
-      { q: '烧伤急救「五字诀」的正确顺序是：', opts: ['冲-脱-泡-盖-送', '涂-抹-包-扎-送', '冲-挑-涂-盖-送', '冰-压-抬-送'], ans: 0, exp: '15–25℃ 流动水冲 20 分钟左右降温；小心脱除（剪开）衣物；冷水浸泡续降温；清洁敷料覆盖；转送。不涂牙膏酱油、不挑破水疱。', src: ['S7', 'S24'] },
-      { q: '毒蛇咬伤后，下列哪项是明确禁止的？', opts: ['保持镇静制动', '患肢低于心脏并尽快转运', '用嘴吸出毒液 / 切开伤口放血', '拍照记录蛇的外形'], ans: 2, exp: '切开、吸吮、冰敷、止血带、饮酒均为禁止项——无效且加重损伤；制动+低于心脏+尽快转运（有条件时拍照识别蛇种）是正确方向。', src: ['S29'] },
-      { q: '热射病（重症中暑）院前处置的核心原则是：', opts: ['先尽快送医院，路上不处理', '降温优先——立即就地快速降温（冷水浸泡/泼水扇风），“黄金半小时”', '喂大量冰水', '掐人中催醒'], ans: 1, exp: '降温速度决定预后：现场立即快速降温（冷水浸泡最有效），同时呼救；转运不能中断降温。昏迷者禁止喂食喂水。', src: ['S30'] },
-      { q: '关于非专业人员的伤口缝合，正确的认识是：', opts: ['野外有针线就可以缝', '不建议：感染与操作风险通常大于收益，替代方案是清洁敷料+压迫+尽快就医（必要时延迟闭合）', '缝得越密越好', '用胶水随手粘即可'], ans: 1, exp: '简单环境下冲洗、清洁覆盖、压迫止血并尽快转运优于自行缝合；医疗条件下可由医生评估延迟闭合（delayed primary closure）。', src: ['S6', 'S22'] }
     ]
   }
 };

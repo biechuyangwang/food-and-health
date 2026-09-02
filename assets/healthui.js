@@ -5,8 +5,7 @@
                + 页脚参考文献表（数据源 assets/data.js 的 SOURCES）
    quiz      : 随堂测（即时判分 + 解析 + 出处 + 成绩记忆）
    progress  : 页面已读进度（localStorage）
-   gate      : 急救页进入确认层 + 顶部永久红色警示条
-   stepper   : 急救分步 SVG 演示器
+   stepper   : 分步 SVG 演示器
    pairFinder: 食物/药物配对查询器（数据源 HDATA.PAIRS）
    foodFlip  : 食物翻转卡片渲染
    ============================================================ */
@@ -32,8 +31,6 @@ const HUI = (() => {
     { file: 'herbs.html', short: '药食同源', group: '强身', title: '药食同源' },
     { file: 'recipes.html', short: '食谱', group: '食谱', title: '家常食谱推荐' },
     { file: 'appendix-howtocook.html', short: '开源菜谱', group: '食谱', title: 'HowToCook 开源菜谱库（附录）' },
-    { file: 'firstaid-trauma.html', short: '创伤急救', group: '急救', title: '创伤急救五技术' },
-    { file: 'firstaid-env.html', short: '环境急症', group: '急救', title: '伤口、烧伤与环境急症' },
     { file: 'quiz.html', short: '自测', group: '自测', title: '知识自测' },
     { file: 'references.html', short: '文献', group: '自测', title: '参考文献与证据说明' }
   ];
@@ -137,7 +134,7 @@ const HUI = (() => {
     if ($('footer.site')) return;
     const f = document.createElement('footer');
     f.className = 'site';
-    f.innerHTML = `本站内容为<b>健康科普</b>，不构成医疗建议或诊疗方案；食疗与急救知识均不能替代正规医疗。
+    f.innerHTML = `本站内容为<b>健康科普</b>，不构成医疗建议或诊疗方案；食疗与膳食调整均不能替代正规医疗。
 食物照片来自 Wikimedia Commons（详见<a href="references.html">参考文献与图片授权</a>）。
 每条结论均标注出处与证据等级。<span class="muted">离线静态站点 · 双击 index.html 即可浏览</span>`;
     document.body.appendChild(f);
@@ -252,46 +249,7 @@ const HUI = (() => {
     build();
   }
 
-  /* ---------- 急救页进入确认层 ---------- */
-  const GATE_TEXT = `<p><b>阅读前请务必知悉：</b></p>
-<ol>
-  <li>本章节内容仅用于<b>野外、灾害、偏远地区等极端缺医少药环境</b>下的应急知识科普，<b>不构成医疗建议</b>，不能替代专业急救培训与医疗机构处置。</li>
-  <li><b>凡有可能获得专业救治时，应立即呼救（120 / 当地急救电话）并尽快转运就医</b>，而不是自行处理。</li>
-  <li>四条铁律：<b>① 预防优先；② 呼叫专业救援优先；③ 不确定就不做；④ 记录与交接</b>（记录操作时间与经过，交给接手的医务人员）。</li>
-  <li>实施任何操作前请评估自身能力与现场安全；不当操作可能造成二次伤害。</li>
-  <li>止血带、伤口处理等操作存在风险边界，请严格按文中「适应 / 禁忌」执行。</li>
-</ol>`;
-  function gate(pageKey) {
-    // 顶部永久红色警示条
-    const nav = document.getElementById('topnav');
-    if (nav) {
-      const strip = document.createElement('div');
-      strip.className = 'warn-strip';
-      strip.innerHTML = '⚠ 本章仅限极端缺医少药环境的应急知识科普，不构成医疗建议 —— 能获得专业救治时请立即呼救就医';
-      nav.parentNode.insertBefore(strip, nav.nextSibling);
-    }
-    if (store.get('health-gate-' + pageKey)) return;
-    const g = document.createElement('div');
-    g.className = 'gate';
-    g.innerHTML = `<div class="gate-card">
-      <h2>⚠️ 进入前请阅读本说明</h2>
-      <div class="gate-scroll">${GATE_TEXT}</div>
-      <label><input type="checkbox" id="gateChk"> 我已阅读并理解以上说明，自愿学习本章应急知识</label>
-      <div class="gate-btns">
-        <button class="btn primary" id="gateEnter" disabled>进入本章</button>
-        <a class="btn" href="index.html">离开，返回首页</a>
-      </div>
-    </div>`;
-    document.body.appendChild(g);
-    const chk = g.querySelector('#gateChk'), enter = g.querySelector('#gateEnter');
-    chk.addEventListener('change', () => { enter.disabled = !chk.checked; });
-    enter.addEventListener('click', () => {
-      store.set('health-gate-' + pageKey, '1');
-      g.remove();
-    });
-  }
-
-  /* ---------- 急救分步演示器 ----------
+  /* ---------- 分步演示器 ----------
        cfg = { title, steps: [{svg:'<svg…>', text:'…', warn:'…'}] } */
   function stepper(node, cfg) {
     const host = typeof node === 'string' ? document.getElementById(node) : node;
@@ -544,7 +502,7 @@ const HUI = (() => {
     PAGES, esc, fmt, $, $$, store,
     badgeLevel, verdictBadge, srcFull, srcShort, cite, LEVEL_NAME,
     renderNav, footer, pager, progress, progressSummary,
-    quiz, gate, stepper, pairFinder, pathMap,
+    quiz, stepper, pairFinder, pathMap,
     foodById, foodFlip, bindFlip, CAT_NAME,
     btn, seg, slider, chips
   };

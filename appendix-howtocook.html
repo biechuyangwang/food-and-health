@@ -102,7 +102,7 @@ HUI.pager('appendix-howtocook.html');
 HUI.progress('appendix-howtocook.html');
 
 document.getElementById('toc').innerHTML = '<div class="toc-title">本页目录</div>' +
-  ['s1|附.1 使用说明', 's2|附.2 菜谱浏览'].map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+  ['s1|附.1 使用说明与安全提示', 's2|附.2 菜谱浏览'].map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
 
 (function () {
   const IDX = window.HC_INDEX;

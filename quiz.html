@@ -71,7 +71,7 @@ HUI.pager('quiz.html');
 HUI.progress('quiz.html');
 
 document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
-  ['s1|9.1 分卷测验', 's2|9.2 错题回顾'].map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+  ['s1|9.1 选择分卷', 's2|9.2 错题回顾'].map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
 
 (function () {
   const D = window.HDATA;

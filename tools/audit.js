@@ -31,7 +31,10 @@ htmls.forEach(f => {
   // 收集站内链接
   const re = /href="([^"#]+?\.html)(#[^"]*)?"/g;
   let m;
-  while ((m = re.exec(txt)) !== null) hrefs.add(m[1]);
+  while ((m = re.exec(txt)) !== null) {
+    if (/^https?:\/\//i.test(m[1])) continue; /* 外部链接（如 sport.gov.cn 的 content.html）不做本地存在性检查 */
+    hrefs.add(m[1]);
+  }
   if (!txt.includes('assets/style.css') && f !== 'README.md') warnings.push(`${f}: 未引用 assets/style.css`);
 });
 
@@ -99,6 +102,21 @@ if (HDATA) {
 
   (HDATA.FIRSTAID || []).forEach(t => checkSrc(t.src, `FIRSTAID.${t.id}`));
 
+  (HDATA.EXERCISES || []).forEach(x => {
+    if (!x.id || !x.name) errors.push(`EXERCISES 存在缺 id/name 的条目: ${JSON.stringify(x).slice(0, 60)}`);
+    checkSrc(x.src, `EXERCISES.${x.id || '?'}`);
+    if (!Array.isArray(x.frames) || x.frames.length < 2) {
+      errors.push(`EXERCISES.${x.id || '?'} 关键帧不足（至少 2 帧）`);
+    } else {
+      x.frames.forEach((f, i) => {
+        const ok = Array.isArray(f) && f.length === 11 &&
+          f.every(pt => Array.isArray(pt) && pt.length === 2 && pt.every(v => typeof v === 'number' && isFinite(v)));
+        if (!ok) errors.push(`EXERCISES.${x.id} 第 ${i} 帧格式错误（应为 11 个 [x,y] 数值点）`);
+      });
+    }
+    if (x.video && !/^https?:\/\//.test(x.video.url || '')) errors.push(`EXERCISES.${x.id} video.url 非法`);
+  });
+
   Object.keys(HDATA.QUIZ_BANK || {}).forEach(k => {
     (HDATA.QUIZ_BANK[k] || []).forEach((q, i) => {
       if (!Array.isArray(q.opts) || q.opts.length < 2) errors.push(`QUIZ_BANK.${k}[${i}] 选项缺失`);
@@ -133,5 +151,5 @@ warnings.forEach(w => console.log(YEL + '⚠ ' + w + END));
 errors.forEach(e => console.log(RED + '✗ ' + e + END));
 console.log(`${errors.length ? RED + '审计未通过' : GREEN + '审计通过'}${END}：` +
   `${htmls.length} 个页面，${errors.length} 个错误，${warnings.length} 个提醒` +
-  (HDATA ? `；数据：${(HDATA.FOODS || []).length} 食物 / ${(HDATA.PAIRS || []).length} 搭配 / ${(HDATA.HERBS || []).length} 药材 / ${Object.keys(HDATA.SOURCES || {}).length} 来源` : ''));
+  (HDATA ? `；数据：${(HDATA.FOODS || []).length} 食物 / ${(HDATA.PAIRS || []).length} 搭配 / ${(HDATA.HERBS || []).length} 药材 / ${(HDATA.EXERCISES || []).length} 动作 / ${Object.keys(HDATA.SOURCES || {}).length} 来源` : ''));
 process.exit(errors.length ? 1 : 0);

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>标准运动动作库 · 食物与健康</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+/* —— 本页专用：运动动作库 —— */
+.ex-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+@media (max-width: 760px) { .ex-grid { grid-template-columns: 1fr; } }
+.ex-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px 12px; box-shadow: var(--shadow); margin: 0; }
+.ex-head { display: flex; align-items: baseline; gap: 8px; }
+.ex-head h3 { margin: 0; font-size: 16.5px; flex: 1; }
+.ex-cat { font-size: 11px; font-weight: 700; padding: 1px 9px; border-radius: 999px; white-space: nowrap; }
+.ex-stage svg { width: 100%; height: auto; display: block; background: var(--page); border: 1px solid var(--grid); border-radius: 10px; }
+.ex-ctrl { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.ex-ctrl .btn { padding: 3px 12px; font-size: 13px; }
+.ex-ctrl input[type="range"] { flex: 1; min-width: 0; height: 20px; }
+.ex-time { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ex-thumbs { display: flex; gap: 8px; margin-top: 7px; flex-wrap: wrap; }
+.ex-thumbs .th { text-align: center; font-size: 10.5px; color: var(--muted); }
+.ex-thumbs svg { width: 58px; height: 58px; display: block; background: var(--page); border: 1px solid var(--grid); border-radius: 8px; cursor: pointer; }
+.ex-thumbs svg:hover { border-color: var(--c1); }
+.ex-meta .chip { font-size: 12.5px; padding: 2px 9px; }
+.ex-brief { font-size: 14px; margin: 8px 0 6px; }
+.ex-dose { font-size: 13.5px; padding: 7px 12px; margin: 8px 0; }
+.ex-det summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--c1); margin: 4px 0 0; }
+.ex-det summary:hover { text-decoration: underline; }
+.ex-det ul { margin: 5px 0 6px; padding-left: 20px; font-size: 14px; }
+.ex-det.ex-warn summary { color: var(--cw); }
+.ex-src { font-size: 12.5px; margin: 6px 0 0; color: var(--muted); }
+.phase-bar { display: flex; border-radius: 10px; overflow: hidden; margin: 12px 0 6px; border: 1px solid var(--border); font-size: 13px; text-align: center; color: #fff; line-height: 1.4; }
+.phase-bar > div { padding: 8px 6px; }
+.set-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; box-shadow: var(--shadow); }
+.set-card ol.koujue { columns: 2; column-gap: 30px; margin: 8px 0; padding-left: 22px; font-size: 14.5px; }
+@media (max-width: 660px) { .set-card ol.koujue { columns: 1; } }
+.plan-day { border-bottom: 1px dashed var(--grid); padding: 9px 2px; font-size: 14.5px; }
+.plan-day:last-child { border-bottom: none; }
+.plan-day .pd-no { display: inline-block; width: 52px; font-weight: 700; color: var(--c1); }
+.plan-day .pd-rest { color: var(--muted); }
+.plan-day p { margin: 3px 0; }
+.plan-day a { white-space: nowrap; }
+</style>
+</head>
+<body>
+<nav class="topnav" id="topnav"></nav>
+<div id="compatBanner" style="display:none"></div>
+<script>
+/* 兼容性自检（纯 ES5） */
+(function () {
+  var errs = [];
+  window.onerror = function (m, s, l) { errs.push(String(m) + ' @' + String(s || '').split('/').pop() + ':' + l); return false; };
+  function show() {
+    var el = document.getElementById('compatBanner');
+    if (!el) return;
+    var msg = '';
+    if (typeof HUI === 'undefined' && !window.HUI) {
+      msg = '交互组件库 assets/healthui.js 未能加载：请确认 assets 文件夹完整，并从 index.html 进入。';
+    } else if (errs.length) {
+      msg = '页面脚本报错：' + errs.slice(0, 2).join('；');
+    }
+    if (msg) {
+      el.style.cssText = 'display:block;position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#d03b3b;color:#fff;padding:10px 18px;font-size:14px;line-height:1.7';
+      el.innerHTML = '⚠ 本页交互内容无法运行 —— ' + msg + ' 若仍异常，请改用 Chrome 或新版 Edge 浏览器打开本页。';
+    }
+  }
+  if (document.readyState === 'complete') { show(); } else if (window.addEventListener) { window.addEventListener('load', show); }
+})();
+</script>
+
+<div class="layout">
+  <aside class="toc" id="toc"></aside>
+  <main>
+    <div class="chapter-hero">
+      <div class="hero-emoji">🏋️</div>
+      <div class="ch-no">第 7 章 · 运动</div>
+      <h1>标准运动动作库：国家体育总局标准动作</h1>
+      <p>以国家体育总局《全民健身指南》<sup class="cite" data-src="S40"></sup>为框架（体育活动方式五分类 · 强度分级 · 运动处方），
+      收录 <b>20 个标准动作</b>：有氧、力量、牵拉，以及总局审定的<b>健身气功·八段锦</b>八式<sup class="cite" data-src="S41"></sup>。
+      每个动作都配<b>离线动画演示</b>（播放 / 暂停 / 调速 / 拖进度，无需联网），八段锦与广播体操另附<b>总局官方教学视频</b>链接<sup class="cite" data-src="S41,S42"></sup>。</p>
+    </div>
+
+    <section class="topic" id="s1">
+      <h2><span class="secno">7.1</span> 怎么练：体育总局的运动框架</h2>
+      <div class="grid3">
+        <div class="card"><h3>🏃 有氧运动</h3>
+          <p class="small"><b>中等强度</b>：健身走、慢跑（6～8 千米/小时）、骑自行车（12～16 千米/小时）、登山、爬楼梯、游泳。<br>
+          <b>大强度</b>：跑步（8 千米/小时以上）、快速蹬车、球类比赛等。</p></div>
+        <div class="card"><h3>🏋️ 力量练习</h3>
+          <p class="small"><b>非器械</b>：俯卧撑、原地纵跳、仰卧起坐（卷腹）等；<b>器械</b>：哑铃、杠铃等。
+          负荷口径：<b>10～20RM</b>（最多能标准重复 10～20 次的重量）。</p></div>
+        <div class="card"><h3>⚽ 球类运动</h3>
+          <p class="small"><b>直接接触类</b>：篮球、足球、橄榄球等；<b>非直接接触类</b>：排球、乒乓球、羽毛球、网球、门球、柔力球等。</p></div>
+        <div class="card"><h3>☯ 中国传统运动</h3>
+          <p class="small">太极拳（剑）、木兰拳（剑）、武术套路、五禽戏、<b>八段锦</b>、易筋经、六字诀——本页收录总局审定的八段锦八式。</p></div>
+        <div class="card"><h3>🧘 牵拉练习</h3>
+          <p class="small"><b>静力性</b>：正压腿、侧压腿、压肩；<b>动力性</b>：正踢腿、侧踢腿、甩腰。初练者以静力性为主。</p></div>
+        <div class="card"><h3>⏱ 一次完整活动</h3>
+          <p class="small"><b>准备活动</b> 5～10 分钟＋<b>基本活动</b> 30～60 分钟＋<b>放松活动</b> 5～10 分钟，准备与放松阶段安排牵拉<sup class="cite" data-src="S40"></sup>。</p></div>
+      </div>
+
+      <h3 style="margin:18px 0 8px;font-size:16.5px">强度分级（对照《全民健身指南》）</h3>
+      <table class="tbl">
+        <tr><th class="l">维度</th><th>小强度</th><th>中等强度</th><th>大强度</th></tr>
+        <tr><td class="l">运动中心率</td><td>一般不超过 100 次/分</td><td>100～140 次/分</td><td>超过 140 次/分</td></tr>
+        <tr><td class="l">占最大心率</td><td>50%～60%</td><td>60%～85%</td><td>85% 以上</td></tr>
+        <tr><td class="l">呼吸 / 说话测试</td><td>轻松，可以唱歌</td><td>比较急促，只能讲短句子</td><td>急促，不能交谈</td></tr>
+        <tr><td class="l">主观体力感觉（RPE）</td><td>轻松（9～10 级）</td><td>稍累（13～14 级）</td><td>累（15～16 级）</td></tr>
+      </table>
+      <p class="hint">最大心率（次/分）= 220 − 年龄（岁）；RPE 级数 × 10 ≈ 运动中的心率。</p>
+
+      <div class="card">
+        <h3>🧮 强度换算器</h3>
+        <div id="hrAge"></div>
+        <div id="hrOut" class="chips"></div>
+        <p class="hint">心脏病、高血压人群及服药者（β 受体阻滞剂会影响心率）请遵医嘱确定靶心率，不要照搬公式。</p>
+      </div>
+
+      <div class="keypoint"><b>每周处方（长期稳定方案）</b>：有氧——每天 30～60 分钟中等强度，<b>每周 200～300 分钟</b>中等强度（或 75～150 分钟大强度）；
+      力量——<b>每周 2～3 次、隔天进行</b>，每次 8～10 种动作，10～20RM 重复 10～15 次、每部位 2～3 组；牵拉——每周不少于 5 天，每次 5～10 分钟。
+      指南原文解读：<a href="https://www.sport.gov.cn/n315/n331/n405/c819327/content.html" target="_blank" rel="noopener">国家体育总局官网 ↗</a>（需联网）<sup class="cite" data-src="S40"></sup>。</div>
+
+      <div class="danger">
+        <span class="dt">⛔ 运动安全红线</span>
+        <ul>
+          <li><b>循序渐进</b>：初次锻炼从小强度、短时间开始（指南建议初练者每周 3 次左右，8 周后进入中期方案），不与他人比进度。</li>
+          <li><b>立即停止的信号</b>：胸痛胸闷、头晕黑矇、心悸气促、关节剧痛——停止运动并就医，症状反复务必先做检查。</li>
+          <li><b>慢病人群先咨询</b>：高血压、糖尿病、心血管病、孕产期及术后人群，开始训练计划前应咨询医生。</li>
+          <li><b>不省热身与放松</b>：见上方「一次完整活动」三段式——准备与放松不是可有可无的点缀。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="topic" id="s2">
+      <h2><span class="secno">7.2</span> 标准动作库（20 个动作 · 离线动画演示）</h2>
+      <div class="grid2">
+        <div class="set-card">
+          <h3>☯ 健身气功·八段锦 <span class="tag" style="font-size:12px;color:var(--c1);background:var(--tint1);padding:2px 9px;border-radius:999px">总局审定功法</span></h3>
+          <p class="small">国家体育总局健身气功管理中心 2003 年组织编创的标准化功法，动作舒缓、场地零要求，已纳入《全民健身指南》「中国传统运动方式」。</p>
+          <ol class="koujue">
+            <li>两手托天理三焦</li><li>左右开弓似射雕</li><li>调理脾胃须单举</li><li>五劳七伤往后瞧</li>
+            <li>摇头摆尾去心火</li><li>两手攀足固肾腰</li><li>攒拳怒目增气力</li><li>背后七颠百病消</li>
+          </ol>
+          <p class="small">📺 官方视频：<a href="https://www.sport.gov.cn/n4/n24581921/n24581923/n24581897/c24588542/content.html" target="_blank" rel="noopener">总局「科学健身指导·八段锦」↗</a>　<a href="https://www.sport.gov.cn/qgzx/n5407/c781297/content.html" target="_blank" rel="noopener">健身气功管理中心介绍 ↗</a>（需联网）</p>
+          <p class="small muted">八式的分式演示与要领见下方动作库「传统功法」分类。<sup class="cite" data-src="S41"></sup></p>
+        </div>
+        <div class="set-card">
+          <h3>广播体操·第九套 <span class="tag" style="font-size:12px;color:var(--c2);background:var(--tint2);padding:2px 9px;border-radius:999px">总局发布</span></h3>
+          <p class="small">2011 年 8 月 8 日（全民健身日）发布：预备节原地踏步＋8 节徒手动作，总时长约 <b>4 分 15 秒</b>，适合工间 / 课间每天 1～2 遍。</p>
+          <p class="small">八节：<b>伸展 · 扩胸 · 踢腿 · 体侧 · 体转 · 腹背 · 跳跃 · 整理</b></p>
+          <p class="small">📺 官方视频：<a href="https://www.sport.gov.cn/n322/n382/c918227/content.html" target="_blank" rel="noopener">国家体育总局官网发布页 ↗</a>（需联网）</p>
+          <p class="small muted">做两遍约 8～10 分钟，配合快走即可凑足一次小强度有氧活动。<sup class="cite" data-src="S42"></sup></p>
+        </div>
+      </div>
+
+      <div class="chips" id="catChips" style="margin-top:16px"></div>
+      <div class="ex-grid" id="moveGrid"></div>
+      <p class="hint">每个卡片内置<b>离线动画演示</b>：▶ 播放 / 暂停，拖动进度条逐帧查看，可调 0.5～2 倍速；点击下方分解图可跳到对应姿势。
+      动画为示意，用于理解动作轨迹与身体姿态，不能替代现场教学。</p>
+    </section>
+
+    <section class="topic" id="s3">
+      <h2><span class="secno">7.3</span> 📅 一周训练计划生成器</h2>
+      <div class="card">
+        <p>按《全民健身指南》的处方口径，用上方动作库组合成可执行的一周计划<sup class="cite" data-src="S40"></sup>。</p>
+        <div class="ctl-row"><span class="ctl-label">目标</span><div id="planGoal" style="display:flex;flex-wrap:wrap;gap:8px"></div><span></span></div>
+        <div id="planDays"></div>
+        <div id="planOut" class="chips"></div>
+        <div id="planWeek" style="margin-top:6px"></div>
+        <p class="hint">把计划写进日历并固定时段，坚持率比「完美计划」更重要；身体不适日宁可降级为快走＋牵拉，不要硬扛。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="s4">
+      <h2><span class="secno">7.4</span> 达标自测：《国家体育锻炼标准》五类素质</h2>
+      <div class="card">
+        <p>《国家体育锻炼标准》（2013 年修订）适用于 <b>6～69 周岁健康公民</b>，按年龄、性别分组测验<b>五类身体素质</b>并评级（优秀 / 良好 / 及格），
+        各地常举办「达标测验赛」，社区、单位即可参加<sup class="cite" data-src="S43"></sup>。</p>
+        <table class="tbl">
+          <tr><th class="l">素质类别</th><th class="l">代表测验项目（随年龄组不同，示例）</th><th class="l">日常练法（本页动作）</th></tr>
+          <tr><td class="l">⚡ 速度</td><td class="l">30 / 50 米跑、30 秒跳绳</td><td class="l"><a href="#mv-rope">跳绳</a>、<a href="#mv-walk">健身走</a>提速走</td></tr>
+          <tr><td class="l">🏃 耐力</td><td class="l">300～1000 米跑（按年龄组）</td><td class="l"><a href="#mv-jog">慢跑</a>、健步走</td></tr>
+          <tr><td class="l">💪 力量</td><td class="l">俯卧撑、仰卧起坐、引体向上等</td><td class="l"><a href="#mv-pushup">俯卧撑</a>、<a href="#mv-crunch">卷腹</a>、<a href="#mv-squat">深蹲</a></td></tr>
+          <tr><td class="l">🤸 灵敏</td><td class="l">往返跑、十字象限跳等</td><td class="l"><a href="#mv-rope">跳绳</a>（节奏与脚步）、球类</td></tr>
+          <tr><td class="l">🧘 柔韧</td><td class="l">坐位体前屈</td><td class="l"><a href="#mv-sitreach">坐位体前屈</a>、<a href="#mv-hamstretch">正压腿</a></td></tr>
+        </table>
+        <p class="hint">测验项目与评分标准随年龄组而异，此处为示例；完整分表见《国家体育锻炼标准》原文及各地体育局发布。</p>
+      </div>
+    </section>
+
+    <section class="topic" id="s5">
+      <h2><span class="secno">7.5</span> 随堂检测</h2>
+      <div class="card"><div id="quiz1"></div></div>
+    </section>
+  </main>
+</div>
+
+<script src="assets/healthui.js"></script>
+<script src="assets/img/credits.js"></script>
+<script src="assets/data.js"></script>
+<script>
+HUI.renderNav('exercise.html');
+HUI.footer();
+HUI.pager('exercise.html');
+HUI.progress('exercise.html');
+
+document.getElementById('toc').innerHTML = '<div class="toc-title">本章目录</div>' +
+  ['s1|7.1 框架与强度', 's2|7.2 标准动作库', 's3|7.3 一周计划生成', 's4|7.4 达标自测', 's5|7.5 随堂检测']
+    .map(x => { const p = x.split('|'); return '<a href="#' + p[0] + '">' + p[1] + '</a>'; }).join('');
+
+(function () {
+  const D = window.HDATA;
+  const MOVES = D.EXERCISES || [];
+  const CAT = {
+    aero: { name: '有氧运动', color: 'var(--c3)', tint: 'var(--tint3)' },
+    strength: { name: '力量练习', color: 'var(--c2)', tint: 'var(--tint2)' },
+    stretch: { name: '牵拉练习', color: 'var(--c4)', tint: 'var(--tintw)' },
+    taichi: { name: '传统功法 · 八段锦', color: 'var(--c5)', tint: 'var(--tint1)' }
+  };
+  const INT_CLS = { '小': '', '小～中': '', '中': 'hl', '中～大': 'hl', '大': 'bad' };
+
+  /* ========== 动画渲染（火柴人，坐标见 data.js 约定） ========== */
+  const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  function poseAt(mv, p) {
+    const n = mv.frames.length;
+    const i = ((Math.floor(p) % n) + n) % n, j = (i + 1) % n;
+    const t = ease(p - Math.floor(p));
+    return mv.frames[i].map((pt, k) => [
+      pt[0] + (mv.frames[j][k][0] - pt[0]) * t,
+      pt[1] + (mv.frames[j][k][1] - pt[1]) * t
+    ]);
+  }
+  function ropeCtrlY(p) {
+    const seg = Math.floor(p) % 2, t = ease(p - Math.floor(p));
+    return seg === 0 ? 130 + t * (-80 - 130) : -80 + t * (130 + 80);
+  }
+  function drawFigure(mv, p, opts) {
+    const o = opts || {};
+    const P = poseAt(mv, p);
+    const [hd, nk, pv, elL, haL, elR, haR, knL, ftL, knR, ftR] = P;
+    const s = [];
+    s.push(`<svg viewBox="0 0 100 100" role="img" aria-label="${HUI.esc(mv.name)}动画演示">`);
+    if (mv.prop === 'mat') s.push(`<rect x="12" y="88.5" width="76" height="4" rx="2" fill="var(--tint3)" stroke="var(--c3)" stroke-width="0.6"></rect>`);
+    if (mv.prop === 'bar') s.push(`<line x1="64" y1="46" x2="97" y2="46" stroke="var(--c2)" stroke-width="2.4" stroke-linecap="round"></line><line x1="95" y1="46" x2="95" y2="91" stroke="var(--axis)" stroke-width="2"></line>`);
+    if (mv.prop === 'box') s.push(`<rect x="77" y="84" width="8" height="7" rx="1" fill="var(--tint2)" stroke="var(--c2)" stroke-width="0.7"></rect>`);
+    s.push(`<ellipse cx="${pv[0].toFixed(1)}" cy="92.6" rx="13" ry="1.7" fill="var(--tint1)"></ellipse>`);
+    s.push(`<line x1="4" y1="91.4" x2="96" y2="91.4" stroke="var(--grid)" stroke-width="1.4" stroke-linecap="round"></line>`);
+    if (mv.prop === 'rope') s.push(`<path d="M ${haL[0].toFixed(1)} ${haL[1].toFixed(1)} Q 50 ${ropeCtrlY(p).toFixed(1)} ${haR[0].toFixed(1)} ${haR[1].toFixed(1)}" fill="none" stroke="var(--c2)" stroke-width="1.5" stroke-linecap="round"></path>`);
+    const limb = (a, b, c, w, op) =>
+      `<polyline points="${a[0]},${a[1]} ${b[0]},${b[1]} ${c[0]},${c[1]}" fill="none" stroke="var(--ink)" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" opacity="${op}"></polyline>`;
+    s.push(limb(pv, knL, ftL, 3.9, 1) + limb(pv, knR, ftR, 3.9, 0.72));   // 腿
+    s.push(`<line x1="${nk[0]}" y1="${nk[1]}" x2="${pv[0]}" y2="${pv[1]}" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"></line>`); // 躯干
+    s.push(`<line x1="${hd[0].toFixed(1)}" y1="${hd[1].toFixed(1)}" x2="${nk[0]}" y2="${nk[1]}" stroke="var(--ink)" stroke-width="3.2" stroke-linecap="round"></line>`); // 颈
+    s.push(limb(nk, elL, haL, 3.3, 1) + limb(nk, elR, haR, 3.3, 0.72));   // 臂
+    s.push(`<circle cx="${hd[0].toFixed(1)}" cy="${hd[1].toFixed(1)}" r="5.4" fill="var(--ink)"></circle>`);
+    if (mv.prop === 'dumbbell') {
+      [haL, haR].forEach(h => {
+        s.push(`<circle cx="${h[0].toFixed(1)}" cy="${h[1].toFixed(1)}" r="2.9" fill="var(--c2)"></circle><circle cx="${h[0].toFixed(1)}" cy="${h[1].toFixed(1)}" r="1.1" fill="var(--surface)"></circle>`);
+      });
+    }
+    s.push('</svg>');
+    return s.join('');
+  }
+
+  /* ========== 播放器（共享一个 rAF 心跳） ========== */
+  const players = [];
+  let raf = 0, lastT = 0;
+  function tick(ts) {
+    const dt = Math.min(0.05, lastT ? (ts - lastT) / 1000 : 0.016);
+    lastT = ts;
+    let any = false;
+    players.forEach(pl => { if (pl.playing) { any = true; pl.step(dt); } });
+    raf = any ? requestAnimationFrame(tick) : 0;
+  }
+  function wake() { if (!raf) { lastT = 0; raf = requestAnimationFrame(tick); } }
+
+  function makePlayer(mv, host) {
+    const n = mv.frames.length;
+    const scrub = host.querySelector('.ex-scrub');
+    const btn = host.querySelector('.ex-play');
+    const time = host.querySelector('.ex-time');
+    const stage = host.querySelector('.ex-stage');
+    const pl = {
+      playing: false, p: 0, speed: 1,
+      step(dt) {
+        this.p = (this.p + dt * this.speed * n / mv.dur) % n;
+        this.render();
+      },
+      render() {
+        stage.innerHTML = drawFigure(mv, this.p);
+        if (document.activeElement !== scrub) scrub.value = this.p;
+        const t = this.p / n * mv.dur;
+        time.textContent = '0:' + String(Math.floor(t)).padStart(2, '0') + ' / 0:' + String(Math.round(mv.dur)).padStart(2, '0') + (this.speed !== 1 ? ' · ' + this.speed + '×' : '');
+        btn.innerHTML = this.playing ? '⏸ 暂停' : '▶ 播放';
+      },
+      toggle() { this.playing = !this.playing; this.render(); if (this.playing) wake(); }
+    };
+    btn.addEventListener('click', () => pl.toggle());
+    scrub.addEventListener('input', () => { pl.p = +scrub.value; pl.render(); });
+    /* 分解图（关键帧缩略图，点击跳转） */
+    const thumbs = host.querySelector('.ex-thumbs');
+    thumbs.innerHTML = mv.frames.map((f, i) =>
+      `<div class="th"><span data-k="${i}">${drawFigure(mv, i)}</span>姿势 ${i + 1}/${n}</div>`).join('');
+    thumbs.querySelectorAll('span[data-k]').forEach(el => {
+      el.addEventListener('click', () => { pl.p = +el.getAttribute('data-k'); pl.playing = false; pl.render(); });
+    });
+    const spd = host.querySelector('.ex-speed');
+    if (spd) spd.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      spd.querySelectorAll('button').forEach(x => x.classList.remove('on'));
+      b.classList.add('on'); pl.speed = +b.getAttribute('data-s'); pl.render();
+    });
+    pl.render();
+    players.push(pl);
+  }
+
+  /* ========== 动作卡片渲染 ========== */
+  function renderCards() {
+    const grid = document.getElementById('moveGrid');
+    grid.innerHTML = MOVES.map(mv => {
+      const c = CAT[mv.cat];
+      const vid = mv.video ? `　📺 <a href="${HUI.esc(mv.video.url)}" target="_blank" rel="noopener">${HUI.esc(mv.video.name)} ↗</a>` : '';
+      return `<article class="ex-card" id="mv-${HUI.esc(mv.id)}" data-cat="${HUI.esc(mv.cat)}">
+        <div class="ex-head"><h3>${HUI.esc(mv.name)}</h3><span class="ex-cat" style="color:${c.color};background:${c.tint}">${HUI.esc(c.name)}</span></div>
+        <div class="ex-player">
+          <div class="ex-stage"></div>
+          <div class="ex-ctrl">
+            <button class="btn ex-play" type="button">▶ 播放</button>
+            <input class="ex-scrub" type="range" min="0" max="${mv.frames.length}" step="0.01" value="0" aria-label="播放进度">
+            <span class="ex-time"></span>
+          </div>
+          <div class="ex-speed btn-row" style="margin:2px 0 0">
+            <button class="btn" data-s="0.5" type="button">0.5×</button>
+            <button class="btn on" data-s="1" type="button">1×</button>
+            <button class="btn" data-s="1.5" type="button">1.5×</button>
+            <button class="btn" data-s="2" type="button">2×</button>
+          </div>
+          <div class="ex-thumbs"></div>
+        </div>
+        <div class="chips ex-meta" style="margin:8px 0 0">
+          <span class="chip ${INT_CLS[mv.intensity] || ''}">强度 ${HUI.esc(mv.intensity)}</span>
+          <span class="chip">${HUI.esc(mv.part)}</span>
+          <span class="chip">${HUI.esc(mv.eq)}</span>
+          <span class="chip">难度 ${'★'.repeat(mv.level)}${'☆'.repeat(3 - mv.level)}</span>
+        </div>
+        <p class="ex-brief">${HUI.esc(mv.brief)}</p>
+        <div class="keypoint ex-dose"><b>处方</b>：${HUI.esc(mv.dose)}</div>
+        <details class="ex-det"><summary>动作要领</summary><ul>${mv.cues.map(x => `<li>${HUI.esc(x)}</li>`).join('')}</ul></details>
+        <details class="ex-det ex-warn"><summary>常见错误</summary><ul>${mv.mistakes.map(x => `<li>${HUI.esc(x)}</li>`).join('')}</ul></details>
+        <p class="ex-src">来源 <sup class="cite" data-src="${HUI.esc(mv.src.join(','))}"></sup>${vid}</p>
+      </article>`;
+    }).join('');
+    MOVES.forEach(mv => makePlayer(mv, document.getElementById('mv-' + mv.id)));
+    applyFilter();
+  }
+
+  /* ========== 分类筛选 ========== */
+  let curCat = 'all';
+  function applyFilter() {
+    MOVES.forEach(mv => {
+      const el = document.getElementById('mv-' + mv.id);
+      el.style.display = (curCat === 'all' || mv.cat === curCat) ? '' : 'none';
+    });
+    const chips = document.getElementById('catChips');
+    chips.innerHTML = [['all', '全部']]
+      .concat(Object.keys(CAT).map(k => [k, CAT[k].name]))
+      .map(([k, label]) => {
+        const cnt = k === 'all' ? MOVES.length : MOVES.filter(m => m.cat === k).length;
+        return `<span class="chip btn ${k === curCat ? 'on' : ''}" data-c="${k}">${label}（${cnt}）</span>`;
+      }).join('');
+    chips.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
+      curCat = ch.getAttribute('data-c'); applyFilter();
+    }));
+  }
+
+  /* ========== 7.1 强度换算器 ========== */
+  const hrAge = HUI.slider('hrAge', { label: '年龄（岁）', min: 12, max: 80, value: 30, on: hrDraw });
+  function hrDraw() {
+    const age = hrAge.get(), hrm = 220 - age;
+    document.getElementById('hrOut').innerHTML =
+      `<span class="chip">最大心率 ≈ <b>${hrm}</b> 次/分（220−${age}）</span>` +
+      `<span class="chip">小强度 ≤ <b>100</b> 次/分</span>` +
+      `<span class="chip hl">中等强度 <b>100～140</b> 次/分（约 ${Math.round(hrm * 0.6)}～${Math.round(hrm * 0.85)}）</span>` +
+      `<span class="chip bad">大强度 &gt; <b>140</b> 次/分（≥${Math.round(hrm * 0.85)}）</span>`;
+  }
+  hrDraw();
+
+  /* ========== 7.3 一周计划生成器 ========== */
+  const mvA = id => `<a href="#mv-${id}">${HUI.esc((MOVES.find(m => m.id === id) || {}).name || id)}</a>`;
+  const PLANS = {
+    start: { label: '久坐起步', dft: 4, min: 3, max: 6,
+      aero: () => `🏃 有氧：${mvA('walk')} 20～30 分钟（小～中强度）`,
+      strA: () => `🏋 力量（轻量入门）：${mvA('squat')} 2×10 · ${mvA('pushup')}（跪姿/上斜）2×8 · ${mvA('bridge')} 2×10 · ${mvA('plank')} 2×20秒`,
+      strB: () => `🏋 力量（轻量入门）：${mvA('squat')} 2×10 · ${mvA('crunch')} 2×10 · ${mvA('plank')} 2×20秒`,
+      str: () => '' },
+    maintain: { label: '健康维持', dft: 5, min: 4, max: 6,
+      aero: () => `🏃 有氧：${mvA('walk')} / ${mvA('jog')} 30～45 分钟（中等强度）`,
+      strA: () => `🏋 力量（8 动作循环）：${mvA('squat')} 2×12 · ${mvA('lunge')} 每侧2×10 · ${mvA('pushup')} 2×10 · ${mvA('plank')} 2×40秒 · ${mvA('crunch')} 2×12`,
+      strB: () => `🏋 力量（8 动作循环）：${mvA('ohp')} 2×10 · ${mvA('pushup')} 2×10 · ${mvA('bridge')} 2×12 · ${mvA('plank')} 2×40秒 · ${mvA('crunch')} 2×12`,
+      str: () => '' },
+    fat: { label: '减脂塑形', dft: 5, min: 4, max: 7,
+      aero: () => `🏃 有氧 40～50 分钟：${mvA('walk')}＋${mvA('jog')} 交替，或 ${mvA('rope')} 1分钟×8组（组间歇 1～2 分钟）`,
+      strA: () => `🏋 力量（保肌肉，10～15次/组）：${mvA('squat')} 3×15 · ${mvA('lunge')} 每侧3×10 · ${mvA('pushup')} 3×12 · ${mvA('plank')} 3×40秒`,
+      strB: () => `🏋 力量（保肌肉）：${mvA('ohp')} 3×12 · ${mvA('pushup')} 3×12 · ${mvA('bridge')} 3×15 · ${mvA('crunch')} 3×15 · ${mvA('plank')} 3×40秒`,
+      str: () => '' },
+    muscle: { label: '增肌强体', dft: 5, min: 4, max: 6,
+      aero: () => `🏃 有氧（维持心肺即可）：${mvA('walk')} / ${mvA('jog')} 20～25 分钟`,
+      strA: () => `🏋 力量·推（10～20RM）：${mvA('pushup')} 3×12 · ${mvA('ohp')} 3×10 · ${mvA('crunch')} 3×15 · ${mvA('plank')} 3×45秒`,
+      strB: () => `🏋 力量·腿臀：${mvA('squat')} 3×15 · ${mvA('lunge')} 每侧3×12 · ${mvA('bridge')} 3×15 · ${mvA('plank')} 3×45秒`,
+      str: () => '' }
+  };
+  const STRETCH_LINE = `🧾 牵拉 5～10 分钟：${mvA('sitreach')} · ${mvA('hamstretch')}`;
+  let curGoal = 'maintain';
+  const goalSeg = HUI.seg(document.getElementById('planGoal'), Object.keys(PLANS).map(k => PLANS[k].label), {
+    value: 1, on: i => { curGoal = Object.keys(PLANS)[i]; planSeg.set(PLANS[curGoal].dft); planDraw(); }
+  });
+  const planSeg = HUI.slider('planDays', { label: '每周运动天数', min: 3, max: 7, value: 5, on: planDraw, fmt: v => v + ' 天/周' });
+  function planDraw() {
+    const cfg = PLANS[curGoal];
+    const days = Math.max(cfg.min, Math.min(cfg.max, planSeg.get()));
+    planSeg.set(days);
+    /* 运动日均匀铺满一周 */
+    const idx = []; for (let i = 0; i < days; i++) idx.push(Math.round(i * (6 / Math.max(days - 1, 1))));
+    const active = new Set(idx);
+    const weekNames = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+    let aeroMin = 0;
+    let html = '';
+    for (let d = 0; d < 7; d++) {
+      if (!active.has(d)) { html += `<div class="plan-day"><span class="pd-no">${weekNames[d]}</span><span class="pd-rest">😌 休息 · 可散步或做一套广播体操放松（不宜久坐整天）</span></div>`; continue; }
+      const k = idx.indexOf(d); /* 第几个运动日 */
+      let lines;
+      if (curGoal === 'muscle') {
+        /* 力量隔天进行（k 偶数），有氧穿插在中间（k 奇数） */
+        if (k % 2 === 1) { lines = cfg.aero() + '<br>' + STRETCH_LINE; aeroMin += 25; }
+        else lines = (k % 4 === 0 ? cfg.strA() : cfg.strB()) + '<br>' + STRETCH_LINE;
+      } else {
+        const isStr = (k % 2 === 0); /* 运动日序列的偶数位安排力量，尽量满足「力量隔天」 */
+        lines = cfg.aero() + '<br>' + (isStr ? cfg.strA() : cfg.strB()) + '<br>' + STRETCH_LINE;
+        aeroMin += curGoal === 'fat' ? 45 : (curGoal === 'maintain' ? 38 : 25);
+      }
+      html += `<div class="plan-day"><span class="pd-no">${weekNames[d]}</span>${lines}</div>`;
+    }
+    document.getElementById('planWeek').innerHTML = html;
+    const note = curGoal === 'muscle' ? '力量隔天进行；有氧为辅助维持。'
+      : curGoal === 'fat' ? '每周有氧约 200～300 分钟＋2～3 次力量保肌肉，配合第 4/6 章的缺口饮食。'
+      : curGoal === 'start' ? '从小强度短时间开始（初练者每周 3 次左右），8 周后换「健康维持」方案。'
+      : '有氧每周 150～300 分钟中等强度＋力量每周 2～3 次，符合指南长期处方。';
+    document.getElementById('planOut').innerHTML =
+      `<span class="chip">目标 <b>${HUI.esc(cfg.label)}</b> · 每周 <b>${days}</b> 个运动日</span>` +
+      `<span class="chip hl">本周有氧约 <b>${aeroMin}</b> 分钟</span>` +
+      `<span class="chip">${note}</span>`;
+  }
+  planDraw();
+
+  renderCards();
+  HUI.quiz('quiz1', D.QUIZ_BANK.exercise || [], { id: 'exercise' });
+  HUI.cite();
+})();
+</script>
+</body>
+</html>

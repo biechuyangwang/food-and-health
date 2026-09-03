@@ -16,15 +16,16 @@ pairing.html               第3章 搭配宜忌（配对查询器 / 食物-药�
 disease-metabolic.html     第4章 疾病食疗·代谢与心血管
 disease-gi.html            第5章 疾病食疗·消化血液免疫骨骼
 fitness.html               第6章 增强体质
-herbs.html                 第7章 药食同源
-recipes.html               第8章 家常食谱推荐
-quiz.html                  第9章 知识自测
+exercise.html              第7章 标准运动动作库（国家体育总局 · 离线动画演示）
+herbs.html                 第8章 药食同源
+recipes.html               第9章 家常食谱推荐
+quiz.html                  第10章 知识自测
 references.html            附 参考文献与证据说明
 appendix-howtocook.html    附 HowToCook 开源菜谱库（分类浏览/全文搜索）
 assets/
   style.css                共享样式（明暗双主题，CSS 变量）
   healthui.js              共享组件库（导航/引用/测验/进度/演示器…）
-  data.js                  全站数据（SOURCES/FOODS/PAIRS/RECIPES/DISEASES/HERBS/QUIZ_BANK）
+  data.js                  全站数据（SOURCES/FOODS/PAIRS/DISEASES/HERBS/EXERCISES/QUIZ_BANK）
   img/                     食物照片（Wikimedia Commons，出处见 img/CREDITS.md）
   howtocook/               HowToCook 菜谱数据（tools/build_howtocook.js 构建产物，懒加载）
 tools/
@@ -35,6 +36,14 @@ tools/
   photo_state.json         照片下载状态（断点续传）
   shots/                   验证截图
 ```
+
+## 动作动画说明（exercise.html）
+
+- 动作关键帧数据在 `assets/data.js` 的 `EXERCISES`（每帧 11 个关节点 `[x,y]`，画布 100×100，地面 y≈91），
+  `exercise.html` 内置火柴人渲染器与播放器：播放/暂停、0.5～2× 调速、进度拖动、关键帧分解图，全部离线运行。
+- 依据：国家体育总局《全民健身指南》(2017)、健身气功·八段锦（总局健身气功管理中心）、第九套广播体操（2011）、
+  《国家体育锻炼标准》(2013)；器械力量动作规范另参考 ACSM/AND 立场声明（S28）。
+- 外部「官方视频」仅收录 sport.gov.cn 官方稳定链接（需联网），不缓存视频文件，保持站点纯离线属性。
 
 ## 照片与授权
 
@@ -50,11 +59,12 @@ tools/
 - **C** 传统典籍：《中华人民共和国药典》2020年版一部、《本草纲目》等经验医学记载
 - **D** 证据不足：民间说法，仅用于辨析/辟谣段落并明示
 
-## 当前状态（2026-09-03 · v1.1）
+## 当前状态（2026-09-04 · v1.2）
 
-12 页全部完成并通过审计：`node tools/audit.js` → **12 个页面，0 错误**（62 食物 / 26 搭配 / 43 药材 / 25 来源 / 62 照片 / 7 卷 48 题）；
+13 页全部完成并通过审计：`node tools/audit.js` → **13 个页面，0 错误**（62 食物 / 26 搭配 / 43 药材 / 20 动作 / 29 来源 / 62 照片 / 8 卷 55 题）；
 无头浏览器逐页控制台零报错；明暗双主题截图抽查通过。
-2026-09-03 移除「简单环境下的外科急救」两章及对应数据与来源（章节顺延：自测为第 9 章）。
+2026-09-03 移除「简单环境下的外科急救」两章及对应数据与来源。
+2026-09-04 新增第 7 章「标准运动动作库」（国家体育总局口径，20 动作离线动画演示），后续章节顺延（自测为第 10 章）。
 
 ## 验证流程（每次修改后）
 

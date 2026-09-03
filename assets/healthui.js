@@ -28,6 +28,7 @@ const HUI = (() => {
     { file: 'disease-metabolic.html', short: '食疗·代谢', group: '食疗', title: '疾病食疗 · 代谢与心血管' },
     { file: 'disease-gi.html', short: '食疗·消化免疫', group: '食疗', title: '疾病食疗 · 消化血液免疫骨骼' },
     { file: 'fitness.html', short: '强身', group: '强身', title: '增强体质' },
+    { file: 'exercise.html', short: '动作库', group: '强身', title: '标准运动动作库（国家体育总局）' },
     { file: 'herbs.html', short: '药食同源', group: '强身', title: '药食同源' },
     { file: 'recipes.html', short: '食谱', group: '食谱', title: '家常食谱推荐' },
     { file: 'appendix-howtocook.html', short: '开源菜谱', group: '食谱', title: 'HowToCook 开源菜谱库（附录）' },
